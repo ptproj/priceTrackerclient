@@ -34,7 +34,11 @@ export class CostumerloginComponent implements OnInit {
     
    // alert( this.loginForm.value)
     
-   // this.loginservice.postcostumer(this.costumer).subscribe(data=>alert(data));
+   this.loginservice.postcostumer(this.costumer).subscribe(data=>alert(data));
 
+  }
+  get()
+  {
+    this.loginservice.getcostumer("faigy@gmail.com").subscribe(data=>alert(data));
   }
 }

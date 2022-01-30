@@ -74,7 +74,8 @@
               "browserTarget": "PriceTracker:build:production"
             },
             "development": {
-              "browserTarget": "PriceTracker:build:development"
+              "browserTarget": "PriceTracker:build:development",
+              "proxyConfig": "src/proxy.config.json"
             }
           },
           "defaultConfiguration": "development"
