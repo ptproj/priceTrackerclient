@@ -3,6 +3,10 @@ export class Costumer{
     email?:string;
     password?:string;
  
-    constructor()
-    {}
+    constructor(e:string,p:string)
+    {
+      this.email=e;
+      this.password=p;
+
+    }
   }
