@@ -15,7 +15,7 @@ postcostumer(costumer:Costumer):Observable<Costumer>
 return this.http.post<Costumer>("api/Costumer/",costumer);
 }
 getcostumer(num:string):Observable<Costumer>{
-  return this.http.get<Costumer>("api/Costumer/"+"num");
+  return this.http.get<Costumer>("api/Customer/aaa");
 }
 
 }
