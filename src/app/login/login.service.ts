@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Costumer } from 'src/models/classcostumer';
+import { DTOLoginCostumer } from 'src/models/classdtologincostumer';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,12 @@ export class LoginService {
 
 postcostumer(costumer:Costumer):Observable<Costumer>
 {
-return this.http.post<Costumer>("api/Costumer/",costumer);
+return this.http.post<Costumer>("api/Customer/",costumer);
 }
-getcostumer(num:string):Observable<Costumer>{
-  return this.http.get<Costumer>("api/Customer/aaa");
+getcostumer(costumer:Costumer):Observable<DTOLoginCostumer>
+{
+return this.http.post<DTOLoginCostumer>("api/Customer/login/",costumer);
 }
 
 }
+

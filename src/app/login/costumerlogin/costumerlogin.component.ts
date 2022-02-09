@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Costumer} from '../../../models/classcostumer'
 import { LoginService } from '../login.service';
+import { DTOLoginCostumer } from 'src/models/classdtologincostumer';
+
+ 
+
 
 @Component({
   selector: 'app-costumerlogin',
@@ -17,28 +21,20 @@ export class CostumerloginComponent implements OnInit {
 
 
   }
-  signin()
-  {
-}
+  
+ 
  loginForm:FormGroup=new FormGroup({
     "email":new FormControl("",[Validators.required,Validators.email]),
    "password":new FormControl("",[Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
   })
-  saveuser(){
-   // this.costumer=new Costumer("323777862@mby.co.il","thisisit")
-  //  this.costumer=new Costumer(this.loginForm.controls.['email'].value,this.loginForm.controls.password.value)
-    this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
-    var x=this.loginForm.value[0]
-    //alert(x)
-    alert( this. loginForm.get("email")?.value)
-    
-   // alert( this.loginForm.value)
-    
-   this.loginservice.postcostumer(this.costumer).subscribe(data=>alert(data));
-
+  signin(){
+  this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
+  this.loginservice.postcostumer(this.costumer).subscribe(data=>alert(data.email));
   }
-  get()
+  login()
   {
-    this.loginservice.getcostumer("faigy@gmail.com").subscribe(data=>alert(data));
+    this.costumer=new Costumer( this.loginForm.get("email")?.value, this.loginForm.get("password")?.value)  
+    this.loginservice.getcostumer(this.costumer).subscribe(data=>sessionStorage.setItem('token', data.token|| ''));
+    alert(sessionStorage.getItem('token'))
   }
 }
