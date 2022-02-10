@@ -4,12 +4,15 @@ import { LoginService } from './login.service';
 import { CostumerloginComponent } from './costumerlogin/costumerlogin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
+import { CostumerpageComponent } from '../costumerpage/costumerpage.component';
+const ROUTES:Routes=[
+  { path:'costumerpage',component:CostumerpageComponent },
+]
 @NgModule({
   declarations: [CostumerloginComponent],
   providers: [LoginService], 
-  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,RouterModule],
+  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,RouterModule.forRoot(ROUTES)], 
   exports:[CostumerloginComponent]
   
 })
