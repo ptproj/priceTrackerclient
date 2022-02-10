@@ -3,5 +3,6 @@
 pass:<input formControlName="password" id="pass">
 email:<input formControlName="email" id="email">
 </form>
- <button (click)="signin()">sign in</button>
- <button (click)="login()">login</button>
+ <button (click)="signin()" routerlink="/costumerpage">sign in</button>
+ <button (click)="login()" routerlink="costumerpage">login</button>
+ <router-outlet></router-outlet>
