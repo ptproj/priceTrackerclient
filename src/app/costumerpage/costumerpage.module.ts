@@ -8,6 +8,7 @@ import { CostumerpageComponent } from '../costumerpage/costumerpage.component';
   declarations: [
     CostumerpageComponent
   ],
+  
   imports: [
     CommonModule
   ]

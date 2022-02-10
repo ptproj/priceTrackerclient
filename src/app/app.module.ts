@@ -10,7 +10,8 @@ import { RouterModule,Routes } from '@angular/router';
 import { CostumerpageModule } from './costumerpage/costumerpage.module';
 import { CostumerpageComponent } from './costumerpage/costumerpage.component';
 const ROUTES:Routes=[
-  { path:'costumerpage',component:CostumerpageComponent }
+  { path:'costumerpage',component:CostumerpageComponent },
+  
   
 ]
 @NgModule({
@@ -28,8 +29,10 @@ const ROUTES:Routes=[
     RouterModule.forRoot(ROUTES)
     
   ],
+  exports:[RouterModule],
   providers: [],
   bootstrap: [AppComponent]
+ 
 })
 export class AppModule { 
  

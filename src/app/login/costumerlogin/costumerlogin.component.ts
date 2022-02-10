@@ -34,7 +34,11 @@ export class CostumerloginComponent implements OnInit {
   login()
   {
     this.costumer=new Costumer( this.loginForm.get("email")?.value, this.loginForm.get("password")?.value)  
-    this.loginservice.getcostumer(this.costumer).subscribe(data=>sessionStorage.setItem('token', data.token|| ''));
+
+    this.loginservice.getcostumer(this.costumer).subscribe(data=>{
+      sessionStorage.setItem('token', data.token|| '')
+      sessionStorage.setItem('costumerid', data.id?.toString()|| '')
+  });
     alert(sessionStorage.getItem('token'))
   }
 }
