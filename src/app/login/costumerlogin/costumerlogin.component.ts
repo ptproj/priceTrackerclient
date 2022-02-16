@@ -38,7 +38,7 @@ export class CostumerloginComponent implements OnInit {
     this.loginservice.getcostumer(this.costumer).subscribe(data=>{
       sessionStorage.setItem('token', data.token|| '')
       sessionStorage.setItem('costumerid', data.id?.toString()|| '')
+      alert(sessionStorage.getItem('token'))
   });
-    alert(sessionStorage.getItem('token'))
   }
 }
