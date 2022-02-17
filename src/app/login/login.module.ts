@@ -7,7 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { CostumerpageComponent } from '../costumerpage/costumerpage.component';
 const ROUTES:Routes=[
-  { path:'costumerpage',component:CostumerpageComponent },
+  { path:'costumerlogin',component:CostumerloginComponent 
+},
+{ path:'costumerpage',component:CostumerpageComponent 
+},
+  {
+    path: '**',
+    redirectTo: 'costumerlogin'
+  }    
 ]
 @NgModule({
   declarations: [CostumerloginComponent],

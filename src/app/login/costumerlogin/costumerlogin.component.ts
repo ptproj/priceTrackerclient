@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Costumer} from '../../../models/classcostumer'
 import { LoginService } from '../login.service';
 import { DTOLoginCostumer } from 'src/models/classdtologincostumer';
+import { Router } from '@angular/router';
 
  
 
@@ -14,7 +15,7 @@ import { DTOLoginCostumer } from 'src/models/classdtologincostumer';
 })
 export class CostumerloginComponent implements OnInit {
 
-  constructor(private loginservice:LoginService) { }
+  constructor(private loginservice:LoginService,private router:Router) { }
  // constructor() { }
    costumer?:Costumer
   ngOnInit(): void {
@@ -28,8 +29,13 @@ export class CostumerloginComponent implements OnInit {
    "password":new FormControl("",[Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
   })
   signin(){
-  this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
-  this.loginservice.postcostumer(this.costumer).subscribe(data=>alert(data.email));
+//   this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
+//   this.loginservice.postcostumer(this.costumer).subscribe(data=>{alert(data.email)
+//   this.router.navigate(["/costomer"])}
+// );
+//debugger;
+ this.router.navigate(["/costumerpage"])
+
   }
   login()
   {

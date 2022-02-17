@@ -10,9 +10,17 @@ import { RouterModule,Routes } from '@angular/router';
 import { CostumerpageModule } from './costumerpage/costumerpage.module';
 import { CostumerpageComponent } from './costumerpage/costumerpage.component';
 const ROUTES:Routes=[
-  { path:'costumerpage',component:CostumerpageComponent },
+ // { path:'costumerpage',component:CostumerpageComponent },
   
-  
+ { path:'login',loadChildren: ()=>import('./login/login.module').then(m=>m.LoginModule)//lazy load
+},
+// { path:'cos',loadChildren: ()=>import('./costumerpage/costumerpage.module').then(m=>m.CostumerpageModule)//lazy load
+// },
+{
+  path: '**',
+  redirectTo: 'login'
+}    
+
 ]
 @NgModule({
   declarations: [
