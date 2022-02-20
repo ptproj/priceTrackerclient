@@ -11,9 +11,9 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-postcostumer(costumer:Costumer):Observable<Costumer>
+postcostumer(costumer:Costumer):Observable<DTOLoginCostumer>
 {
-return this.http.post<Costumer>("api/Customer/",costumer);
+return this.http.post<DTOLoginCostumer>("api/Customer/",costumer);
 }
 getcostumer(costumer:Costumer):Observable<DTOLoginCostumer>
 {

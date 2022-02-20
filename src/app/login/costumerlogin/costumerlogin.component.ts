@@ -28,13 +28,21 @@ export class CostumerloginComponent implements OnInit {
     "email":new FormControl("",[Validators.required,Validators.email]),
    "password":new FormControl("",[Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
   })
+
+
   signin(){
-//   this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
-//   this.loginservice.postcostumer(this.costumer).subscribe(data=>{alert(data.email)
-//   this.router.navigate(["/costomer"])}
-// );
-//debugger;
- this.router.navigate(["/costumerpage"])
+   this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
+   this.loginservice.postcostumer(this.costumer).subscribe(data=>{
+     sessionStorage.setItem('token', data.token|| '')
+     sessionStorage.setItem('costumerid', data.id?.toString()|| '')
+     this.router.navigate(["/costumerpage"])
+   //alert(sessionStorage.getItem('token'))
+   //alert(data.email)
+   //this.router.navigate(["/costomer"])
+  }
+ );
+//;
+ 
 
   }
   login()
@@ -44,7 +52,9 @@ export class CostumerloginComponent implements OnInit {
     this.loginservice.getcostumer(this.costumer).subscribe(data=>{
       sessionStorage.setItem('token', data.token|| '')
       sessionStorage.setItem('costumerid', data.id?.toString()|| '')
-      alert(sessionStorage.getItem('token'))
+      this.router.navigate(["/costumerpage"])
+     // alert(sessionStorage.getItem('token'))
+      
   });
   }
 }

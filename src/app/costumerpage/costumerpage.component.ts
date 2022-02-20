@@ -22,8 +22,13 @@ func(){
 }
 
   ngOnInit(): void {
-    alert("ggggg")
-    
+    alert("init costumerpage")
+   this.costumerpageservice.getcostumerproduct().subscribe(data=>
+    {alert(data.values.length)
+      this.costumerpageservice.products=data
+
+    this.products=data
+    alert(this.products.values.length)});
     
     
    }

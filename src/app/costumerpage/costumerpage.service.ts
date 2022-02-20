@@ -10,9 +10,6 @@ import { HttpHeaders } from "@angular/common/http";
   
   export class CostumerpageService {
     
-   
-     
-    
     
     products:Costumerproduct[] | undefined
   
@@ -20,8 +17,6 @@ import { HttpHeaders } from "@angular/common/http";
   constructor(private http:HttpClient) { 
      
   }
-   
-   
   
   getcostumerproduct():Observable<Costumerproduct[]>{
     const token:any=sessionStorage.getItem('token');
