@@ -28,8 +28,8 @@ export class CostumerpageComponent implements OnInit {
      if(productid){
        this.costumerpageservice.deletecostumerproduct(productid).subscribe(x=>{
       if (x==true && this.products){
-    var taskToDelete = this.products.filter(x => x.id != productid);
-    this.products=taskToDelete
+    var productsafterdeletet = this.products.filter(x => x.id != productid);
+    this.products=productsafterdeletet
 
     }
 
