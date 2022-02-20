@@ -10,26 +10,30 @@ import { CostumerpageService } from './costumerpage.service';
 export class CostumerpageComponent implements OnInit {
    products:Costumerproduct[] | undefined
   constructor(private costumerpageservice:CostumerpageService) { }
-func(){
-  this.costumerpageservice.getcostumerproduct().subscribe(data=>
-    {alert(data.values.length)
-      this.costumerpageservice.products=data
-    this.products=this.costumerpageservice.products
-    alert(this.products.values.length)});
-  
-    
 
-}
 
   ngOnInit(): void {
     alert("init costumerpage")
    this.costumerpageservice.getcostumerproduct().subscribe(data=>
-    {alert(data.values.length)
+    {
+      //data.forEach(x=>alert(x.baseprice))
       this.costumerpageservice.products=data
-
-    this.products=data
-    alert(this.products.values.length)});
+      this.products=data
+     //this.products.forEach(x=>alert(x.costumerid))
+    });
     
+    
+   }
+   delete(productid:number|undefined){
+     if(productid){
+       this.costumerpageservice.deletecostumerproduct(productid).subscribe(x=>{
+      if (x==true){
+this.products?.filter(y=>y.id!=productid)
+this.costumerpageservice.products?.filter(y=>y.id!=productid)
+    }
+
+   })
+     }
     
    }
   

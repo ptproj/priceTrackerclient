@@ -19,29 +19,28 @@ import { HttpHeaders } from "@angular/common/http";
   }
   
   getcostumerproduct():Observable<Costumerproduct[]>{
-    const token:any=sessionStorage.getItem('token');
-    const httpOptions={
+    // const token:any=sessionStorage.getItem('token');
+    // const httpOptions={
   
-         headers:new HttpHeaders({
-             'Authorization':token.tostring()
-         })
-     }
-    
+    //      headers:new HttpHeaders({
+    //          'Authorization':token.tostring()
+    //      })
+    //  }
    const costumerid=sessionStorage.getItem('costumerid');
    const c=Number(costumerid)
-   return  this.http.get<Costumerproduct[]>("api/Customerproduct/"+c,httpOptions)
+   return this.http.get<Costumerproduct[]>("api/Costumerproduct/"+c)
      
  }
-deletecostumerproduct(productid:number){
-  const token:any=sessionStorage.getItem('token');
-    const httpOptions={
+deletecostumerproduct(productid:number):Observable<boolean>{
+  // const token:any=sessionStorage.getItem('token');
+  //   const httpOptions={
   
-         headers:new HttpHeaders({
-             'Authorization':token.tostring()
-         })
-     }
+  //        headers:new HttpHeaders({
+  //            'Authorization':token.tostring()
+  //        })
+  //    },httpOptions
     
-    this.http.get<Costumerproduct[]>("api/Customerproduct/"+productid,httpOptions)
+   return this.http.delete<boolean>("api/Costumerproduct/"+productid)
 }
 addcostumerproduct(costumerproduct:Costumerproduct):Observable<Costumerproduct>{
   const token:any=sessionStorage.getItem('token');

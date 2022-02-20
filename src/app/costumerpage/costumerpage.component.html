@@ -1,3 +1,8 @@
-<h1>dfgfhfg</h1>
-<p>ccccccccc</p>
-<button (click)="func()">func</button>
+
+<div>
+    <li *ngFor="let product of products">
+       <p>{{product.baseprice}}</p>
+       <button (click)="delete(product.id)">delete this product</button>
+    </li>
+</div>
+<!-- (click)="signin()" -->
