@@ -6,31 +6,34 @@ import { AppComponent } from './app.component';
 import { CostumerloginComponent } from './login/costumerlogin/costumerlogin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './login/login.module';
-import { RouterModule,Routes } from '@angular/router';
+import { RouterModule,Route } from '@angular/router';
 import { CostumerpageModule } from './costumerpage/costumerpage.module';
 import { CostumerpageComponent } from './costumerpage/costumerpage.component';
-import { StartComponent } from './start/start.component';
+import { BeginComponent } from './begin/begin.component';
 
-const ROUTES:Routes=[
+//const ROUTES:Routes=[
  // { path:'costumerpage',component:CostumerpageComponent },
- { path: "", pathMatch: "full", redirectTo: "start" },
- { path:"start",component:StartComponent},
+//  { path: "", pathMatch: "full", redirectTo: "start" },
+//  { path:"start",component:StartComponent},
 // { path:'login',loadChildren: ()=>import('./login/login.module').then(m=>m.LoginModule)//lazy load
 // }
-
 // { path:'cos',loadChildren: ()=>import('./costumerpage/costumerpage.module').then(m=>m.CostumerpageModule)//lazy load
 // },
- 
 // {
 //   path: '**',
 //   redirectTo: "start"
 // }    
 
-];
+//];
+const APP_ROUTES:Route[]=[
+{path:"", pathMatch:"full" ,redirectTo:"begin"},
+{path:"begin",component:BeginComponent}
+
+]
 @NgModule({
   declarations: [
     AppComponent,
-    StartComponent,
+    BeginComponent
     
     
   ],
@@ -40,11 +43,12 @@ const ROUTES:Routes=[
     ReactiveFormsModule,
     LoginModule,
     CostumerpageModule,
+    RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    //RouterModule.forRoot(ROUTES)
     
   ],
-  exports:[RouterModule,StartComponent],
+  exports:[RouterModule],
   providers: [],
   bootstrap: [AppComponent]
  

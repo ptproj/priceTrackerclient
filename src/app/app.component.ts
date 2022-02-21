@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'PriceTracker';
-  constructor(private _route:Router){
-    alert("hhhh")
+  constructor(
+  //  private _route:Router
+    ){
+    //alert("hhhh")
     debugger;
-this._route.navigate(["/start"])
-alert("bbbb")
+//this._route.navigate(["/start"])
+//alert("bbbb")
   }
 }

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Costumer} from '../../../models/classcostumer'
 import { LoginService } from '../login.service';
 import { DTOLoginCostumer } from 'src/models/classdtologincostumer';
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
 
  
 
@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
 })
 export class CostumerloginComponent implements OnInit {
 
-  constructor(private loginservice:LoginService,private router:Router) { }
+  constructor(private loginservice:LoginService,
+  //  private router:Router
+    ) { }
  // constructor() { }
    costumer?:Costumer
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class CostumerloginComponent implements OnInit {
    this.loginservice.postcostumer(this.costumer).subscribe(data=>{
      sessionStorage.setItem('token', data.token|| '')
      sessionStorage.setItem('costumerid', data.id?.toString()|| '')
-     this.router.navigate(["/costumerpage"])
+     //this.router.navigate(["/costumerpage"])
    //alert(sessionStorage.getItem('token'))
    //alert(data.email)
    //this.router.navigate(["/costomer"])
@@ -52,7 +54,7 @@ alert(this.loginForm.get("email")?.value)
     this.loginservice.getcostumer(this.costumer).subscribe(data=>{
       sessionStorage.setItem('token', data.token|| '')
       sessionStorage.setItem('costumerid', data.id?.toString()|| '')
-      this.router.navigate(["/costumerpage"])
+    //  this.router.navigate(["/costumerpage"])
      // alert(sessionStorage.getItem('token'))
       
   });
