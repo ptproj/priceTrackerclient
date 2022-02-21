@@ -8,10 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CostumerpageComponent } from '../costumerpage/costumerpage.component';
 import { CompanyloginComponent } from './companylogin/companylogin.component';
 const ROUTES1:Routes=[
-  { path:'costumerlogin',component:CostumerloginComponent 
-},
-{ path:'costumerpage',component:CostumerpageComponent 
-},
+  { path: "", pathMatch: "full", redirectTo: "costumerlogin" },
+  { path:"costumerlogin",component:CostumerloginComponent },
+{ path:'costumerpage',component:CostumerpageComponent },
   {
     path: '**',
     redirectTo: 'costumerlogin'
@@ -20,7 +19,7 @@ const ROUTES1:Routes=[
 @NgModule({
   declarations: [CostumerloginComponent,CompanyloginComponent],
   providers: [LoginService], 
-  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,RouterModule.forRoot(ROUTES1)], 
+  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,RouterModule.forChild(ROUTES1)], 
   exports:[CostumerloginComponent,CompanyloginComponent]
   
 })
