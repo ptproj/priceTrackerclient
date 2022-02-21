@@ -5,6 +5,9 @@ export class Costumerproduct{
     baseprice?:number;
     finalprice?:number;
     description?:string;
-    constructor()
-    {}
+    constructor(costumerid:number, productlink:string)
+    {
+        this.costumerid=costumerid;
+        this.productlink=productlink;
+    }
 }

@@ -6,7 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { CostumerpageComponent } from '../costumerpage/costumerpage.component';
-const ROUTES:Routes=[
+import { CompanyloginComponent } from './companylogin/companylogin.component';
+const ROUTES1:Routes=[
   { path:'costumerlogin',component:CostumerloginComponent 
 },
 { path:'costumerpage',component:CostumerpageComponent 
@@ -17,10 +18,10 @@ const ROUTES:Routes=[
   }    
 ]
 @NgModule({
-  declarations: [CostumerloginComponent],
+  declarations: [CostumerloginComponent,CompanyloginComponent],
   providers: [LoginService], 
-  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,RouterModule.forRoot(ROUTES)], 
-  exports:[CostumerloginComponent]
+  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,RouterModule.forRoot(ROUTES1)], 
+  exports:[CostumerloginComponent,CompanyloginComponent]
   
 })
 export class LoginModule { }

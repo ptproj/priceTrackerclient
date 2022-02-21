@@ -1,8 +1,14 @@
 
 <div>
+   <form [formGroup]="addproductForm">
+       link:<input formControlName="link" id="link">
+       <button (click)="add()">add</button>
+   </form>
+
     <li *ngFor="let product of products">
        <p>{{product.baseprice}}</p>
        <button (click)="delete(product.id)">delete this product</button>
     </li>
+   
 </div>
 <!-- (click)="signin()" -->

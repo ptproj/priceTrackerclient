@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'PriceTracker';
-  constructor(route:Router){
-    //debugger;
-route.navigate(['/login'])
+  constructor(private route:Router){
+    debugger;
+route.navigate(["start"])
+
   }
 }

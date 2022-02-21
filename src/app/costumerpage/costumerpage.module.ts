@@ -5,6 +5,7 @@ import { CostumerpageService } from './costumerpage.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CostumerloginComponent } from '../login/costumerlogin/costumerlogin.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const ROUTES:Routes=[
   { path:'costomer',component:CostumerpageComponent },
   {
@@ -17,7 +18,7 @@ const ROUTES:Routes=[
 @NgModule({
   declarations: [CostumerpageComponent ],
   providers: [CostumerpageService], 
-  imports: [ HttpClientModule,CommonModule,RouterModule.forRoot(ROUTES)],
+  imports: [ReactiveFormsModule, HttpClientModule,CommonModule,RouterModule.forRoot(ROUTES)],
   exports:[CostumerpageComponent]
 })
 export class CostumerpageModule { }
