@@ -18,7 +18,8 @@ import { CompanyloginComponent } from './companylogin/companylogin.component';
 // ]
 const LOGIN_ROUTE:Route[]=[
   {path:"costumerlogin",component:CostumerloginComponent},
-  {path:"company",component:CompanyloginComponent}
+  {path:"company",component:CompanyloginComponent},
+  {path:"costumerpage",component:CostumerpageComponent}
 ]
 
 

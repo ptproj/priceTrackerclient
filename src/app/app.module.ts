@@ -10,6 +10,7 @@ import { RouterModule,Route } from '@angular/router';
 import { CostumerpageModule } from './costumerpage/costumerpage.module';
 import { CostumerpageComponent } from './costumerpage/costumerpage.component';
 import { BeginComponent } from './begin/begin.component';
+import { CompanyloginComponent } from './login/companylogin/companylogin.component';
 
 //const ROUTES:Routes=[
  // { path:'costumerpage',component:CostumerpageComponent },
@@ -27,7 +28,11 @@ import { BeginComponent } from './begin/begin.component';
 //];
 const APP_ROUTES:Route[]=[
 {path:"", pathMatch:"full" ,redirectTo:"begin"},
-{path:"begin",component:BeginComponent}
+{path:"begin",component:BeginComponent},
+//{path:'login',loadChildren: ()=>import('./login/login.module').then(m=>m.LoginModule)},
+{path:"costumerlogin",component:CostumerloginComponent},
+{path:"company",component:CompanyloginComponent},
+{path:"costumerpage",component:CostumerpageComponent}
 
 ]
 @NgModule({
