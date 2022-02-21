@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 export class BeginComponent implements OnInit {
 
   constructor(private _router:Router) { }
-  cos()
+  costumer()
 {
 this._router.navigate(['/costumerlogin'])
 }
-com(){
+company(){
 this._router.navigate(['/company'])
 }
   ngOnInit(): void {
