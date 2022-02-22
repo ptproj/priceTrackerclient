@@ -47,8 +47,9 @@ export class CostumerpageComponent implements OnInit {
   add(){
     const id=Number(sessionStorage.getItem('costumerid'))
     const x=this.addproductForm.get("link")?.value
-    alert(x)
+    
     if(id){
+      alert(x)
       this.costumerproduct=new Costumerproduct(id,this. addproductForm.get("link")?.value )
     this.costumerpageservice.addcostumerproduct(this.costumerproduct).subscribe(x=>{alert(x.id)})
 

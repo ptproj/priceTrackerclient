@@ -1,1 +1,21 @@
 <p>companypage works!</p>
+<div>
+    <li *ngFor="let product of products">
+        <p>{{product.name}}</p>
+        <button (click)="delete(product.id)">delete this product</button>
+     </li>
+    
+</div>
+<div>
+    <form [formGroup]="addproductForm">
+        link:<input formControlName="link" id="link">
+        desc:<input formControlName="desc" id="desc">
+        name:<input formControlName="name" id="name">
+        price:<input formControlName="price" id="price">
+        img:<input formControlName="img" id="img">
+        active<input type="checkbox" formControlName="active" />
+        <button (click)="add()">add</button>
+    </form>
+ 
+     
+ </div>
