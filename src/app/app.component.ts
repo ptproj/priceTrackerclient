@@ -11,9 +11,7 @@ export class AppComponent {
   constructor(
   //  private _route:Router
     ){
-    //alert("hhhh")
-    debugger;
+   // debugger;
 //this._route.navigate(["/start"])
-//alert("bbbb")
   }
 }

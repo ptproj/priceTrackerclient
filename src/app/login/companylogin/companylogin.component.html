@@ -1,1 +1,8 @@
 <p>companylogin works!</p>
+<form [formGroup]="loginForm">
+    name:<input formControlName="name" id="name">
+    companylink:<input formControlName="companylink" id="companylink">
+    pass:<input type="password" formControlName="password" id="pass">
+    </form>
+     <button (click)="signin()">sign in</button>
+     <button (click)="login()">login</button>

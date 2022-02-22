@@ -16,9 +16,7 @@ import { Router } from '@angular/router';
 })
 export class CostumerloginComponent implements OnInit {
 
-  constructor(private loginservice:LoginService,
-    private _router:Router
-    ) { }
+  constructor(private loginservice:LoginService, private _router:Router ) { }
  // constructor() { }
    costumer?:Costumer
   ngOnInit(): void {
@@ -34,17 +32,16 @@ export class CostumerloginComponent implements OnInit {
 
 
   signin(){
-  //  this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
-  //  this.loginservice.postcostumer(this.costumer).subscribe(data=>{
-  //    sessionStorage.setItem('token', data.token|| '')
-  //    sessionStorage.setItem('costumerid', data.id?.toString()|| '')
-     //this.router.navigate(["/costumerpage"])
-   //alert(sessionStorage.getItem('token'))
-   //alert(data.email)
+   this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
+   this.loginservice.postcostumer(this.costumer).subscribe(data=>{
+     sessionStorage.setItem('token', data.token|| '')
+     sessionStorage.setItem('costumerid', data.id?.toString()|| '')
+   alert(sessionStorage.getItem('token'))
+   alert(data.email)
    this._router.navigate(["/costumerpage"]);
-//   }
-//  );
-//;
+  }
+ );
+;
  
 
   }
@@ -55,7 +52,7 @@ alert(this.loginForm.get("email")?.value)
     this.loginservice.getcostumer(this.costumer).subscribe(data=>{
       sessionStorage.setItem('token', data.token|| '')
       sessionStorage.setItem('costumerid', data.id?.toString()|| '')
-    //  this.router.navigate(["/costumerpage"])
+      this._router.navigate(["/costumerpage"])
      // alert(sessionStorage.getItem('token'))
       
   });
