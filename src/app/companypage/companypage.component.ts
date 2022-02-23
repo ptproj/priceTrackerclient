@@ -50,7 +50,7 @@ this.companypageservice.products=data
     this.companypageservice.update(this.companyproduct);
 
     }
-    
+    this.close()
   }
     
 
