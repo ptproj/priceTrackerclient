@@ -17,7 +17,8 @@ export class CompanypageComponent implements OnInit {
     "desc":new FormControl("",[Validators.required]),
     "name":new FormControl("",[Validators.required]),
     "price":new FormControl("",[Validators.required]),
-    "active":new FormControl("",[Validators.required])
+    "active":new FormControl("",[Validators.required]),
+    "img":new FormControl("",[Validators.required])
 
   })
   constructor(private companypageservice:CompanypageService) { }
@@ -51,6 +52,13 @@ this.companypageservice.products=data
   })
     }
    
+  }
+  edit(product:Companyproduct|undefined){
+   // this.addproductForm.get("price").value                    
+    //,this.addproductForm.get("name")?.value,this.addproductForm.get("desc")?.value,
+   // this.addproductForm.get("active")?.value,this. addproductForm.get("link")?.value,this.addproductForm.get("img")?.value )
+
+
   }
   add(){
     const id=Number(sessionStorage.getItem('companyid'))

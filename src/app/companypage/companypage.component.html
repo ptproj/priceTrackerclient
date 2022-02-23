@@ -3,6 +3,7 @@
     <li *ngFor="let product of products">
         <p>{{product.name}}</p>
         <button (click)="delete(product.id)">delete this product</button>
+        <button (click)="edit(product)">delete this product</button>
      </li>
     
 </div>
@@ -15,7 +16,8 @@
         img:<input formControlName="img" id="img">
         active<input type="checkbox" formControlName="active" />
         <button (click)="add()">add</button>
+        <button (click)="update()">update</button>
     </form>
- 
      
  </div>
+ 
