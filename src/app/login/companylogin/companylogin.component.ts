@@ -18,7 +18,11 @@ company?:Company
 
   loginForm:FormGroup=new FormGroup({
     "name":new FormControl("",[Validators.required]),
-   "password":new FormControl("",[Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
+   "password":new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(20)]),
+  })
+  sighinForm:FormGroup=new FormGroup({
+    "name":new FormControl("",[Validators.required]),
+   "password":new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(20)]),
    "companylink":new FormControl("",[Validators.required])
   })
 
@@ -37,7 +41,7 @@ company?:Company
 
   signin(){
 
-this.company=new Company(this.loginForm.get("name")?.value,this.loginForm.get("companylink")?.value,this.loginForm.get("password")?.value);
+this.company=new Company(this.sighinForm.get("name")?.value,this.sighinForm.get("companylink")?.value,this.sighinForm.get("password")?.value);
 //alert(this.loginForm.get("name")?.value)
 //alert(this.loginForm.get("password")?.value)
      this.loginservice.postcompany(this.company).subscribe(data=>{

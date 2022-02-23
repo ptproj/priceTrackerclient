@@ -1,23 +1,39 @@
 <p>companypage works!</p>
 <div>
+    <button (click)="addproduct()"> add new product</button>
     <li *ngFor="let product of products">
         <p>{{product.name}}</p>
         <button (click)="delete(product.id)">delete this product</button>
-        <button (click)="edit(product)">delete this product</button>
+        <button (click)="edit(product)">edit this product</button>
      </li>
+     
     
 </div>
-<div>
+<div class="modal" id="myModal" >
+    <div class="modal-content">
     <form [formGroup]="addproductForm">
+        <span class="close" (click)=close()>&times;</span>
         link:<input formControlName="link" id="link">
+        <br>
+        <br>
         desc:<input formControlName="desc" id="desc">
+        <br>
+        <br>
         name:<input formControlName="name" id="name">
+        <br>
+        <br>
         price:<input formControlName="price" id="price">
+        <br>
+        <br>
         img:<input formControlName="img" id="img">
+        <br> 
+        <br>
         active<input type="checkbox" formControlName="active" />
-        <button (click)="add()">add</button>
-        <button (click)="update()">update</button>
+        <br>
+        <br>
+        <button *ngIf="add_update"  [disabled]="addproductForm.invalid"  (click)="add()">add</button>
+        <button *ngIf="!add_update"  [disabled]="addproductForm.invalid" (click)="update()" >update</button>
     </form>
-     
+     </div>
  </div>
  

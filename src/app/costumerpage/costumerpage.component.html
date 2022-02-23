@@ -2,7 +2,8 @@
 <div>
    <form [formGroup]="addproductForm">
        link:<input formControlName="link" id="link">
-       <button (click)="add()">add</button>
+       <button [disabled]="addproductForm.invalid" (click)="add()">add</button>
+       <!-- <div *ngIf="loginForm.controls['name'].errors?.required" >this field is required</div>-->
    </form>
 
     <li *ngFor="let product of products">
@@ -11,4 +12,3 @@
     </li>
    
 </div>
-<!-- (click)="signin()" -->

@@ -1,10 +1,18 @@
 <p>costumerlogin works!</p>
 <form [formGroup]="loginForm">
-pass:<input type="password" formControlName="password" id="pass">
 email:<input formControlName="email" id="email">
+<br>
+<br>
+
+pass:<input type="password" formControlName="password" id="pass">
 </form>
- <button (click)="signin()">sign in</button>
- <button (click)="login()">login</button>
+<br>
+<br>
+ <button [disabled]="loginForm.invalid" (click)="signin()">sign in</button>
+ <br>
+ <br>
+ <br>
+ <button [disabled]="loginForm.invalid"   (click)="login()">login</button>
  <!-- <router-outlet></router-outlet> -->
 
  

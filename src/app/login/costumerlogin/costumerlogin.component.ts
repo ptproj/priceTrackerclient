@@ -27,7 +27,7 @@ export class CostumerloginComponent implements OnInit {
  
  loginForm:FormGroup=new FormGroup({
     "email":new FormControl("",[Validators.required,Validators.email]),
-   "password":new FormControl("",[Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
+   "password":new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(20)]),
   })
 
 

@@ -25,4 +25,7 @@ export class CompanypageService {
   addcompanyproduct(companyproduct:Companyproduct):Observable<Companyproduct>{
     return this.http.post<Companyproduct>("api/Companyproduct/",companyproduct)
   }
+  update(companyproduct:Companyproduct){
+    this.http.put<void>("api/Companyproduct/",companyproduct)
+  }
 }
