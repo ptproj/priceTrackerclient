@@ -36,7 +36,9 @@ company?:Company
        this._router.navigate(["/companypage"])
       });
   }
-
+get getformgroup(){
+  return this.loginForm.controls;
+}
 
 
   signin(){

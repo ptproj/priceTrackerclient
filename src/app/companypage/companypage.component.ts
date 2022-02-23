@@ -9,6 +9,7 @@ import { CompanypageService } from './companypage.service';
   styleUrls: ['./companypage.component.css']
 })
 export class CompanypageComponent implements OnInit {
+  id_product?:number
   products:Companyproduct[] | undefined
   companyproduct?:Companyproduct
   add_update:boolean=true
@@ -32,6 +33,7 @@ this.companypageservice.getcompanyproduct().subscribe(data=>{
 this.products=data
 this.companypageservice.products=data
 
+
 })
 
 
@@ -40,14 +42,18 @@ this.companypageservice.products=data
   }
   update(){
     const id=Number(sessionStorage.getItem('companyid'))
-    const x=this.addproductForm.get("link")?.value
-    
+
     if(id){
-      alert(x)
       this.companyproduct=new Companyproduct(id,
         this.addproductForm.get("price")?.value,this.addproductForm.get("name")?.value,this.addproductForm.get("desc")?.value,
         this.addproductForm.get("active")?.value,this. addproductForm.get("link")?.value,this.addproductForm.get("img")?.value )
-    this.companypageservice.update(this.companyproduct);
+     this.companyproduct.id=this.id_product
+    this.companypageservice.updatecompanyproduct(this.companyproduct).subscribe(data=>{
+      if ( this.products){
+      var productsafterdeletet = this.products.filter(x => x.id != this.id_product);
+   this.products=productsafterdeletet}
+      this.products?.push(data);
+    })
 
     }
     this.close()
@@ -57,8 +63,8 @@ this.companypageservice.products=data
   
   delete(productid:number|undefined){
     if(productid){
-      this.companypageservice.deletecompanyproduct(productid).subscribe(x=>{
-     if (x==true && this.products){
+      this.companypageservice.deletecompanyproduct(productid).subscribe(data=>{
+     if (data==true && this.products){
    var productsafterdeletet = this.products.filter(x => x.id != productid);
    this.products=productsafterdeletet
 
@@ -105,6 +111,7 @@ this.companypageservice.products=data
       this.addproductForm.controls["img"].setValue(product.image)
       this.addproductForm.controls["link"].setValue(product.productlink)
     }
+    this.id_product=product?.id
     this.pop()
     }
   add(){
