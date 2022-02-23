@@ -1,12 +1,12 @@
 <!-- <p>companylogin works!</p> -->
 <form [formGroup]="sighinForm">
     name:<input formControlName="name" id="name">
-    <!-- <div *ngIf="loginForm.controls['name'].errors?.required" >this field is required</div> -->
+    <div *ngIf="sighinForm.controls['name'].errors?.['required']" >this field is required</div>
     companylink:<input formControlName="companylink" id="companylink">
-    <!-- <div *ngIf="loginForm.controls['name'].errors?.required" >this field is required</div> -->
+    <div *ngIf="sighinForm.controls['companylink'].errors?.['required']" >this field is required</div>
     pass:<input type="password" formControlName="password" id="pass">
-    <!-- <div *ngIf="loginForm.controls['name'].errors?.required" >this field is required</div>
-    <div *ngIf="loginForm.controls['pass'].errors?.minlength" >this field is must be at least 1 chars</div> -->
+    <div *ngIf="sighinForm.controls['password'].errors?.['required']" >this field is required</div>
+    <div *ngIf="sighinForm.controls['password'].errors?.['minLength']" >this field is must be at least 1 chars</div>
     </form>
     <br>
     <br>
@@ -20,15 +20,13 @@
      
      <form [formGroup]="loginForm">
         name:<input formControlName="name" id="name">
-        
-        <!-- <div *ngIf="getformgroup["name]errors?.required" >this field is required</div>  -->
-         <!-- <div *ngIf="loginForm.errors?.['name']?.required" >this field is required</div>  -->
-        <!-- <div  *ngIf="name.invalid && (name.dirty || name.touched)" >this field is required</div> -->
+        <div *ngIf="loginForm.controls['name'].errors?.['required']" >this field is required</div>
         pass:<input type="password" formControlName="password" id="pass">
-         <!-- <div *ngIf="loginForm.controls['name']?.errors['required']" >this field is required</div>  -->
-       <!-- <div *ngIf="loginForm.controls['pass'].errors?[minlength]" >this field is must be at least 1 chars</div> -->
+        <div *ngIf="loginForm.controls['password'].errors?.['required']" >this field is required</div>
+       <div *ngIf="loginForm.controls['password'].errors?.['minLength']" >this field is must be at least 1 chars</div>
         </form>
         <br>
         <br>
      <button [disabled]="loginForm.invalid" (click)="login()">login</button>
 
+  
