@@ -20,7 +20,9 @@ pass:<input type="password" formControlName="password" id="pass">
  <br>
  <br>
  <button [disabled]="loginForm.invalid"   (click)="login()" #loginbutton>login</button>
- <p  (click)="getnewpassword()">forgot your password?</p>
+ <p (click)="showbutton()">forgot your password?</p>
+ <p *ngIf="forgotpass" >insert youre email address and check youre email for youre new password</p>
+ <button  *ngIf="forgotpass" (click)="getnewpassword()" >get new password</button>
  <!-- <router-outlet></router-outlet> -->
 
  <!-- #taskNameModel="ngModel" -->

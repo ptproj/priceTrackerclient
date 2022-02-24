@@ -19,6 +19,7 @@ export class CostumerloginComponent implements OnInit {
   constructor(private loginservice:LoginService, private _router:Router ) { }
  // constructor() { }
    costumer?:Costumer
+   forgotpass:boolean=false
   ngOnInit(): void {
 
 
@@ -66,5 +67,10 @@ alert(this.loginForm.get("email")?.value)
   }
   getnewpassword(){
    
+   this.loginservice.getnewpassword(this.loginForm.get("email")?.value).subscribe(data=>alert(data))
+  }
+  showbutton()
+  {
+    this.forgotpass=true
   }
 }
