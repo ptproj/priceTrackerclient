@@ -13,6 +13,7 @@ export class CostumerpageComponent implements OnInit {
     "link":new FormControl("",[Validators.required])
   })
    products:Costumerproduct[] | undefined
+   itemtodelete?:number
   constructor(private costumerpageservice:CostumerpageService) {
    
    }
@@ -30,11 +31,11 @@ export class CostumerpageComponent implements OnInit {
     
     
    }
-   delete(productid:number|undefined){
-     if(productid){
-       this.costumerpageservice.deletecostumerproduct(productid).subscribe(x=>{
+   delete(){
+     if(this.itemtodelete){
+       this.costumerpageservice.deletecostumerproduct(this.itemtodelete).subscribe(x=>{
       if (x==true && this.products){
-    var productsafterdeletet = this.products.filter(x => x.id != productid);
+    var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
     this.products=productsafterdeletet
 
     }
@@ -58,5 +59,19 @@ export class CostumerpageComponent implements OnInit {
     }
     
   }
-
+  close() {
+    var modal = document.getElementById("myModal");
+    if(modal)
+     modal.style.display = "none";
+   
+  }
+  pop() {
+    let modal = document.getElementById("myModal");
+    if(modal)
+      modal.style.display = "block";
+  }
+deletediv(productid:number|undefined){
+  this.itemtodelete=productid
+  this.pop()
+}
 }

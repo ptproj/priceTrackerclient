@@ -3,10 +3,18 @@
     <button (click)="addproduct()"> add new product</button>
     <li *ngFor="let product of products">
         <p>{{product.name}}</p>
+        <p>{{product.description}}</p>
+        <p>{{product.productlink}}</p>
+        <p>{{product.price}}</p>
+        <p>{{product.active}}</p>
+        
         <button (click)="delete(product.id)">delete this product</button>
         <button (click)="edit(product)">edit this product</button>
      </li>
      
+
+
+
     
 </div>
 <div class="modal" id="myModal" >

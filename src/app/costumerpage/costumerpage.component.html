@@ -9,7 +9,17 @@
 
     <li *ngFor="let product of products">
        <p>{{product.baseprice}}</p>
-       <button (click)="delete(product.id)">delete this product</button>
+       <p>{{product.finalprice}}</p>
+       <p>{{product.productlink}}</p>
+       <button (click)="deletediv(product.id)">delete this product</button>
     </li>
-   
 </div>
+    <div class="modal" id="myModal" >
+        <div class="modal-content">
+       <span class="close" (click)=close()>&times;</span>
+       <p>are you sure you want to delete this item?</p>
+       <button (click)="delete()">yes, i wanna delete it</button>
+    </div>
+</div>
+   
+
