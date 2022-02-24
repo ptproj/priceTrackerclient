@@ -53,6 +53,9 @@ const APP_ROUTES:Route[]=[
     CompanypageModule,
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
+    FormsModule 
+  
+     
     //RouterModule.forRoot(ROUTES)
     
   ],

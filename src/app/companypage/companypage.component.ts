@@ -13,6 +13,7 @@ export class CompanypageComponent implements OnInit {
   products:Companyproduct[] | undefined
   companyproduct?:Companyproduct
   add_update:boolean=true
+  itemtodelete?:number
   addproductForm:FormGroup=new FormGroup({
     "link":new FormControl("",[Validators.required]),
     "desc":new FormControl("",[Validators.required]),
@@ -61,13 +62,13 @@ this.companypageservice.products=data
     
 
   
-  delete(productid:number|undefined){
-    if(productid){
-      this.companypageservice.deletecompanyproduct(productid).subscribe(data=>{
+  delete(){
+    if(this.itemtodelete){
+      this.companypageservice.deletecompanyproduct(this.itemtodelete).subscribe(data=>{
      if (data==true && this.products){
-   var productsafterdeletet = this.products.filter(x => x.id != productid);
+   var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
    this.products=productsafterdeletet
-
+//this.close_del_div()
    }
    
 
@@ -135,7 +136,7 @@ this.companypageservice.products=data
     }
     
   }
-  itemtodelete?:number
+  
 
   deletediv(productid:number|undefined){
     this.itemtodelete=productid

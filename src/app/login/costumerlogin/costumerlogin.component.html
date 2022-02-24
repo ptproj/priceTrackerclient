@@ -1,21 +1,26 @@
 <!-- <p>costumerlogin works!</p> -->
 <form [formGroup]="loginForm">
 email:<input formControlName="email" id="email">
-<div style="font-size: 5;" *ngIf="loginForm.controls['password'].errors?.['required']" >this field is required</div>
-<br>
-<br>
 
+<div *ngIf="loginForm.hasError('required', ['email'])" >this field is required</div>
+<div *ngIf="loginForm.hasError('email', ['email'])" > seems like you didnt put youre email:(</div>
+<br>
+<br>
+<!-- &&(!signinbutton.click||!loginbutton.click) -->
 pass:<input type="password" formControlName="password" id="pass">
+<div  *ngIf="loginForm.controls['password'].errors?.['required']" >this field is required</div>
+<div *ngIf="loginForm.hasError('minlength', ['password'])" > password isnt long enough</div>
 
-<div style="font-size: 5;" *ngIf="loginForm.controls['password'].errors?.['required']" >this field is required</div>
+
 </form>
 <br>
 <br>
- <button [disabled]="loginForm.invalid" (click)="signin()">sign in</button>
+ <button [disabled]="loginForm.invalid" (click)="signin()" #signinbutton  >sign in</button>
  <br>
  <br>
  <br>
- <button [disabled]="loginForm.invalid"   (click)="login()">login</button>
+ <button [disabled]="loginForm.invalid"   (click)="login()" #loginbutton>login</button>
  <!-- <router-outlet></router-outlet> -->
 
- 
+ <!-- #taskNameModel="ngModel" -->
+

@@ -8,9 +8,10 @@
    </form>
 
     <li *ngFor="let product of products">
-       <p>{{product.baseprice}}</p>
-       <p>{{product.finalprice}}</p>
-       <p>{{product.productlink}}</p>
+        productlink: <p>{{product.productlink}}</p>
+        baseprice:  <p>{{product.baseprice}}</p>
+        finalprice:  <p>{{product.finalprice}}</p>
+  
        <button (click)="deletediv(product.id)">delete this product</button>
     </li>
 </div>
@@ -18,7 +19,8 @@
         <div class="modal-content">
        <span class="close" (click)=close()>&times;</span>
        <p>are you sure you want to delete this item?</p>
-       <button (click)="delete()">yes, i wanna delete it</button>
+       <button (click)="delete()">yes, I wanna delete it</button>
+       <button (click)="close()">no, I dont want to</button>
     </div>
 </div>
    

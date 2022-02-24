@@ -26,7 +26,7 @@ const LOGIN_ROUTE:Route[]=[
 @NgModule({
   declarations: [CostumerloginComponent,CompanyloginComponent],
   providers: [LoginService], 
-  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,
+  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,FormsModule      
     //RouterModule.forChild(ROUTES1)
   ], 
   exports:[CostumerloginComponent,CompanyloginComponent]
