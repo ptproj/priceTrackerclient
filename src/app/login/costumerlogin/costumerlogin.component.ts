@@ -33,18 +33,24 @@ export class CostumerloginComponent implements OnInit {
 
   signin(){
    this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
+
    this.loginservice.postcostumer(this.costumer).subscribe(data=>{
+    
      sessionStorage.setItem('token', data.token|| '')
      sessionStorage.setItem('costumerid', data.id?.toString()|| '')
    alert(sessionStorage.getItem('token'))
    alert(data.email)
    this._router.navigate(["/costumerpage"]);
-  }
- );
-;
+  
+  },err=>{alert("you are sighned in already")
+});
+  
  
+;
+ }
+ 
+  
 
-  }
   login()
   {
     this.costumer=new Costumer( this.loginForm.get("email")?.value, this.loginForm.get("password")?.value)  
@@ -55,6 +61,10 @@ alert(this.loginForm.get("email")?.value)
       this._router.navigate(["/costumerpage"])
      // alert(sessionStorage.getItem('token'))
       
-  });
+  },err=>{alert("password is incorrect")});
+  
+  }
+  getnewpassword(){
+   
   }
 }

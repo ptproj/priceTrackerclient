@@ -68,7 +68,7 @@ this.companypageservice.products=data
      if (data==true && this.products){
    var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
    this.products=productsafterdeletet
-//this.close_del_div()
+this.close_del_div()
    }
    
 
