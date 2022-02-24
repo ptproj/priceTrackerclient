@@ -53,7 +53,7 @@ export class CostumerpageComponent implements OnInit {
       alert(x)
       this.costumerproduct=new Costumerproduct(id,this. addproductForm.get("link")?.value )
     this.costumerpageservice.addcostumerproduct(this.costumerproduct).subscribe(x=>{alert(x.id)
-      if(this.costumerproduct){this.products?.push(this.costumerproduct)} 
+      if(this.costumerproduct){this.products?.push(x)} 
     })
 
     }
