@@ -1,10 +1,13 @@
 <!-- <p>costumerlogin works!</p> -->
 <form [formGroup]="loginForm">
 email:<input formControlName="email" id="email">
+<div style="font-size: 5;" *ngIf="loginForm.controls['password'].errors?.['required']" >this field is required</div>
 <br>
 <br>
 
 pass:<input type="password" formControlName="password" id="pass">
+
+<div style="font-size: 5;" *ngIf="loginForm.controls['password'].errors?.['required']" >this field is required</div>
 </form>
 <br>
 <br>

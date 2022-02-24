@@ -14,18 +14,27 @@
     <form [formGroup]="addproductForm">
         <span class="close" (click)=close()>&times;</span>
         link:<input formControlName="link" id="link">
+        <div style="font-size: 5;" *ngIf="addproductForm.controls['link'].errors?.['required']" >this field is required</div>
         <br>
         <br>
         desc:<input formControlName="desc" id="desc">
+        <div style="font-size: 5;" *ngIf="addproductForm.controls['desc'].errors?.['required']" >this field is required</div>
+
         <br>
         <br>
         name:<input formControlName="name" id="name">
+        <div style="font-size: 5;" *ngIf="addproductForm.controls['name'].errors?.['required']" >this field is required</div>
+
         <br>
         <br>
         price:<input formControlName="price" id="price">
+        <div style="font-size: 5;" *ngIf="addproductForm.controls['price'].errors?.['required']" >this field is required</div>
+
         <br>
         <br>
         img:<input formControlName="img" id="img">
+        <div style="font-size: 5;" *ngIf="addproductForm.controls['img'].errors?.['required']" >this field is required</div>
+
         <br> 
         <br>
         active<input type="checkbox" formControlName="active" />

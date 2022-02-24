@@ -2,6 +2,7 @@
 <div>
    <form [formGroup]="addproductForm">
        link:<input formControlName="link" id="link">
+       <div style="font-size: 5;" *ngIf="addproductForm.controls['link'].errors?.['required']" >you forgot to put a link</div>
        <button [disabled]="addproductForm.invalid" (click)="add()">add</button>
        <!-- <div *ngIf="loginForm.controls['name'].errors?.required" >this field is required</div>-->
    </form>
