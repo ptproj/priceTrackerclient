@@ -7,8 +7,15 @@
         <p>{{product.productlink}}</p>
         <p>{{product.price}}</p>
         <p>{{product.active}}</p>
-        
-        <button (click)="delete(product.id)">delete this product</button>
+        <button (click)="deletediv(product.id)">delete this product</button>
+        <div class="modal1" id="myModal1" >
+            <div class="modal-content1">
+           <span class="close1" (click)=close_del_div()>&times;</span>
+           <p>are you sure you want to delete this item?</p>
+           <button (click)="delete(product.id)">yes, i wanna delete it</button>
+         </div>
+        </div>
+        <!-- <button (click)="delete(product.id)">delete this product</button> -->
         <button (click)="edit(product)">edit this product</button>
      </li>
      
@@ -53,4 +60,6 @@
     </form>
      </div>
  </div>
+
+
  

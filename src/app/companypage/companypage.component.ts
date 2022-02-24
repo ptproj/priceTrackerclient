@@ -135,5 +135,21 @@ this.companypageservice.products=data
     }
     
   }
+  itemtodelete?:number
+
+  deletediv(productid:number|undefined){
+    this.itemtodelete=productid
+    let modal1 = document.getElementById("myModal1");
+    if(modal1)
+      modal1.style.display = "block";
+
+  }
+  close_del_div(){
+    var modal = document.getElementById("myModal1");
+    if(modal)
+     modal.style.display = "none";
+   
+  }
+  
 
 }
