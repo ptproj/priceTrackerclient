@@ -37,7 +37,7 @@ export class CostumerpageComponent implements OnInit {
       if (x==true && this.products){
     var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
     this.products=productsafterdeletet
-
+this.close()
     }
 
 
@@ -70,7 +70,7 @@ export class CostumerpageComponent implements OnInit {
     if(modal)
       modal.style.display = "block";
   }
-deletediv(productid:number|undefined){
+  deletediv(productid:number|undefined){
   this.itemtodelete=productid
   this.pop()
 }
