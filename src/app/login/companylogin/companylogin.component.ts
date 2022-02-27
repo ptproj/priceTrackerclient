@@ -10,6 +10,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./companylogin.component.css']
 })
 export class CompanyloginComponent implements OnInit {
+  sub:boolean=false;
 company?:Company
   constructor(private loginservice:LoginService, private _router:Router ) { }
 
@@ -40,8 +41,9 @@ get getformgroup(){
   return this.loginForm.controls;
 }
 
-
+signin_bool(){this.sub=true;}
   signin(){
+    
 
 this.company=new Company(this.sighinForm.get("name")?.value,this.sighinForm.get("companylink")?.value,this.sighinForm.get("password")?.value);
 //alert(this.loginForm.get("name")?.value)
