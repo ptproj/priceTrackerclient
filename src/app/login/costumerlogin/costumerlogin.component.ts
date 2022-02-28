@@ -43,8 +43,8 @@ export class CostumerloginComponent implements OnInit {
    alert(data.email)
    this._router.navigate(["/costumerpage"]);
   
-  },err=>{alert("you are sighned in already")
-});
+  }
+);
   
  
 ;
