@@ -47,10 +47,11 @@
 <p-orderList *ngIf="products" [value]="products">
     <ng-template let-product pTemplate="item">
         <div>
-            <img src="../../assets/CG016.JPG" style="display:inline-block;margin:2px 0 2px 2px" width="48">
+            <img src="../../assets/AUSTR026.JPG" style="display:inline-block;margin:2px 0 2px 2px" width="48">
+            <a style="font-size:14px;float:right;margin:18px 5px 0 0" href="{{product.productlink}}">{{product.description}}</a>
             <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{product.baseprice}} </div>
-            <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{product.baseprice}} </div>
-            <a href=product.productlink>link</a>
+
+            <!-- <a href=product.productlink>link</a> -->
 
         </div>
     </ng-template>
