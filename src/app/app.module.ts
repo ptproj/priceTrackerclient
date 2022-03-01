@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CostumerloginComponent } from './login/costumerlogin/costumerlogin.component';
@@ -13,7 +13,7 @@ import { BeginComponent } from './begin/begin.component';
 import { CompanyloginComponent } from './login/companylogin/companylogin.component';
 import { CompanypageComponent } from './companypage/companypage.component';
 import { CompanypageModule } from './companypage/companypage.module';
-
+import {AccordionModule} from 'primeng/accordion';  
 //const ROUTES:Routes=[
  // { path:'costumerpage',component:CostumerpageComponent },
 //  { path: "", pathMatch: "full", redirectTo: "start" },
@@ -53,7 +53,8 @@ const APP_ROUTES:Route[]=[
     CompanypageModule,
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
-    FormsModule 
+    FormsModule ,
+    AccordionModule,
   
      
     //RouterModule.forRoot(ROUTES)

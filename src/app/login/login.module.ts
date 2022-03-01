@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginService } from './login.service';
 import { CostumerloginComponent } from './costumerlogin/costumerlogin.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Route } from '@angular/router';
 import { CostumerpageComponent } from '../costumerpage/costumerpage.component';
@@ -26,7 +26,7 @@ const LOGIN_ROUTE:Route[]=[
 @NgModule({
   declarations: [CostumerloginComponent,CompanyloginComponent],
   providers: [LoginService], 
-  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,FormsModule      
+  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,FormsModule   
     //RouterModule.forChild(ROUTES1)
   ], 
   exports:[CostumerloginComponent,CompanyloginComponent]

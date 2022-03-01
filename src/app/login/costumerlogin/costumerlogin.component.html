@@ -44,15 +44,15 @@ email:<input formControlName="email" id="email">
            content="unique login form,leamug login form,boostrap login form,responsive login form,free css html login form,download login form">
      <meta name="author" content="leamug">
      <title>Unique Login Form | Bootstrap Templates</title>
-     <link href="./costumerlogin.component.css" rel="stylesheet" id="style">
+     <!-- <link href="./costumerlogin.component.css" rel="stylesheet" id="style"> -->
      <!-- Bootstrap core Library -->
-     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+     <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
      <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
      <!-- Google font -->
-     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+     <!-- <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet"> -->
      <!-- Font Awesome-->
-     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+     <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
  </head>
  <body>
  
@@ -60,14 +60,20 @@ email:<input formControlName="email" id="email">
  <div class="container">
      <div class="row">
          <div class="col-md-offset-5 col-md-4 text-center">
-             <h1 class='text-white'>Unique Login Form</h1>
+             <h1 class='text-white'>Price tracker</h1>
                <div class="form-login"><br>
-                 <h4>Secure Login</h4>
+                 <h4>Login</h4>
                  <br>
                  <form [formGroup]="loginForm">
                  <input type="text" id="userName"  formControlName="email" class="form-control input-sm chat-input" placeholder="username"/>
+                 <div *ngIf="loginForm.hasError('required', ['email'])" >this field is required</div>
+                 <div *ngIf="loginForm.hasError('email', ['email'])" > seems like you didnt put youre email:(</div>
                  <br><br>
-                 <input type="text" id="userPassword" formControlName="password" class="form-control input-sm chat-input" placeholder="password"/>
+                 <input type="text" id="userPassword"  formControlName="password" class="form-control input-sm chat-input" placeholder="password"/>
+                 <div  *ngIf="loginForm.controls['password'].errors?.['required']" >this field is required</div>
+                 <div *ngIf="loginForm.hasError('minlength', ['password'])" > password isnt long enough</div>
+                 <div *ngIf="loginForm.hasError('maxlength', ['password'])" > password is too long</div>
+
                  <br><br>
                  </form>
                  <div class="wrapper">

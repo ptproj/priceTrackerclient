@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Costumerproduct } from 'src/models/classcostumerproduct';
 import { CostumerpageService } from './costumerpage.service';
-
+import {OrderListModule} from 'primeng/orderlist';
 @Component({
   selector: 'app-costumerpage',
   templateUrl: './costumerpage.component.html',
@@ -12,7 +12,8 @@ export class CostumerpageComponent implements OnInit {
   addproductForm:FormGroup=new FormGroup({
     "link":new FormControl("",[Validators.required])
   })
-   products:Costumerproduct[] | undefined
+  
+   products?:Costumerproduct[] 
    itemtodelete?:number
   constructor(private costumerpageservice:CostumerpageService) {
    

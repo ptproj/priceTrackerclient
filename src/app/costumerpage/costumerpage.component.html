@@ -3,9 +3,10 @@
    <form [formGroup]="addproductForm">
        link:<input formControlName="link" id="link">
        <div style="font-size: 5;" *ngIf="addproductForm.controls['link'].errors?.['required']" >you forgot to put a link</div>
-       <button [disabled]="addproductForm.invalid" (click)="add()">add</button>
-       <!-- <div *ngIf="loginForm.controls['name'].errors?.required" >this field is required</div>-->
-   </form>
+       <button [disabled]="addproductForm.invalid" (click)="add()">add</button> 
+     </form>
+     
+       <!-- <div *ngIf="loginForm.controls['name'].errors?.required" >this field is required</div>
 
     <li *ngFor="let product of products">
         productlink: <p>{{product.productlink}}</p>
@@ -22,6 +23,25 @@
        <button (click)="delete()">yes, I wanna delete it</button>
        <button (click)="close()">no, I dont want to</button>
     </div>
-</div>
+</div> -->
    
-
+<div *ngIf="products">
+<p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
+    <ng-template let-product pTemplate="item">
+        <div class="product-item">
+            <div class="image-container">
+                    <img src="../../../assets/AUSTR026.JPG" [alt]="product.name" class="product-image" />
+            </div>
+            <div class="product-list-detail">
+                <h5 class="mb-2">{{product.productlink}}</h5>
+                <i class="pi pi-tag product-category-icon"></i>
+                <span class="product-category">{{product.productlink}}</span>
+            </div>
+            <div class="product-list-action">
+                <h6 class="mb-2">${{product.baseprice}}</h6>
+                <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.baseprice}}</span>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList>
+</div>

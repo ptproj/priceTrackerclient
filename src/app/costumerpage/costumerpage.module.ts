@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CostumerloginComponent } from '../login/costumerlogin/costumerlogin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {OrderListModule} from 'primeng/orderlist';
+
 // const ROUTES:Routes=[
 //   { path:'costomer',component:CostumerpageComponent },
 //   {
@@ -18,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [CostumerpageComponent ],
   providers: [CostumerpageService], 
-  imports: [ReactiveFormsModule, HttpClientModule,CommonModule,
+  imports: [ReactiveFormsModule, HttpClientModule,CommonModule,OrderListModule
    // RouterModule.forRoot(ROUTES)
   ],
   exports:[CostumerpageComponent]
