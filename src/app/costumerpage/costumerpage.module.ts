@@ -6,8 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CostumerloginComponent } from '../login/costumerlogin/costumerlogin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {OrderListModule} from 'primeng/orderlist';
-import { AccordionModule } from 'primeng/accordion';
+
+// import {OrderListModule} from 'primeng/orderlist';
+// import { AccordionModule } from 'primeng/accordion';
 
 // const ROUTES:Routes=[
 //   { path:'costomer',component:CostumerpageComponent },
@@ -21,9 +24,10 @@ import { AccordionModule } from 'primeng/accordion';
 @NgModule({
   declarations: [CostumerpageComponent ],
   providers: [CostumerpageService], 
-  imports: [ReactiveFormsModule, HttpClientModule,CommonModule,OrderListModule,AccordionModule,
-    OrderListModule
-   // RouterModule.forRoot(ROUTES)
+  imports: [ReactiveFormsModule, HttpClientModule,CommonModule
+    ,AccordionModule,OrderListModule
+  
+   
   ],
   exports:[CostumerpageComponent]
 })

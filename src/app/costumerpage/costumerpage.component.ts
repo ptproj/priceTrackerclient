@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Costumerproduct } from 'src/models/classcostumerproduct';
 import { CostumerpageService } from './costumerpage.service';
-import {OrderListModule} from 'primeng/orderlist';
 @Component({
   selector: 'app-costumerpage',
   templateUrl: './costumerpage.component.html',

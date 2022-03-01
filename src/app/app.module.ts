@@ -13,8 +13,8 @@ import { BeginComponent } from './begin/begin.component';
 import { CompanyloginComponent } from './login/companylogin/companylogin.component';
 import { CompanypageComponent } from './companypage/companypage.component';
 import { CompanypageModule } from './companypage/companypage.module';
-import {AccordionModule} from 'primeng/accordion';  
-import {OrderListModule} from 'primeng/orderlist';
+// import {AccordionModule} from 'primeng/accordion';  
+// import {OrderListModule} from 'primeng/orderlist';
 //const ROUTES:Routes=[
  // { path:'costumerpage',component:CostumerpageComponent },
 //  { path: "", pathMatch: "full", redirectTo: "start" },
@@ -55,8 +55,8 @@ const APP_ROUTES:Route[]=[
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
     FormsModule ,
-    AccordionModule,
-    OrderListModule
+    // AccordionModule,
+    // OrderListModule
   
      
     //RouterModule.forRoot(ROUTES)
