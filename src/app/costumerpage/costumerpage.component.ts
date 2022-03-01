@@ -15,6 +15,7 @@ export class CostumerpageComponent implements OnInit {
   
    products?:Costumerproduct[] 
    itemtodelete?:number
+  primengConfig: any;
   constructor(private costumerpageservice:CostumerpageService) {
    
    }
@@ -29,7 +30,7 @@ export class CostumerpageComponent implements OnInit {
       this.products=data
      //this.products.forEach(x=>alert(x.costumerid))
     });
-    
+    this.primengConfig.ripple = true;
     
    }
    delete(){

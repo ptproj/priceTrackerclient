@@ -25,8 +25,8 @@
     </div>
 </div> -->
    
-<div *ngIf="products">
-<p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
+
+<p-orderList  *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
     <ng-template let-product pTemplate="item">
         <div class="product-item">
             <div class="image-container">
@@ -35,7 +35,7 @@
             <div class="product-list-detail">
                 <h5 class="mb-2">{{product.productlink}}</h5>
                 <i class="pi pi-tag product-category-icon"></i>
-                <span class="product-category">{{product.productlink}}</span>
+                <span class="product-category">{{product.baseprice}}</span>
             </div>
             <div class="product-list-action">
                 <h6 class="mb-2">${{product.baseprice}}</h6>
@@ -44,4 +44,3 @@
         </div>
     </ng-template>
 </p-orderList>
-</div>

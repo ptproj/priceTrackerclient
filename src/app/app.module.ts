@@ -14,6 +14,7 @@ import { CompanyloginComponent } from './login/companylogin/companylogin.compone
 import { CompanypageComponent } from './companypage/companypage.component';
 import { CompanypageModule } from './companypage/companypage.module';
 import {AccordionModule} from 'primeng/accordion';  
+import {OrderListModule} from 'primeng/orderlist';
 //const ROUTES:Routes=[
  // { path:'costumerpage',component:CostumerpageComponent },
 //  { path: "", pathMatch: "full", redirectTo: "start" },
@@ -55,6 +56,7 @@ const APP_ROUTES:Route[]=[
     HttpClientModule,
     FormsModule ,
     AccordionModule,
+    OrderListModule
   
      
     //RouterModule.forRoot(ROUTES)

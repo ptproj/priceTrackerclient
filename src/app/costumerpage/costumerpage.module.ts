@@ -7,6 +7,7 @@ import { CostumerloginComponent } from '../login/costumerlogin/costumerlogin.com
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {OrderListModule} from 'primeng/orderlist';
+import { AccordionModule } from 'primeng/accordion';
 
 // const ROUTES:Routes=[
 //   { path:'costomer',component:CostumerpageComponent },
@@ -20,7 +21,8 @@ import {OrderListModule} from 'primeng/orderlist';
 @NgModule({
   declarations: [CostumerpageComponent ],
   providers: [CostumerpageService], 
-  imports: [ReactiveFormsModule, HttpClientModule,CommonModule,OrderListModule
+  imports: [ReactiveFormsModule, HttpClientModule,CommonModule,OrderListModule,AccordionModule,
+    OrderListModule
    // RouterModule.forRoot(ROUTES)
   ],
   exports:[CostumerpageComponent]
