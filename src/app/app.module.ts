@@ -15,7 +15,12 @@ import { CompanypageComponent } from './companypage/companypage.component';
 import { CompanypageModule } from './companypage/companypage.module';
 
 // import { TableModule } from 'primeng/table';
-// import {ToastModule} from 'primeng/toast';
+ import {ToastModule} from 'primeng/toast';
+ import { ToolbarModule } from 'primeng/toolbar';
+ import { FileUploadModule } from 'primeng/fileupload';
+ import { TableModule } from 'primeng/table';
+
+
 // import {CalendarModule} from 'primeng/calendar';
 // import {SliderModule} from 'primeng/slider';
 // import {MultiSelectModule} from 'primeng/multiselect';
@@ -78,9 +83,12 @@ const APP_ROUTES:Route[]=[
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
     FormsModule ,
-    
+    ToastModule,
+    ToolbarModule,
+    FileUploadModule,
+    TableModule
 //     TableModule,
-//     ToastModule,
+//     ,
 //     CalendarModule,
 //     SliderModule ,MultiSelectModule, ContextMenuModule ,DialogModule, 
 //     ButtonModule, DropdownModule, ProgressBarModule ,InputTextModule
@@ -94,7 +102,7 @@ const APP_ROUTES:Route[]=[
     //RouterModule.forRoot(ROUTES)
     
   ],
-  exports:[RouterModule],
+  exports:[RouterModule,ToastModule],
   providers: [],
   bootstrap: [AppComponent]
 
