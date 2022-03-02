@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Companyproduct } from 'src/models/classcompanyproduct';
 import { CompanypageService } from './companypage.service';
-
+// import { ConfirmationService } from 'primeng/api';
+// import { MessageService } from 'primeng/api';
+// import { Table, TableModule } from 'primeng/table';
 @Component({
   selector: 'app-companypage',
   templateUrl: './companypage.component.html',
-  styleUrls: ['./companypage.component.css']
+  styleUrls: ['./companypage.component.css'],
+  // providers: [MessageService,ConfirmationService]
 })
 export class CompanypageComponent implements OnInit {
   id_product?:number

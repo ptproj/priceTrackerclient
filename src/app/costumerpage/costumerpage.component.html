@@ -15,7 +15,7 @@
   
        <button (click)="deletediv(product.id)">delete this product</button>
     </li> -->
-<!-- </div>
+</div>
     <div class="modal" id="myModal" >
         <div class="modal-content">
        <span class="close" (click)=close()>&times;</span>
@@ -23,36 +23,45 @@
        <button (click)="delete()">yes, I wanna delete it</button>
        <button (click)="close()">no, I dont want to</button>
     </div>
-</div>  -->
+</div> 
 
 
-<!-- <p-orderList  *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
+<p-orderList  *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="baseprice" filterPlaceholder="Filter by name" [dragdrop]="true">
+    link:<input formControlName="link" id="link">
     <ng-template let-product pTemplate="item">
         <div class="product-item">
             <div class="image-container">
                     <img src="../../../assets/AUSTR026.JPG" [alt]="product.name" class="product-image" />
             </div>
             <div class="product-list-detail">
-                <h5 class="mb-2">{{product.productlink}}</h5>
-                <i class="pi pi-tag product-category-icon"></i>
-                <span class="product-category">{{product.baseprice}}</span>
+                <!-- <h5 class="mb-2">{{product.productlink}}</h5> -->
+                <a class="mb-2" href="{{product.productlink}}">{{product.description}}</a>
+              
+                <!-- <i class="pi pi-tag product-category-icon"></i> -->
+                <!-- <span class="product-category">{{product.baseprice}}</span> -->
             </div>
             <div class="product-list-action">
-                <h6 class="mb-2">${{product.baseprice}}</h6>
-                <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.baseprice}}</span>
+                <button (click)="deletediv(product.id)">delete this product</button>
+                <h6 class="mb-2">₪{{product.baseprice}}</h6>
+                <!-- <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.baseprice}}</span> -->
             </div>
         </div>
     </ng-template>
-</p-orderList> -->
-<p-orderList *ngIf="products" [value]="products">
+</p-orderList>
+
+
+
+<!-- <p-orderList *ngIf="products" [value]="products">
     <ng-template let-product pTemplate="item">
+        <div class="product-item">
         <div>
             <img src="../../assets/AUSTR026.JPG" style="display:inline-block;margin:2px 0 2px 2px" width="48">
             <a style="font-size:14px;float:right;margin:18px 5px 0 0" href="{{product.productlink}}">{{product.description}}</a>
             <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{product.baseprice}} </div>
 
-            <!-- <a href=product.productlink>link</a> -->
+         
 
         </div>
+        </div>
     </ng-template>
-</p-orderList>
+</p-orderList> -->

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,29 @@ import { BeginComponent } from './begin/begin.component';
 import { CompanyloginComponent } from './login/companylogin/companylogin.component';
 import { CompanypageComponent } from './companypage/companypage.component';
 import { CompanypageModule } from './companypage/companypage.module';
+
+// import { TableModule } from 'primeng/table';
+// import {ToastModule} from 'primeng/toast';
+// import {CalendarModule} from 'primeng/calendar';
+// import {SliderModule} from 'primeng/slider';
+// import {MultiSelectModule} from 'primeng/multiselect';
+// import {ContextMenuModule} from 'primeng/contextmenu';
+// import {DialogModule} from 'primeng/dialog';
+// import {ButtonModule} from 'primeng/button';
+// import {DropdownModule} from 'primeng/dropdown';
+// import {ProgressBarModule} from 'primeng/progressbar';
+// import {InputTextModule} from 'primeng/inputtext';
+// import {FileUploadModule} from 'primeng/fileupload';
+// import {ToolbarModule} from 'primeng/toolbar';
+// import {RatingModule} from 'primeng/rating';
+// import {RadioButtonModule} from 'primeng/radiobutton';
+// import {InputNumberModule} from 'primeng/inputnumber';
+// import { ConfirmDialogModule } from 'primeng/confirmdialog';
+// import { ConfirmationService } from 'primeng/api';
+// import { MessageService } from 'primeng/api';
+// import { InputTextareaModule } from 'primeng/inputtextarea';
+
+
 // import {AccordionModule} from 'primeng/accordion';  
 // import {OrderListModule} from 'primeng/orderlist';
 //const ROUTES:Routes=[
@@ -55,6 +78,15 @@ const APP_ROUTES:Route[]=[
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
     FormsModule ,
+    
+//     TableModule,
+//     ToastModule,
+//     CalendarModule,
+//     SliderModule ,MultiSelectModule, ContextMenuModule ,DialogModule, 
+//     ButtonModule, DropdownModule, ProgressBarModule ,InputTextModule
+//   ,FileUploadModule, ToolbarModule, RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule
+//  ,ConfirmationService, MessageService , InputTextareaModule
+
     // AccordionModule,
     // OrderListModule
   
@@ -65,6 +97,9 @@ const APP_ROUTES:Route[]=[
   exports:[RouterModule],
   providers: [],
   bootstrap: [AppComponent]
+
+
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA ]
  
 })
 export class AppModule { 
