@@ -1,8 +1,8 @@
-<!-- <p>companypage works!</p> -->
+<p>companypage works!</p>
 
-<!-- <div>
+<div>
     <button (click)="addproduct()"> add new product</button>
-    <li *ngFor="let product of products">
+     <li *ngFor="let product of products">
         name:  <p>{{product.name}}</p>
         description:<p>{{product.description}}</p>
         productlink:<p>{{product.productlink}}</p>
@@ -16,10 +16,10 @@
            <button (click)="delete()">yes, I wanna delete it</button>
            <button (click)="close_del_div()">no, I dont want to</button>
          </div>
-        </div> -->
-        <!-- <button (click)="delete(product.id)">delete this product</button> -->
-         <!-- <button (click)="edit(product)">edit this product</button>
-     </li>
+        </div> 
+        <button (click)="delete()">delete this product</button> -->
+          <button (click)="edit(product)">edit this product</button>
+     </li> 
      
      
     
@@ -61,7 +61,7 @@
         <button *ngIf="!add_update"  [disabled]="addproductForm.invalid" (click)="update()" >update</button>
     </form>
      </div>
- </div> -->
+ </div> 
 
 
 
@@ -71,15 +71,15 @@
 
 <p-toast></p-toast>
 
-<div class="card">
+<!-- <div class="card">
     <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="addproduct()"></button>  
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="addproduct()"></button>   -->
 
             <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
 
 
-        </ng-template>
+        <!-- </ng-template> -->
 
         <!-- <ng-template pTemplate="right">
             <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
@@ -87,17 +87,28 @@
         </ng-template> -->
 
 
+<<<<<<< HEAD
     </p-toolbar>
 <!-- [(selection)]="selectedProducts" -->
+=======
+    <!-- </p-toolbar>
+>>>>>>> 677f41b8a95005cc7bced2aa67f4e514cdf196b4
 
     <p-table #dt *ngIf="products" [value]="products" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll"
          [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"> -->
+
+
+<<<<<<< HEAD
+=======
+
+        <!-- <p-table #dt [value]="products" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll"
+        [rowHover]="true" dataKey="id"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
-
-
+>>>>>>> 677f41b8a95005cc7bced2aa67f4e514cdf196b4
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
-                <h5 class="m-0">Manage Products</h5>
+                <h5 class="m-0">Manage Products</h5> -->
 
 
                  <!-- <span class="p-input-icon-left">
@@ -106,7 +117,7 @@
                 </span>  -->
 
                 
-            </div>
+            <!-- </div>
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
@@ -137,12 +148,17 @@
                 <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td> -->
 
 
+<<<<<<< HEAD
                 <!-- <td><span [class]="'product-badge status-' + (product.active ? product.active.toLowerCase() : '')">{{product.active}}</span></td> -->
+=======
+                <!-- <td><span [class]="'product-badge status-' + (product.active ? product.active.toLowerCase() : '')">{{product.active}}</span></td>
+>>>>>>> 677f41b8a95005cc7bced2aa67f4e514cdf196b4
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="edit(product)"></button>
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletediv(product)"></button>
                 </td>
             </tr>
+<<<<<<< HEAD
         </ng-template> 
 
         <ng-template pTemplate="summary">
@@ -152,6 +168,16 @@
         </ng-template>
     </p-table>
 </div>
+=======
+        </ng-template> -->
+        <!-- <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are 4 products.
+            </div>
+        </ng-template> -->
+    <!-- </p-table>  -->
+<!-- </div> -->
+>>>>>>> 677f41b8a95005cc7bced2aa67f4e514cdf196b4
 
 <!-- products.length ||0 -->
 

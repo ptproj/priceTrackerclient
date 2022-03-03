@@ -60,9 +60,8 @@ import { CompanypageModule } from './companypage/companypage.module';
 const APP_ROUTES:Route[]=[
 {path:"", pathMatch:"full" ,redirectTo:"begin"},
 {path:"begin",component:BeginComponent},
-//{path:'login',loadChildren: ()=>import('./login/login.module').then(m=>m.LoginModule)},
-{path:"costumerlogin",component:CostumerloginComponent},
-{path:"company",component:CompanyloginComponent},
+{path:'login',loadChildren: ()=>import('./login/login.module').then(m=>m.LoginModule)},
+
 {path:"costumerpage",component:CostumerpageComponent},
 {path:"companypage",component:CompanypageComponent}
 
