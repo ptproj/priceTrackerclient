@@ -18,7 +18,7 @@ import { CompanyloginComponent } from './companylogin/companylogin.component';
 // ]
 const LOGIN_ROUTE:Route[]=[
   {path:"costumerlogin",component:CostumerloginComponent},
-  {path:"company",component:CompanyloginComponent},
+  {path:"companylogin",component:CompanyloginComponent},
   {path:"costumerpage",component:CostumerpageComponent}
 ]
 
@@ -26,8 +26,8 @@ const LOGIN_ROUTE:Route[]=[
 @NgModule({
   declarations: [CostumerloginComponent,CompanyloginComponent],
   providers: [LoginService], 
-  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,FormsModule   
-    //RouterModule.forChild(ROUTES1)
+  imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,FormsModule  , 
+    RouterModule.forChild(LOGIN_ROUTE)
   ], 
   exports:[CostumerloginComponent,CompanyloginComponent]
   
