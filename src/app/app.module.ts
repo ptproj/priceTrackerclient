@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CostumerloginComponent } from './login/costumerlogin/costumerlogin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginModule } from './login/login.module';
 import { RouterModule,Route } from '@angular/router';
@@ -14,6 +13,10 @@ import { CompanyloginComponent } from './login/companylogin/companylogin.compone
 import { CompanypageComponent } from './companypage/companypage.component';
 import { CompanypageModule } from './companypage/companypage.module';
 
+import { BrowserAnimationsModule } 
+    from "@angular/platform-browser/animations";
+  
+import { ButtonModule } from "primeng/button";
 // import { TableModule } from 'primeng/table';
  import {ToastModule} from 'primeng/toast';
  import { ToolbarModule } from 'primeng/toolbar';
@@ -88,7 +91,9 @@ const APP_ROUTES:Route[]=[
     FileUploadModule,
     TableModule,
     DialogModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    ButtonModule,
+    BrowserAnimationsModule
 //     TableModule,
 //     ,
 //     CalendarModule,

@@ -3,13 +3,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Companyproduct } from 'src/models/classcompanyproduct';
 import { CompanypageService } from './companypage.service';
+import { PrimeNGConfig } from "primeng/api";
+  
 // import { ConfirmationService } from 'primeng/api';
 // import { MessageService } from 'primeng/api';
 // import { Table, TableModule } from 'primeng/table';
 @Component({
   selector: 'app-companypage',
   templateUrl: './companypage.component.html',
-  styleUrls: ['./companypage.component.css'],
+  styleUrls: ['./companypage.component.scss'],
   styles: [`
   :host ::ng-deep .p-dialog .product-image {
       width: 150px;
@@ -42,7 +44,7 @@ export class CompanypageComponent implements OnInit {
     "img":new FormControl("",[Validators.required])
 
   })
-  constructor(private companypageservice:CompanypageService,private confirmationService: ConfirmationService) { }
+  constructor(private companypageservice:CompanypageService,private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
 
@@ -55,9 +57,7 @@ this.companypageservice.products=data
 
 
 })
-
-
-
+this.primengConfig.ripple = true;
 
   }
   update(){
@@ -182,5 +182,6 @@ this.close_del_div()
         this.productDialog = false;
         this.submitted = false;
     }
+
 
 }

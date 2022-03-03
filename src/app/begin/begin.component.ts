@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PrimeNGConfig } from "primeng/api";
 
 @Component({
   selector: 'app-begin',
@@ -16,7 +17,14 @@ this._router.navigate(['/login/costumerlogin'])
 company(){
 this._router.navigate(['/login/companylogin'])
 }
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
+  
+    geeks?: boolean;
+  
+    gfg() {
+      this.geeks = true;
+    }
 
 }
+ 
