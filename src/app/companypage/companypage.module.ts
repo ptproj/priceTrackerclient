@@ -7,13 +7,14 @@ import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
-
+import {DialogModule} from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
 @NgModule({
   declarations: [CompanypageComponent],
-  imports: [ReactiveFormsModule, HttpClientModule,  CommonModule,ToastModule, ToolbarModule ,FileUploadModule,TableModule
+  imports: [ReactiveFormsModule, HttpClientModule,  CommonModule,ToastModule, ToolbarModule ,FileUploadModule,TableModule,DialogModule,ConfirmDialogModule
 ],
   exports:[CompanypageComponent],
 

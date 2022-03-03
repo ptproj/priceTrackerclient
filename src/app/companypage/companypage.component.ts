@@ -25,6 +25,14 @@ export class CompanypageComponent implements OnInit {
   companyproduct?:Companyproduct
   add_update:boolean=true
   itemtodelete?:number
+
+
+
+  submitted:boolean=false
+  productDialog:boolean=false
+
+
+
   addproductForm:FormGroup=new FormGroup({
     "link":new FormControl("",[Validators.required]),
     "desc":new FormControl("",[Validators.required]),
@@ -163,5 +171,16 @@ this.close_del_div()
    
   }
   
+
+
+  openNew() {
+    this.submitted = false;
+    this.productDialog = true;
+
+}
+ hideDialog() {
+        this.productDialog = false;
+        this.submitted = false;
+    }
 
 }

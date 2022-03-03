@@ -19,7 +19,8 @@ import { CompanypageModule } from './companypage/companypage.module';
  import { ToolbarModule } from 'primeng/toolbar';
  import { FileUploadModule } from 'primeng/fileupload';
  import { TableModule } from 'primeng/table';
-
+ import {DialogModule} from 'primeng/dialog';
+ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 // import {CalendarModule} from 'primeng/calendar';
 // import {SliderModule} from 'primeng/slider';
@@ -85,7 +86,9 @@ const APP_ROUTES:Route[]=[
     ToastModule,
     ToolbarModule,
     FileUploadModule,
-    TableModule
+    TableModule,
+    DialogModule,
+    ConfirmDialogModule
 //     TableModule,
 //     ,
 //     CalendarModule,
