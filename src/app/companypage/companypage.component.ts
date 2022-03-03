@@ -10,13 +10,13 @@ import { CompanypageService } from './companypage.service';
   selector: 'app-companypage',
   templateUrl: './companypage.component.html',
   styleUrls: ['./companypage.component.css'],
-//   styles: [`
-//   :host ::ng-deep .p-dialog .product-image {
-//       width: 150px;
-//       margin: 0 auto 2rem auto;
-//       display: block;
-//   }
-// `],
+  styles: [`
+  :host ::ng-deep .p-dialog .product-image {
+      width: 150px;
+      margin: 0 auto 2rem auto;
+      display: block;
+  }
+`],
    providers: [MessageService,ConfirmationService]
 })
 export class CompanypageComponent implements OnInit {
