@@ -69,13 +69,12 @@
 
 
 
-<!-- <p-toast></p-toast> -->
+<p-toast></p-toast>
 
 <div class="card">
     <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
             <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="addproduct()"></button>  
-
 
             <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
 
@@ -89,26 +88,22 @@
 
 
     </p-toolbar>
+<!-- [(selection)]="selectedProducts" -->
 
     <p-table #dt *ngIf="products" [value]="products" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll"
          [rowHover]="true" dataKey="id"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
 
-<!-- [(selection)]="selectedProducts" -->
 
-
-        <p-table #dt [value]="products" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll"
-        [rowHover]="true" dataKey="id"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
                 <h5 class="m-0">Manage Products</h5>
 
 
-                <!-- <span class="p-input-icon-left">
+                 <!-- <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
-                </span> -->
+                </span>  -->
 
                 
             </div>
@@ -118,16 +113,18 @@
                 <th style="width: 3rem">
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                 </th>
-                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-                <th>Image</th>
-                <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
-                <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
-                <th pSortableColumn="inventoryStatus">Status <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+                 <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                 <th>Image</th>
+                 <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                 <th pSortableColumn="rating">description <p-sortIcon field="rating"></p-sortIcon></th>  
+                 <th pSortableColumn="category">active <p-sortIcon field="category"></p-sortIcon></th>
+                <!-- <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>  -->
                 <th></th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-product>
+
+
+        <ng-template  pTemplate="body" let-product>
             <tr>
                 <td>
                     <p-tableCheckbox [value]="products"></p-tableCheckbox>
@@ -135,24 +132,26 @@
                 <td>{{product.name}}</td>
                 <td><img src="../../../assets/AUSTR026.JPG" [alt]="product.name" width="100" class="shadow-4" /></td>
                 <td>{{product.price}}</td>
-                <td>{{product.desc}}</td>
+                <td>{{product.description}}</td>
+                <!-- <td>{{product.active}}</td> -->
                 <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td> -->
 
 
-                <td><span [class]="'product-badge status-' + (product.active ? product.active.toLowerCase() : '')">{{product.active}}</span></td>
+                <!-- <td><span [class]="'product-badge status-' + (product.active ? product.active.toLowerCase() : '')">{{product.active}}</span></td> -->
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="edit(product)"></button>
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletediv(product)"></button>
                 </td>
             </tr>
-        </ng-template>
+        </ng-template> 
+
         <ng-template pTemplate="summary">
             <div class="flex align-items-center justify-content-between">
                 In total there are 4 products.
             </div>
         </ng-template>
     </p-table>
-<!-- </div> -->
+</div>
 
 <!-- products.length ||0 -->
 

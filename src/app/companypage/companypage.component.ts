@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Companyproduct } from 'src/models/classcompanyproduct';
 import { CompanypageService } from './companypage.service';
 // import { ConfirmationService } from 'primeng/api';
@@ -9,7 +10,14 @@ import { CompanypageService } from './companypage.service';
   selector: 'app-companypage',
   templateUrl: './companypage.component.html',
   styleUrls: ['./companypage.component.css'],
-  // providers: [MessageService,ConfirmationService]
+//   styles: [`
+//   :host ::ng-deep .p-dialog .product-image {
+//       width: 150px;
+//       margin: 0 auto 2rem auto;
+//       display: block;
+//   }
+// `],
+   providers: [MessageService,ConfirmationService]
 })
 export class CompanypageComponent implements OnInit {
   id_product?:number
@@ -26,7 +34,7 @@ export class CompanypageComponent implements OnInit {
     "img":new FormControl("",[Validators.required])
 
   })
-  constructor(private companypageservice:CompanypageService) { }
+  constructor(private companypageservice:CompanypageService,private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
 
