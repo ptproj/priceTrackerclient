@@ -11,10 +11,10 @@ export class BeginComponent implements OnInit {
   constructor(private _router:Router) { }
   costumer()
 {
-this._router.navigate(['/costumerlogin'])
+this._router.navigate(['/login/costumerlogin'])
 }
 company(){
-this._router.navigate(['/company'])
+this._router.navigate(['/login/companylogin'])
 }
   ngOnInit(): void {
   }
