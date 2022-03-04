@@ -26,7 +26,7 @@
 </div> 
 
 
-<p-orderList  *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="baseprice" filterPlaceholder="Filter by name" [dragdrop]="true">
+<p-orderList  *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}" header="your Products" filterBy="baseprice" filterPlaceholder="Filter by price" [dragdrop]="true">
     link:<input formControlName="link" id="link">
     <ng-template let-product pTemplate="item">
         <div class="product-item">

@@ -135,6 +135,7 @@
                 <td>{{product.price | currency:'ILS'}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.active}}</td>
+                <!-- <td><span [class]="'product-badge status-' + 'OUTOFSTOCK'.toLowerCase">{{product.inventoryStatus}}</span></td> -->
                 <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td> -->
 
 
@@ -166,27 +167,39 @@
             <input type="text" pInputText id="name" formControlName="name"  autofocus />
             <small  class="p-error" *ngIf="submitted && addproductForm.controls['name'].errors?.['required']">Name is required.</small>
         </div>
+
+        <div class="field">
+            <label for="name">Link</label>
+            <input type="text" pInputText id="name" formControlName="link"  autofocus />
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">Link is required.</small>
+        </div>
         <div class="field">
             <label for="description">Description</label>
             <textarea id="description" pInputTextarea formControlName="desc"  rows="3" cols="20"></textarea>
         </div>
         
-        <div class="p-field">
+        <!-- <div class="p-field">
             <label class="p-mb-3">active</label>
             <div class="p-formgrid p-grid">
-                <div class="p-field-radiobutton p-col-6">
+                <div class="p-field-chackbox p-col-6">
                     <p-chackbox id="category1" name="category" value="Accessories" formControlName="active" ></p-chackbox>
                    
                 </div>
-               
-            </div>
-        </div>
+               "link":new FormControl("",[Validators.required]),
     
+   
+  
+            </div>
+        </div> -->
+        <div class="p-field">
+            <label class="p-mb-3">active</label>
+            <input type="checkbox" formControlName="active" />
+        </div> 
 
         <div class="formgrid grid">
             <div class="field col">
                 <label for="price">Price</label>
-                <p-inputNumber id="price" formControlName="price" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                <p-inputNumber id="price" formControlName="price" mode="currency" currency="ILS" locale="en-US"></p-inputNumber>
             </div>
              
         </div>

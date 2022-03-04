@@ -4,7 +4,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Companyproduct } from 'src/models/classcompanyproduct';
 import { CompanypageService } from './companypage.service';
 import { PrimeNGConfig } from "primeng/api";
-  
+
+
 // import { ConfirmationService } from 'primeng/api';
 // import { MessageService } from 'primeng/api';
 // import { Table, TableModule } from 'primeng/table';
@@ -27,8 +28,7 @@ export class CompanypageComponent implements OnInit {
   companyproduct?:Companyproduct
   add_update:boolean=true
   itemtodelete?:number
-
-
+  color:string="instock"
 
   submitted:boolean=false
   productDialog:boolean=false
@@ -135,11 +135,12 @@ this.close_del_div()
     this.pop()
     }
   add(){
+    this.submitted=true;
     const id=Number(sessionStorage.getItem('companyid'))
+    alert(id)
     const x=this.addproductForm.get("link")?.value
     
     if(id){
-      alert(x)
       this.companyproduct=new Companyproduct(id,
         this.addproductForm.get("price")?.value,this.addproductForm.get("name")?.value,this.addproductForm.get("desc")?.value,
         this.addproductForm.get("active")?.value,this. addproductForm.get("link")?.value,this.addproductForm.get("img")?.value )
@@ -155,6 +156,7 @@ this.close_del_div()
     }
     
   }
+  
   
 
   deletediv(productid:number|undefined){

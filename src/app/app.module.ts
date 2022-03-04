@@ -12,37 +12,33 @@ import { BeginComponent } from './begin/begin.component';
 import { CompanyloginComponent } from './login/companylogin/companylogin.component';
 import { CompanypageComponent } from './companypage/companypage.component';
 import { CompanypageModule } from './companypage/companypage.module';
-
-import { BrowserAnimationsModule } 
-    from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
   
 import { ButtonModule } from "primeng/button";
-// import { TableModule } from 'primeng/table';
  import {ToastModule} from 'primeng/toast';
  import { ToolbarModule } from 'primeng/toolbar';
  import { FileUploadModule } from 'primeng/fileupload';
  import { TableModule } from 'primeng/table';
  import {DialogModule} from 'primeng/dialog';
  import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
+ import { InputTextareaModule } from 'primeng/inputtextarea';
+ 
+ import {CheckboxModule} from 'primeng/checkbox';
 // import {CalendarModule} from 'primeng/calendar';
 // import {SliderModule} from 'primeng/slider';
 // import {MultiSelectModule} from 'primeng/multiselect';
 // import {ContextMenuModule} from 'primeng/contextmenu';
-// import {DialogModule} from 'primeng/dialog';
 // import {ButtonModule} from 'primeng/button';
 // import {DropdownModule} from 'primeng/dropdown';
 // import {ProgressBarModule} from 'primeng/progressbar';
-// import {InputTextModule} from 'primeng/inputtext';
+ import {InputTextModule} from 'primeng/inputtext';
 // import {FileUploadModule} from 'primeng/fileupload';
-// import {ToolbarModule} from 'primeng/toolbar';
 // import {RatingModule} from 'primeng/rating';
 // import {RadioButtonModule} from 'primeng/radiobutton';
-// import {InputNumberModule} from 'primeng/inputnumber';
-// import { ConfirmDialogModule } from 'primeng/confirmdialog';
+ import {InputNumberModule} from 'primeng/inputnumber';
 // import { ConfirmationService } from 'primeng/api';
 // import { MessageService } from 'primeng/api';
-// import { InputTextareaModule } from 'primeng/inputtextarea';
+
 
 
 // import {AccordionModule} from 'primeng/accordion';  
@@ -87,20 +83,25 @@ const APP_ROUTES:Route[]=[
     HttpClientModule,
     FormsModule ,
     ToastModule,
+    CheckboxModule,
     ToolbarModule,
     FileUploadModule,
     TableModule,
     DialogModule,
+    InputTextModule,
     ConfirmDialogModule,
     ButtonModule,
-    BrowserAnimationsModule
+    InputTextareaModule,
+    BrowserAnimationsModule,
+    InputNumberModule
+    
 //     TableModule,
 //     ,
 //     CalendarModule,
 //     SliderModule ,MultiSelectModule, ContextMenuModule ,DialogModule, 
 //     ButtonModule, DropdownModule, ProgressBarModule ,InputTextModule
-//   ,FileUploadModule, ToolbarModule, RatingModule,RadioButtonModule,InputNumberModule,ConfirmDialogModule
-//  ,ConfirmationService, MessageService , InputTextareaModule
+//   ,FileUploadModule, ToolbarModule, RatingModule,RadioButtonModule,,ConfirmDialogModule
+//  ,ConfirmationService, MessageService , 
 
     // AccordionModule,
     // OrderListModule
