@@ -135,6 +135,7 @@
                 <td>{{product.price | currency:'ILS'}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.active}}</td>
+                <!-- <td><span [class]="'product-badge status-' + 'OUTOFSTOCK'.toLowerCase">{{product.inventoryStatus}}</span></td> -->
                 <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td> -->
 
 
@@ -166,6 +167,12 @@
             <input type="text" pInputText id="name" formControlName="name"  autofocus />
             <small  class="p-error" *ngIf="submitted && addproductForm.controls['name'].errors?.['required']">Name is required.</small>
         </div>
+
+        <div class="field">
+            <label for="name">Link</label>
+            <input type="text" pInputText id="name" formControlName="link"  autofocus />
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">Link is required.</small>
+        </div>
         <div class="field">
             <label for="name">Price</label>
             <input type="text" pInputText id="price" formControlName="price"  autofocus />
@@ -189,8 +196,26 @@
         
         
     
+   
+  
+            </div>
+        </div> -->
+        <div class="p-field">
+            <label class="p-mb-3">active</label>
+            <input type="checkbox" formControlName="active" />
+        </div> 
 
+<<<<<<< HEAD
         
+=======
+        <div class="formgrid grid">
+            <div class="field col">
+                <label for="price">Price</label>
+                <p-inputNumber id="price" formControlName="price" mode="currency" currency="ILS" locale="en-US"></p-inputNumber>
+            </div>
+             
+        </div>
+>>>>>>> 5bd0536819bda2260ec742d156dffbaebe702b15
     </form>
     </ng-template>
          

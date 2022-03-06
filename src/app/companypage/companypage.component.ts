@@ -28,8 +28,7 @@ export class CompanypageComponent implements OnInit {
   companyproduct?:Companyproduct
   add_update:boolean=false
   itemtodelete?:number
-
-
+  color:string="instock"
 
   submitted:boolean=false
   productDialog:boolean=false
@@ -136,11 +135,12 @@ this.hideDialog()  }
    this.openNew()
     }
   add(){
+    this.submitted=true;
     const id=Number(sessionStorage.getItem('companyid'))
+    alert(id)
     const x=this.addproductForm.get("link")?.value
     
     if(id){
-      alert(x)
       this.companyproduct=new Companyproduct(id,
         this.addproductForm.get("price")?.value,this.addproductForm.get("name")?.value,this.addproductForm.get("desc")?.value,
         this.addproductForm.get("active")?.value,this. addproductForm.get("link")?.value,this.addproductForm.get("img")?.value )
@@ -159,6 +159,7 @@ this.hideDialog()  }
     }
     
   }
+  
   
 
   deletediv(productid:number|undefined){
