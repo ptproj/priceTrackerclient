@@ -21,6 +21,8 @@ export class CostumerloginComponent implements OnInit {
    costumer?:Costumer
    st?:string
    forgotpass:boolean=false
+   submitted:boolean=false
+   submitted2:boolean=false
   ngOnInit(): void {
 
 
@@ -31,9 +33,15 @@ export class CostumerloginComponent implements OnInit {
     "email":new FormControl("",[Validators.required,Validators.email]),
    "password":new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(14)]),
   })
+  newpassForm:FormGroup=new FormGroup({
+    "email":new FormControl("",[Validators.required,Validators.email])
+  })
+
 
 
   signin(){
+    this.submitted=true;
+    if(!(this.loginForm.invalid)){
    this.costumer=new Costumer( this. loginForm.get("email")?.value, this. loginForm.get("password")?.value)  
 
    this.loginservice.postcostumer(this.costumer).subscribe(data=>{
@@ -42,11 +50,12 @@ export class CostumerloginComponent implements OnInit {
      sessionStorage.setItem('costumerid', data.id?.toString()|| '')
    alert(sessionStorage.getItem('token'))
    alert(data.email)
+   this.submitted=false;
    this._router.navigate(["/costumerpage"]);
   
   }
 );
-  
+  }
  
 ;
  }
@@ -55,6 +64,8 @@ export class CostumerloginComponent implements OnInit {
 
   login()
   {
+    this.submitted=true;
+    if(!(this.loginForm.invalid)){
     this.costumer=new Costumer( this.loginForm.get("email")?.value, this.loginForm.get("password")?.value)  
 alert(this.loginForm.get("email")?.value)
     this.loginservice.getcostumer(this.costumer).subscribe(data=>{
@@ -64,14 +75,26 @@ alert(this.loginForm.get("email")?.value)
      // alert(sessionStorage.getItem('token'))
       
   },err=>{alert("password is incorrect")});
-  
+  }
   }
   getnewpassword(){
    
-   this.loginservice.getnewpassword(this.loginForm.get("email")?.value).subscribe(data=>alert(data))
+   this.submitted2=true;
+   
+   if(!(this.newpassForm.invalid)){
+
+  
+   this.loginservice.getnewpassword(this.newpassForm.get("email")?.value).subscribe(data=>{alert(data)
+   this.submitted2=false 
+  //  this.forgotpass=false
+  }) 
+}
   }
   showbutton()
-  {
+  { this.newpassForm.controls["email"].setValue("")
     this.forgotpass=true
+  }
+  closedialog(){
+    this.forgotpass=false;
   }
 }

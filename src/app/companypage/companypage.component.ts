@@ -86,11 +86,7 @@ this.hideDialog()  }
       this.companypageservice.deletecompanyproduct(this.itemtodelete).subscribe(data=>{
      if (data==true && this.products){
    var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
-   this.products=productsafterdeletet
-
-   }
-   
-
+   this.products=productsafterdeletet}
 
   })
     }
@@ -132,13 +128,14 @@ this.hideDialog()  }
       this.addproductForm.controls["link"].setValue(product.productlink)
     }
     this.id_product=product?.id
-   this.openNew()
+   this.openNew(0)
     }
   add(){
     this.submitted=true;
     const id=Number(sessionStorage.getItem('companyid'))
-    alert(id)
     const x=this.addproductForm.get("link")?.value
+    if(!(this.addproductForm.invalid)){
+
     
     if(id){
       this.companyproduct=new Companyproduct(id,
@@ -153,9 +150,12 @@ this.hideDialog()  }
                 this.add_update=false;
               } 
           })
-        
+        }
         
     
+    }
+    else{
+
     }
     
   }
@@ -178,7 +178,17 @@ this.hideDialog()  }
   
 
 
-  openNew() {
+  openNew(isnew:Number) {
+    if (isnew){
+
+  
+    this.addproductForm.controls["price"].setValue("")
+      this.addproductForm.controls["name"].setValue("")
+      this.addproductForm.controls["desc"].setValue("")
+      this.addproductForm.controls["active"].setValue(true)
+      this.addproductForm.controls["img"].setValue("")
+      this.addproductForm.controls["link"].setValue("")
+    }
     this.submitted = false;
     this.productDialog = true;
 

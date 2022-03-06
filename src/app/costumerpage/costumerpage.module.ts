@@ -8,7 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {OrderListModule} from 'primeng/orderlist';
-
+import { ButtonModule } from 'primeng/button';
+import {DialogModule} from 'primeng/dialog';
+import { InputTextModule } from "primeng/inputtext";
 // import {OrderListModule} from 'primeng/orderlist';
 // import { AccordionModule } from 'primeng/accordion';
 
@@ -25,7 +27,7 @@ import {OrderListModule} from 'primeng/orderlist';
   declarations: [CostumerpageComponent ],
   providers: [CostumerpageService], 
   imports: [ReactiveFormsModule, HttpClientModule,CommonModule
-    ,AccordionModule,OrderListModule
+    ,AccordionModule,OrderListModule,ButtonModule,DialogModule,InputTextModule
   
    
   ],

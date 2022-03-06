@@ -31,9 +31,9 @@
      <button [disabled]="loginForm.invalid" (click)="login()">login</button>
 
    -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!------ Include the above in your HEAD tag ---------->
 
 <!--author:starttemplate-->
@@ -47,15 +47,15 @@
           content="unique login form,leamug login form,boostrap login form,responsive login form,free css html login form,download login form">
     <meta name="author" content="leamug">
     <title>price tracker</title>
-    <link href="./companylogin.component.css" rel="stylesheet" id="style">
+    <!-- <link href="./companylogin.component.css" rel="stylesheet" id="style"> -->
     <!-- Bootstrap core Library -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
     <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet"> -->
     <!-- Font Awesome-->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
 </head>
 <body>
 
@@ -69,8 +69,10 @@
                 <br>
                 <form [formGroup]="loginForm">
                 <input type="text" id="name" formControlName="name" class="form-control input-sm chat-input" placeholder="username"/>
+                <small  class="p-error" *ngIf="loginForm.hasError('required', ['name'])&&submitted">name is required.</small>
                 <br><br>
                 <input type="text" id="pass" formControlName="password" class="form-control input-sm chat-input" placeholder="password"/>
+                <small  class="p-error" *ngIf="loginForm.hasError('required', ['password'])&&submitted">password is required.</small>
                </form>
                 <br><br>
                 <div class="wrapper">
@@ -81,6 +83,8 @@
                            <a  (click)="signin_bool()" class="btn btn-danger btn-md">sighup<i class="fa fa-sign-in"></i></a>
                        </span>
                 </div>
+                <br>
+                <a (click)="showbutton()" >forgot your password?</a>
             </div>
         </div>
     </div>
@@ -93,10 +97,15 @@
               <br>
               <form [formGroup]="sighinForm">
               <input type="text" id="name" formControlName="name" class="form-control input-sm chat-input" placeholder="username"/>
+              <small  class="p-error" *ngIf="sighinForm.hasError('required', ['name'])&&submitted">name is required.</small>
               <br><br>
               <input type="password" id="pass" formControlName="password" class="form-control input-sm chat-input" placeholder="password"/>
+              <small  class="p-error" *ngIf="sighinForm.hasError('required', ['password'])&&submitted">password is required.</small>
+              <small  class="p-error" *ngIf="sighinForm.hasError('minlength', ['password'])&&submitted">password is not long enough</small>
+              <small  class="p-error" *ngIf="sighinForm.hasError('maxlength', ['password'])&&submitted">password is too long.</small>
               <br><br>
               <input type="text" id="companylink" formControlName="companylink" class="form-control input-sm chat-input" placeholder="company link"/>
+              <small  class="p-error" *ngIf="sighinForm.hasError('required', ['companylink'])&&submitted">companylink is required.</small>
              </form>
               <br><br>
               <div class="wrapper">
@@ -108,9 +117,19 @@
           </div>
       </div>
   </div>
-    <!--footer-->
-    <div class="footer text-white text-center">
-       
-    </div>
-    <!--//footer-->
+   
+  <p-dialog header="entrer your email address" [(visible)]="forgotpass" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+  [draggable]="false" [resizable]="false">
+  <form [formGroup]=" newpassForm">
+  <input type="text" pInputText id="email" formControlName="email"  autofocus />
+  <small  class="p-error" *ngIf="newpassForm.hasError('required', ['email'])&&submitted2">email is required</small>
+  <small  class="p-error" *ngIf="newpassForm.hasError('email', ['email'])&&submitted2">seems like you didnt put youre email:(</small>
 
+  <p> check youre email for youre new password</p>
+ </form>
+  <br>
+      <ng-template pTemplate="footer">
+      <p-button (click)=getnewpassword() label="sent new password" styleClass="p-button-text"></p-button>
+      <p-button (click)=closedialog() label="close" styleClass="p-button-text"></p-button>
+      </ng-template>
+</p-dialog>

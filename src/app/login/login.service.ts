@@ -35,7 +35,10 @@ getnewpassword(email:string):Observable<boolean>{
  
 }
 
-
+getnewcompanypassword(email:string):Observable<boolean>{
+  return this.http.get<boolean>("api/Company/"+email);
+ 
+}
 
 
 

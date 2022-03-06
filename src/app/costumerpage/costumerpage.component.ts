@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PrimeNGConfig } from 'primeng/api';
 import { Costumerproduct } from 'src/models/classcostumerproduct';
 import { CostumerpageService } from './costumerpage.service';
 @Component({
@@ -14,8 +15,9 @@ export class CostumerpageComponent implements OnInit {
   
    products?:Costumerproduct[] 
    itemtodelete?:number
-  primengConfig: any;
-  constructor(private costumerpageservice:CostumerpageService) {
+   show:boolean=false
+   submitted:boolean=false
+  constructor(private costumerpageservice:CostumerpageService,private primengConfig: PrimeNGConfig) {
    
    }
 
@@ -29,7 +31,7 @@ export class CostumerpageComponent implements OnInit {
       this.products=data
      //this.products.forEach(x=>alert(x.costumerid))
     });
-    this.primengConfig.ripple = true;
+   // this.primengConfig.ripple = true;
     
    }
    delete(){
@@ -38,7 +40,7 @@ export class CostumerpageComponent implements OnInit {
       if (x==true && this.products){
     var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
     this.products=productsafterdeletet
-this.close()
+this.closedialog()
     }
 
 
@@ -49,16 +51,20 @@ this.close()
   add(){
     const id=Number(sessionStorage.getItem('costumerid'))
     const x=this.addproductForm.get("link")?.value
+    this.submitted=true
+    if(!(this.addproductForm.invalid)){
+
     
     if(id){
       alert(x)
       this.costumerproduct=new Costumerproduct(id,this. addproductForm.get("link")?.value )
     this.costumerpageservice.addcostumerproduct(this.costumerproduct).subscribe(x=>{alert(x.id)
-      if(this.costumerproduct){this.products?.push(x)} 
+      if(this.costumerproduct){this.products?.push(x)
+      this.submitted=false} 
     })
 
     }
-    
+   } 
   }
   close() {
     var modal = document.getElementById("myModal");
@@ -73,6 +79,10 @@ this.close()
   }
   deletediv(productid:number|undefined){
   this.itemtodelete=productid
-  this.pop()
+  this.show=true
+}
+closedialog()
+{
+  this.show=false
 }
 }

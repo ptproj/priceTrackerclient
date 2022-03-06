@@ -74,7 +74,7 @@
 <div class="card">
     <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>  
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew(1)"></button>  
 
             <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
 
@@ -118,6 +118,7 @@
                  <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
                  <th pSortableColumn="rating">description <p-sortIcon field="rating"></p-sortIcon></th>  
                  <th pSortableColumn="category">active <p-sortIcon field="category"></p-sortIcon></th>
+                 <th pSortableColumn="link">link <p-sortIcon field="link"></p-sortIcon></th>
                  <!-- <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>  -->
                 <th></th>
             </tr>
@@ -135,6 +136,7 @@
                 <td>{{product.price | currency:'ILS'}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.active}}</td>
+                <td>   <a class="mb-2" href="{{product.productlink}}">{{product.productlink}}</a></td>
                 <!-- <td><span [class]="'product-badge status-' + 'OUTOFSTOCK'.toLowerCase">{{product.inventoryStatus}}</span></td> -->
                 <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td> -->
 
@@ -168,61 +170,53 @@
             <small  class="p-error" *ngIf="submitted && addproductForm.controls['name'].errors?.['required']">Name is required.</small>
         </div>
 
-        <div class="field">
-            <label for="name">Link</label>
-            <input type="text" pInputText id="name" formControlName="link"  autofocus />
-            <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">Link is required.</small>
-        </div>
-        <div class="field">
-            <label for="name">Price</label>
-            <input type="text" pInputText id="price" formControlName="price"  autofocus />
-            <small  class="p-error" *ngIf="submitted && addproductForm.controls['price'].errors?.['required']">price is required.</small>
-        </div>
+    
         <div class="field">
             <label for="link">Link</label>
             <input type="text" pInputText id="link" formControlName="link"  autofocus />
-            <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">price is required.</small>
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">link is required.</small>
         </div>
+        <div class="field">
+            <label for="link">Image</label>
+            <input type="text" pInputText id="image" formControlName="img"  autofocus />
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['img'].errors?.['required']">Image is required.</small>
+        </div>
+
+
         <div class="field">
             <label for="description">Description</label>
             <textarea id="description" pInputTextarea formControlName="desc"  rows="3" cols="20"></textarea>
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['desc'].errors?.['required']">description is required.</small>
         </div>
-        <div class="field">
-            <label for="name">Active</label>
-            <input type="checkbox" pInputText id="active" formControlName="active"  autofocus />
-            <small  class="p-error" *ngIf="submitted && addproductForm.controls['active'].errors?.['required']">price is required.</small>
-        </div>
+       
         
         
-        
-    
+
    
   
-            </div>
-        </div> -->
+      
         <div class="p-field">
             <label class="p-mb-3">active</label>
             <input type="checkbox" formControlName="active" />
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['active'].errors?.['required']">active is required.</small>
         </div> 
 
-<<<<<<< HEAD
-        
-=======
         <div class="formgrid grid">
             <div class="field col">
                 <label for="price">Price</label>
                 <p-inputNumber id="price" formControlName="price" mode="currency" currency="ILS" locale="en-US"></p-inputNumber>
+                <small  class="p-error" *ngIf="submitted && addproductForm.controls['price'].errors?.['required']">price is required.</small>
+               
             </div>
              
         </div>
->>>>>>> 5bd0536819bda2260ec742d156dffbaebe702b15
     </form>
     </ng-template>
          
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
         <button *ngIf="!add_update" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="add()"></button>
-        <button *ngIf="add_update" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="update()" ></button>
+        <button *ngIf="add_update" pButton pRipple label="update" icon="pi pi-check" class="p-button-text" (click)="update()" ></button>
     </ng-template>
 </p-dialog>
 <!-- 

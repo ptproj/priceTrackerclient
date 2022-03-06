@@ -66,42 +66,45 @@ email:<input formControlName="email" id="email">
                  <br>
                  <form [formGroup]="loginForm">
                  <input type="text" id="userName"  formControlName="email" class="form-control input-sm chat-input" placeholder="username"/>
-                 <div *ngIf="loginForm.hasError('required', ['email'])" >this field is required</div>
-                 <div *ngIf="loginForm.hasError('email', ['email'])" > seems like you didnt put youre email:(</div>
+                 <small  class="p-error" *ngIf="loginForm.hasError('required', ['email'])&&submitted">email is required.</small>
+                 <small  class="p-error" *ngIf="loginForm.hasError('email', ['email'])&&submitted">seems like you didnt put youre email:(</small>
                  <br><br>
                  <input type="text" id="userPassword"  formControlName="password" class="form-control input-sm chat-input" placeholder="password"/>
-                 <div  *ngIf="loginForm.controls['password'].errors?.['required']" >this field is required</div>
-                 <div *ngIf="loginForm.hasError('minlength', ['password'])" > password isnt long enough</div>
-                 <div *ngIf="loginForm.hasError('maxlength', ['password'])" > password is too long</div>
-
+                 <small  class="p-error" *ngIf="loginForm.hasError('required', ['password'])&&submitted">password is required.</small>
+                 <small  class="p-error" *ngIf="loginForm.hasError('minlength', ['password'])&&submitted">password isnt long enough</small>
+                 <small  class="p-error" *ngIf="loginForm.hasError('maxlength', ['password'])&&submitted">password is too long</small>
+                
                  <br><br>
                  </form>
                  <div class="wrapper">
                          <span class="group-btn">
-                            <!-- <button [disabled]="loginForm.invalid"   (click)="login()" #loginbutton>login</button> -->
                              <a   (click)="signin()" class="btn btn-danger btn-md">signin <i class="fa fa-sign-in"></i></a>
                              <a   (click)="login()" class="btn btn-danger btn-md">login <i class="fa fa-sign-in"></i></a>
                          </span>
                  </div>
+                 <br>
+                  <a (click)="showbutton()" >forgot your password?</a>
              </div>
          </div>
-     </div>
-     <br><br><br>
-     <!--footer-->
-     <div class="footer text-white text-center">
-         <!-- <p>© 2020 Unique Login Form. All rights reserved | Design by <a href="https://freecss.tech">Free Css</a></p> -->
-     </div>
-     <!--//footer-->
- </div>
+        
+     </div> 
+    
+     <p-dialog header="entrer your email address" [(visible)]="forgotpass" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+     [draggable]="false" [resizable]="false">
+     <form [formGroup]=" newpassForm">
+     <input type="text" pInputText id="email" formControlName="email"  autofocus />
+     <small  class="p-error" *ngIf="newpassForm.hasError('required', ['email'])&&submitted2">email is required</small>
+     <small  class="p-error" *ngIf="newpassForm.hasError('email', ['email'])&&submitted2">seems like you didnt put youre email:(</small>
 
-<!-- 
- <div class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
-  </div>
- </body>
- </html>
-  -->
+     <p> check youre email for youre new password</p>
+    </form>
+     <br>
+         <ng-template pTemplate="footer">
+         <p-button (click)=getnewpassword() label="sent new password" styleClass="p-button-text"></p-button>
+         <p-button (click)=closedialog() label="close" styleClass="p-button-text"></p-button>
+         </ng-template>
+ </p-dialog>
+     <br><br><br>
+    
+ </div>
+ 
