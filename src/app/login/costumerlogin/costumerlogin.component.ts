@@ -84,7 +84,7 @@ alert(this.loginForm.get("email")?.value)
    if(!(this.newpassForm.invalid)){
 
   
-   this.loginservice.getnewpassword(this.newpassForm.get("email")?.value).subscribe(data=>{alert(data)
+   this.loginservice.getnewcostumerpassword(this.newpassForm.get("email")?.value).subscribe(data=>{alert(data)
    this.submitted2=false 
   //  this.forgotpass=false
   }) 

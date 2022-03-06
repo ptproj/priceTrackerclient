@@ -30,7 +30,7 @@ getcompany(company:Company):Observable<DTOLoginCompany>
 {
 return this.http.post<DTOLoginCompany>("api/Company/login",company);
 }
-getnewpassword(email:string):Observable<boolean>{
+getnewcostumerpassword(email:string):Observable<boolean>{
   return this.http.get<boolean>("api/Customer/"+email);
  
 }
