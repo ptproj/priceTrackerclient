@@ -73,6 +73,7 @@ this.primengConfig.ripple = true;
       var productsafterdeletet = this.products.filter(x => x.id != this.id_product);
    this.products=productsafterdeletet}
       this.products?.push(data);
+      this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was updated succefuly'});
     })
 
     }
@@ -92,19 +93,17 @@ this.hideDialog()  }
     }
    
   }
-  close() {
-    var modal = document.getElementById("myModal");
-    if(modal)
-     modal.style.display = "none";
-     this.add_update=true
-  }
-
-  
-  pop() {
-    let modal = document.getElementById("myModal");
-    if(modal)
-      modal.style.display = "block";
-  }
+//   close() {
+//     var modal = document.getElementById("myModal");
+//     if(modal)
+//      modal.style.display = "none";
+//      this.add_update=true
+//   }
+//  pop() {
+//     let modal = document.getElementById("myModal");
+//     if(modal)
+//       modal.style.display = "block";
+//   }
   addproduct(){
     this.addproductForm.controls["price"].setValue("")
       this.addproductForm.controls["name"].setValue("")
@@ -143,11 +142,13 @@ this.hideDialog()  }
         this.addproductForm.get("active")?.value,this. addproductForm.get("link")?.value,this.addproductForm.get("img")?.value )
        
           this.companypageservice.addcompanyproduct(this.companyproduct).subscribe(
-            data=>{alert(data.id);
+            data=>{
               if(this.companyproduct){this.products?.push(data)
+               
                 this.hideDialog()
                 this.addproduct()
-                this.add_update=false;
+                this.add_update=false; 
+                this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was added succefuly'});
               } 
           })
         }
@@ -162,26 +163,24 @@ this.hideDialog()  }
   
   
 
-  deletediv(productid:number|undefined){
-    this.itemtodelete=productid
-    let modal1 = document.getElementById("myModal1");
-    if(modal1)
-      modal1.style.display = "block";
+  // deletediv(productid:number|undefined){
+  //   this.itemtodelete=productid
+  //   let modal1 = document.getElementById("myModal1");
+  //   if(modal1)
+  //     modal1.style.display = "block";
 
-  }
-  close_del_div(){
-    var modal = document.getElementById("myModal1");
-    if(modal)
-     modal.style.display = "none";
+  // }
+  // close_del_div(){
+  //   var modal = document.getElementById("myModal1");
+  //   if(modal)
+  //    modal.style.display = "none";
    
-  }
+  // }
   
 
 
   openNew(isnew:Number) {
     if (isnew){
-
-  
     this.addproductForm.controls["price"].setValue("")
       this.addproductForm.controls["name"].setValue("")
       this.addproductForm.controls["desc"].setValue("")
@@ -224,6 +223,6 @@ deleteSelectedProducts(productid:number|undefined) {
         //   }
       });
   }
-
+  
 
 }

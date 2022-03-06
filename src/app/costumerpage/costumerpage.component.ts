@@ -3,10 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 import { Costumerproduct } from 'src/models/classcostumerproduct';
 import { CostumerpageService } from './costumerpage.service';
+import {  MessageService } from 'primeng/api';
 @Component({
   selector: 'app-costumerpage',
   templateUrl: './costumerpage.component.html',
-  styleUrls: ['./costumerpage.component.css']
+  styleUrls: ['./costumerpage.component.css'],
+  providers: [MessageService]
 })
 export class CostumerpageComponent implements OnInit {
   addproductForm:FormGroup=new FormGroup({
@@ -17,12 +19,13 @@ export class CostumerpageComponent implements OnInit {
    itemtodelete?:number
    show:boolean=false
    submitted:boolean=false
-  constructor(private costumerpageservice:CostumerpageService,private primengConfig: PrimeNGConfig) {
+  constructor(private costumerpageservice:CostumerpageService,private primengConfig: PrimeNGConfig, private messageService: MessageService) {
    
    }
 
  costumerproduct?:Costumerproduct
   ngOnInit(): void {
+    
     alert("init costumerpage")
    this.costumerpageservice.getcostumerproduct().subscribe(data=>
     {
@@ -40,13 +43,19 @@ export class CostumerpageComponent implements OnInit {
       if (x==true && this.products){
     var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
     this.products=productsafterdeletet
+    this.show=false
 this.closedialog()
+this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
+alert("yes")
     }
 
 
    })
      }
     
+   }
+   m(){
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
    }
   add(){
     const id=Number(sessionStorage.getItem('costumerid'))
@@ -60,7 +69,8 @@ this.closedialog()
       this.costumerproduct=new Costumerproduct(id,this. addproductForm.get("link")?.value )
     this.costumerpageservice.addcostumerproduct(this.costumerproduct).subscribe(x=>{alert(x.id)
       if(this.costumerproduct){this.products?.push(x)
-      this.submitted=false} 
+      this.submitted=false
+      this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was added succefuly'});} 
     })
 
     }
