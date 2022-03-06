@@ -9,12 +9,18 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputNumberModule} from 'primeng/inputnumber';
 
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 @NgModule({
   declarations: [CompanypageComponent],
-  imports: [ReactiveFormsModule, HttpClientModule,  CommonModule,ToastModule, ToolbarModule ,FileUploadModule,TableModule,DialogModule,ConfirmDialogModule
+  imports: [ReactiveFormsModule,InputTextModule,CheckboxModule, HttpClientModule,  CommonModule,ToastModule, 
+    ToolbarModule ,FileUploadModule,TableModule,DialogModule,
+    InputTextareaModule,ConfirmDialogModule,InputNumberModule
 ],
   exports:[CompanypageComponent],
 
