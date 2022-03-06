@@ -4,7 +4,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Companyproduct } from 'src/models/classcompanyproduct';
 import { CompanypageService } from './companypage.service';
 import { PrimeNGConfig } from "primeng/api";
-  
+
+ 
 // import { ConfirmationService } from 'primeng/api';
 // import { MessageService } from 'primeng/api';
 // import { Table, TableModule } from 'primeng/table';
@@ -25,7 +26,7 @@ export class CompanypageComponent implements OnInit {
   id_product?:number
   products:Companyproduct[] | undefined
   companyproduct?:Companyproduct
-  add_update:boolean=true
+  add_update:boolean=false
   itemtodelete?:number
 
 
@@ -44,7 +45,7 @@ export class CompanypageComponent implements OnInit {
     "img":new FormControl("",[Validators.required])
 
   })
-  constructor(private companypageservice:CompanypageService,private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig) { }
+  constructor( private messageService: MessageService,private companypageservice:CompanypageService,private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
 
@@ -76,18 +77,18 @@ this.primengConfig.ripple = true;
     })
 
     }
-    this.close()
-  }
+this.hideDialog()  }
     
 
   
   delete(){
+    alert("delete")
     if(this.itemtodelete){
       this.companypageservice.deletecompanyproduct(this.itemtodelete).subscribe(data=>{
      if (data==true && this.products){
    var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
    this.products=productsafterdeletet
-this.close_del_div()
+
    }
    
 
@@ -116,13 +117,13 @@ this.close_del_div()
       this.addproductForm.controls["active"].setValue(true)
       this.addproductForm.controls["img"].setValue("")
       this.addproductForm.controls["link"].setValue("")
-    this.pop()
   }
 
   edit(product:Companyproduct|undefined){
     
     
-    this.add_update=false
+    //this.add_update=false
+    this.add_update=true;
     if(product){
       this.addproductForm.controls["price"].setValue(product.price)
       this.addproductForm.controls["name"].setValue(product.name)
@@ -132,7 +133,7 @@ this.close_del_div()
       this.addproductForm.controls["link"].setValue(product.productlink)
     }
     this.id_product=product?.id
-    this.pop()
+   this.openNew()
     }
   add(){
     const id=Number(sessionStorage.getItem('companyid'))
@@ -147,7 +148,10 @@ this.close_del_div()
           this.companypageservice.addcompanyproduct(this.companyproduct).subscribe(
             data=>{alert(data.id);
               if(this.companyproduct){this.products?.push(data)
-              this.close()} 
+                this.hideDialog()
+                this.addproduct()
+                this.add_update=false;
+              } 
           })
         
         
@@ -182,6 +186,33 @@ this.close_del_div()
         this.productDialog = false;
         this.submitted = false;
     }
+deleteSelectedProducts(productid:number|undefined) {
+      this.confirmationService.confirm({
+          message: 'Are you sure you want to delete the selected products?',
+          header: 'Confirm',
+          icon: 'pi pi-exclamation-triangle',
+          accept: () => {
+            if(productid){
+            this.companypageservice.deletecompanyproduct(productid).subscribe(data=>{
+            if (data==true && this.products){
+            var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
+            this.products=productsafterdeletet}})
+            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
+          }}
+        //   if(this.itemtodelete){
+        //     this.companypageservice.deletecompanyproduct(this.itemtodelete).subscribe(data=>{
+        //    if (data==true && this.products){
+        //  var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
+        //  this.products=productsafterdeletet
+      
+        //  }
+         
+      
+      
+        // })
+        //   }
+      });
+  }
 
 
 }

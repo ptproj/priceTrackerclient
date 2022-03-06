@@ -110,9 +110,9 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th style="width: 3rem">
+                <!-- <th style="width: 3rem">
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                </th>
+                </th> -->
                  <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
                  <th>Image</th>
                  <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
@@ -126,9 +126,9 @@
 
         <ng-template  pTemplate="body" let-product>
             <tr>
-                <td>
+                <!-- <td>
                     <p-tableCheckbox [value]="products"></p-tableCheckbox>
-                </td>
+                </td> -->
                 <td>{{product.name}}</td>
                 <td><img src="../../../assets/AUSTR026.JPG" [alt]="product.name" width="100" class="shadow-4" /></td>
                 <!-- <td>{{product.price}}</td> -->
@@ -141,7 +141,7 @@
                 <!-- <td><span [class]="'product-badge status-' + (product.active ? product.active.toLowerCase() : '')">{{product.active}}</span></td> -->
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="edit(product)"></button>
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletediv(product)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteSelectedProducts(product.id)"></button>
                 </td>
             </tr>
         </ng-template> 
@@ -167,36 +167,37 @@
             <small  class="p-error" *ngIf="submitted && addproductForm.controls['name'].errors?.['required']">Name is required.</small>
         </div>
         <div class="field">
+            <label for="name">Price</label>
+            <input type="text" pInputText id="price" formControlName="price"  autofocus />
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['price'].errors?.['required']">price is required.</small>
+        </div>
+        <div class="field">
+            <label for="link">Link</label>
+            <input type="text" pInputText id="link" formControlName="link"  autofocus />
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">price is required.</small>
+        </div>
+        <div class="field">
             <label for="description">Description</label>
             <textarea id="description" pInputTextarea formControlName="desc"  rows="3" cols="20"></textarea>
         </div>
-        
-        <div class="p-field">
-            <label class="p-mb-3">active</label>
-            <div class="p-formgrid p-grid">
-                <div class="p-field-radiobutton p-col-6">
-                    <p-chackbox id="category1" name="category" value="Accessories" formControlName="active" ></p-chackbox>
-                   
-                </div>
-               
-            </div>
+        <div class="field">
+            <label for="name">Active</label>
+            <input type="checkbox" pInputText id="active" formControlName="active"  autofocus />
+            <small  class="p-error" *ngIf="submitted && addproductForm.controls['active'].errors?.['required']">price is required.</small>
         </div>
+        
+        
+        
     
 
-        <div class="formgrid grid">
-            <div class="field col">
-                <label for="price">Price</label>
-                <p-inputNumber id="price" formControlName="price" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
-            </div>
-             
-        </div>
+        
     </form>
     </ng-template>
          
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="add()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="update()"></button>
+        <button *ngIf="!add_update" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="add()"></button>
+        <button *ngIf="add_update" pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="update()" ></button>
     </ng-template>
 </p-dialog>
 <!-- 
