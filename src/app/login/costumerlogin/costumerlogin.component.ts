@@ -6,8 +6,6 @@ import { DTOLoginCostumer } from 'src/models/classdtologincostumer';
 import { Router } from '@angular/router';
 //import { Router } from '@angular/router';
 
- 
-
 
 @Component({
   selector: 'app-costumerlogin',
@@ -17,18 +15,14 @@ import { Router } from '@angular/router';
 export class CostumerloginComponent implements OnInit {
 
   constructor(private loginservice:LoginService, private _router:Router ) { }
- // constructor() { }
+
    costumer?:Costumer
    st?:string
    forgotpass:boolean=false
    submitted:boolean=false
    submitted2:boolean=false
-  ngOnInit(): void {
-
-
-  }
-  
- 
+  ngOnInit(): void {}
+   
  loginForm:FormGroup=new FormGroup({
     "email":new FormControl("",[Validators.required,Validators.email]),
    "password":new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(14)]),
@@ -52,15 +46,9 @@ export class CostumerloginComponent implements OnInit {
    alert(data.email)
    this.submitted=false;
    this._router.navigate(["/costumerpage"]);
-  
-  }
-);
-  }
+   }
+); }; }
  
-;
- }
- 
-  
 
   login()
   {
@@ -75,8 +63,8 @@ alert(this.loginForm.get("email")?.value)
      // alert(sessionStorage.getItem('token'))
       
   },err=>{alert("password is incorrect")});
-  }
-  }
+  }}
+
   getnewpassword(){
    
    this.submitted2=true;

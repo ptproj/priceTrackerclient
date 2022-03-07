@@ -1,40 +1,19 @@
 
 <div>
 
-       <!-- link:<input formControlName="link" id="link"> -->
-       
-       <!-- <div style="font-size: 5;" *ngIf="addproductForm.controls['link'].errors?.['required']" >you forgot to put a link</div> -->
-       <!-- <button [disabled]="addproductForm.invalid" (click)="add()">add</button>  -->
           <form [formGroup]="addproductForm">
       insert link<input type="text" pInputText id="link" formControlName="link"  autofocus />
        <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-success mr-2" (click)="add()"></button>
        <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">link is required.</small>
      </form>
-     
-<!-- <div *ngIf="loginForm.controls['name'].errors?.required" >this field is required</div> -->
 
-    <!-- <li *ngFor="let product of products">
-        productlink: <p>{{product.productlink}}</p>
-        baseprice:  <p>{{product.baseprice}}</p>
-        finalprice:  <p>{{product.finalprice}}</p>
-  
-       <button (click)="deletediv(product.id)">delete this product</button>
-    </li> -->
 </div>
 <br>
 
-    <!-- <div class="modal" id="myModal" >
-        <div class="modal-content">
-       <span class="close" (click)=close()>&times;</span>
-       <p>are you sure you want to delete this item?</p>
-       <button (click)="delete()">yes, I wanna delete it</button>
-       <button (click)="close()">no, I dont want to</button>
-    </div>
-</div>  -->
 
 
 <p-orderList  *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}" header="your Products" filterBy="baseprice" filterPlaceholder="Filter by price" [dragdrop]="true">
-    <!-- link:<input formControlName="link" id="link"> -->
+
     <ng-template let-product pTemplate="item">
         <div class="product-item">
             <div class="image-container">
@@ -73,18 +52,5 @@
          <p-button (click)=closedialog() label="no" styleClass="p-button-text"></p-button>
          </ng-template>
  </p-dialog>
-<!-- <p-orderList *ngIf="products" [value]="products">
-    <ng-template let-product pTemplate="item">
-        <div class="product-item">
-        <div>
-            <img src="../../assets/AUSTR026.JPG" style="display:inline-block;margin:2px 0 2px 2px" width="48">
-            <a style="font-size:14px;float:right;margin:18px 5px 0 0" href="{{product.productlink}}">{{product.description}}</a>
-            <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{product.baseprice}} </div>
 
-         
-
-        </div>
-        </div>
-    </ng-template>
-</p-orderList> -->
 <button (click)="m()">m</button>

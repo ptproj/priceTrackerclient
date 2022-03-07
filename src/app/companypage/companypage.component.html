@@ -1,73 +1,3 @@
-<!-- <p>companypage works!</p>
-
-<div>
-    <button (click)="addproduct()"> add new product</button>
-     <li *ngFor="let product of products">
-        name:  <p>{{product.name}}</p>
-        description:<p>{{product.description}}</p>
-        productlink:<p>{{product.productlink}}</p>
-        price:<p>{{product.price}}</p>
-        active: <p>{{product.active}}</p>
-        <button (click)="deletediv(product.id)">delete this product</button>
-        <div class="modal1" id="myModal1" >
-            <div class="modal-content1">
-           <span class="close1" (click)=close_del_div()>&times;</span>
-           <p>are you sure you want to delete this item?</p>
-           <button (click)="delete()">yes, I wanna delete it</button>
-           <button (click)="close_del_div()">no, I dont want to</button>
-         </div>
-        </div> 
-        <button (click)="delete()">delete this product</button> -->
-          <!-- <button (click)="edit(product)">edit this product</button>
-     </li> 
-      -->
-     
-    
-<!-- </div> -->
-<!-- <div class="modal" id="myModal" >
-    <div class="modal-content">
-    <form [formGroup]="addproductForm">
-        <span class="close" (click)=close()>&times;</span>
-        link:<input formControlName="link" id="link">
-        <div style="font-size: 5;" *ngIf="addproductForm.controls['link'].errors?.['required']" >this field is required</div>
-        <br>
-        <br>
-        desc:<input formControlName="desc" id="desc">
-        <div style="font-size: 5;" *ngIf="addproductForm.controls['desc'].errors?.['required']" >this field is required</div>
-
-        <br>
-        <br>
-        name:<input formControlName="name" id="name">
-        <div style="font-size: 5;" *ngIf="addproductForm.controls['name'].errors?.['required']" >this field is required</div>
-
-        <br>
-        <br>
-        price:<input formControlName="price" id="price">
-        <div style="font-size: 5;" *ngIf="addproductForm.controls['price'].errors?.['required']" >this field is required</div>
-        <div *ngIf="addproductForm.hasError('pattern', ['price'])" > this field can contain only number</div>
-        
-   
-        <br>
-        <br>
-        img:<input formControlName="img" id="img">
-        <div style="font-size: 5;" *ngIf="addproductForm.controls['img'].errors?.['required']" >this field is required</div>
-
-        <br> 
-        <br>
-        active<input type="checkbox" formControlName="active" />
-        <br>
-        <br>
-        <button *ngIf="add_update"  [disabled]="addproductForm.invalid"  (click)="add()">add</button>
-        <button *ngIf="!add_update"  [disabled]="addproductForm.invalid" (click)="update()" >update</button>
-    </form>
-     </div>
- </div>  -->
-
-
-
-
-
-
 
 <p-toast></p-toast>
 
@@ -224,7 +154,5 @@
     <h1>hhhhhhh</h1>
 </p-dialog> -->
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
-
-
 
 

@@ -36,7 +36,6 @@ forgotpass:boolean=false
     this.submitted=true
     if(!(this.loginForm.invalid)){
 
-    
     this.company=new Company(this.loginForm.get("name")?.value,"",this.loginForm.get("password")?.value);
     this.loginservice.getcompany(this.company).subscribe(data=>{
       alert("after get:)")

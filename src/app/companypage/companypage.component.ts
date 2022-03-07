@@ -48,62 +48,19 @@ export class CompanypageComponent implements OnInit {
 
   ngOnInit(): void {
 
-alert("init companypage")
 this.companypageservice.getcompanyproduct().subscribe(data=>{
-
 
 this.products=data
 this.companypageservice.products=data
 
 
 })
-this.primengConfig.ripple = true;
+//this.primengConfig.ripple = true;
 
   }
-  update(){
-    const id=Number(sessionStorage.getItem('companyid'))
 
-    if(id){
-      this.companyproduct=new Companyproduct(id,
-        this.addproductForm.get("price")?.value,this.addproductForm.get("name")?.value,this.addproductForm.get("desc")?.value,
-        this.addproductForm.get("active")?.value,this. addproductForm.get("link")?.value,this.addproductForm.get("img")?.value )
-     this.companyproduct.id=this.id_product
-    this.companypageservice.updatecompanyproduct(this.companyproduct).subscribe(data=>{
-      if ( this.products){
-      var productsafterdeletet = this.products.filter(x => x.id != this.id_product);
-   this.products=productsafterdeletet}
-      this.products?.push(data);
-      this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was updated succefuly'});
-    })
 
-    }
-this.hideDialog()  }
-    
 
-  
-  delete(){
-    alert("delete")
-    if(this.itemtodelete){
-      this.companypageservice.deletecompanyproduct(this.itemtodelete).subscribe(data=>{
-     if (data==true && this.products){
-   var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
-   this.products=productsafterdeletet}
-
-  })
-    }
-   
-  }
-//   close() {
-//     var modal = document.getElementById("myModal");
-//     if(modal)
-//      modal.style.display = "none";
-//      this.add_update=true
-//   }
-//  pop() {
-//     let modal = document.getElementById("myModal");
-//     if(modal)
-//       modal.style.display = "block";
-//   }
   addproduct(){
     this.addproductForm.controls["price"].setValue("")
       this.addproductForm.controls["name"].setValue("")
@@ -113,29 +70,12 @@ this.hideDialog()  }
       this.addproductForm.controls["link"].setValue("")
   }
 
-  edit(product:Companyproduct|undefined){
-    
-    
-    //this.add_update=false
-    this.add_update=true;
-    if(product){
-      this.addproductForm.controls["price"].setValue(product.price)
-      this.addproductForm.controls["name"].setValue(product.name)
-      this.addproductForm.controls["desc"].setValue(product.description)
-      this.addproductForm.controls["active"].setValue(product.active)
-      this.addproductForm.controls["img"].setValue(product.image)
-      this.addproductForm.controls["link"].setValue(product.productlink)
-    }
-    this.id_product=product?.id
-   this.openNew(0)
-    }
   add(){
     this.submitted=true;
     const id=Number(sessionStorage.getItem('companyid'))
     const x=this.addproductForm.get("link")?.value
     if(!(this.addproductForm.invalid)){
 
-    
     if(id){
       this.companyproduct=new Companyproduct(id,
         this.addproductForm.get("price")?.value,this.addproductForm.get("name")?.value,this.addproductForm.get("desc")?.value,
@@ -151,34 +91,45 @@ this.hideDialog()  }
                 this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was added succefuly'});
               } 
           })
-        }
-        
-    
-    }
-    else{
-
-    }
-    
+        }}
   }
+
+
+
+  edit(product:Companyproduct|undefined){
+    
+    this.add_update=true;
+    if(product){
+      this.addproductForm.controls["price"].setValue(product.price)
+      this.addproductForm.controls["name"].setValue(product.name)
+      this.addproductForm.controls["desc"].setValue(product.description)
+      this.addproductForm.controls["active"].setValue(product.active)
+      this.addproductForm.controls["img"].setValue(product.image)
+      this.addproductForm.controls["link"].setValue(product.productlink)
+    }
+    this.id_product=product?.id
+   this.openNew(0)
+    }
+
+    update(){
+      const id=Number(sessionStorage.getItem('companyid'))
   
+      if(id){
+        this.companyproduct=new Companyproduct(id,
+          this.addproductForm.get("price")?.value,this.addproductForm.get("name")?.value,this.addproductForm.get("desc")?.value,
+          this.addproductForm.get("active")?.value,this. addproductForm.get("link")?.value,this.addproductForm.get("img")?.value )
+       this.companyproduct.id=this.id_product
+      this.companypageservice.updatecompanyproduct(this.companyproduct).subscribe(data=>{
+        if ( this.products){
+        var productsafterdeletet = this.products.filter(x => x.id != this.id_product);
+     this.products=productsafterdeletet}
+        this.products?.push(data);
+        this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was updated succefuly'});
+      })
+  }this.hideDialog()  }
+
+ 
   
-
-  // deletediv(productid:number|undefined){
-  //   this.itemtodelete=productid
-  //   let modal1 = document.getElementById("myModal1");
-  //   if(modal1)
-  //     modal1.style.display = "block";
-
-  // }
-  // close_del_div(){
-  //   var modal = document.getElementById("myModal1");
-  //   if(modal)
-  //    modal.style.display = "none";
-   
-  // }
-  
-
-
   openNew(isnew:Number) {
     if (isnew){
     this.addproductForm.controls["price"].setValue("")
@@ -190,12 +141,13 @@ this.hideDialog()  }
     }
     this.submitted = false;
     this.productDialog = true;
-
 }
+
  hideDialog() {
         this.productDialog = false;
         this.submitted = false;
     }
+
 deleteSelectedProducts(productid:number|undefined) {
       this.confirmationService.confirm({
           message: 'Are you sure you want to delete the selected products?',
@@ -209,20 +161,22 @@ deleteSelectedProducts(productid:number|undefined) {
             this.products=productsafterdeletet}})
             this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
           }}
-        //   if(this.itemtodelete){
-        //     this.companypageservice.deletecompanyproduct(this.itemtodelete).subscribe(data=>{
-        //    if (data==true && this.products){
-        //  var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
-        //  this.products=productsafterdeletet
-      
-        //  }
-         
-      
-      
-        // })
-        //   }
+       
       });
   }
+      
+//  delete(){
+//   alert("delete")
+//   if(this.itemtodelete){
+//     this.companypageservice.deletecompanyproduct(this.itemtodelete).subscribe(data=>{
+//    if (data==true && this.products){
+//  var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
+//  this.products=productsafterdeletet}
+
+// })
+//   }
+ 
+// }
   
 
 }

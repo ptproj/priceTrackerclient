@@ -19,27 +19,14 @@ import { HttpHeaders } from "@angular/common/http";
   }
   
   getcostumerproduct():Observable<Costumerproduct[]>{
-    // const token:any=sessionStorage.getItem('token');
-    // const httpOptions={
-  
-    //      headers:new HttpHeaders({
-    //          'Authorization':token.tostring()
-    //      })
-    //  }
+   
    const costumerid=sessionStorage.getItem('costumerid');
    const c=Number(costumerid)
    return this.http.get<Costumerproduct[]>("api/Costumerproduct/"+c)
      
  }
 deletecostumerproduct(productid:number):Observable<boolean>{
-  // const token:any=sessionStorage.getItem('token');
-  //   const httpOptions={
-  
-  //        headers:new HttpHeaders({
-  //            'Authorization':token.tostring()
-  //        })
-  //    },httpOptions
-    
+ 
    return this.http.delete<boolean>("api/Costumerproduct/"+productid)
 }
 addcostumerproduct(costumerproduct:Costumerproduct):Observable<Costumerproduct>{
