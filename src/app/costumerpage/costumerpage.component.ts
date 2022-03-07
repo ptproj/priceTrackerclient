@@ -3,12 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 import { Costumerproduct } from 'src/models/classcostumerproduct';
 import { CostumerpageService } from './costumerpage.service';
-import {  MessageService } from 'primeng/api';
+import {ConfirmationService,  MessageService } from 'primeng/api';
 @Component({
   selector: 'app-costumerpage',
   templateUrl: './costumerpage.component.html',
   styleUrls: ['./costumerpage.component.css'],
-  providers: [MessageService]
+  providers: [MessageService,ConfirmationService]
 })
 export class CostumerpageComponent implements OnInit {
   addproductForm:FormGroup=new FormGroup({
@@ -19,41 +19,23 @@ export class CostumerpageComponent implements OnInit {
    itemtodelete?:number
    show:boolean=false
    submitted:boolean=false
-  constructor(private costumerpageservice:CostumerpageService,private primengConfig: PrimeNGConfig, private messageService: MessageService) {
+  constructor(private costumerpageservice:CostumerpageService,private primengConfig: PrimeNGConfig, private messageService: MessageService,private confirmationService: ConfirmationService) {
    
    }
 
  costumerproduct?:Costumerproduct
   ngOnInit(): void {
-    
-    alert("init costumerpage")
+    this.primengConfig.ripple = true;
    this.costumerpageservice.getcostumerproduct().subscribe(data=>
     {
-      //data.forEach(x=>alert(x.baseprice))
       this.costumerpageservice.products=data
       this.products=data
-     //this.products.forEach(x=>alert(x.costumerid))
     });
-   // this.primengConfig.ripple = true;
+    
     
    }
-   delete(){
-     if(this.itemtodelete){
-       this.costumerpageservice.deletecostumerproduct(this.itemtodelete).subscribe(x=>{
-      if (x==true && this.products){
-    var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
-    this.products=productsafterdeletet
-    this.show=false
-this.closedialog()
-this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
-alert("yes")
-    }
+ 
 
-
-   })
-     }
-    
-   }
    m(){
     this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
    }
@@ -63,8 +45,7 @@ alert("yes")
     this.submitted=true
     if(!(this.addproductForm.invalid)){
 
-    
-    if(id){
+     if(id){
       alert(x)
       this.costumerproduct=new Costumerproduct(id,this. addproductForm.get("link")?.value )
     this.costumerpageservice.addcostumerproduct(this.costumerproduct).subscribe(x=>{alert(x.id)
@@ -72,27 +53,32 @@ alert("yes")
       this.submitted=false
       this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was added succefuly'});} 
     })
+  } } }
 
-    }
-   } 
-  }
-  close() {
-    var modal = document.getElementById("myModal");
-    if(modal)
-     modal.style.display = "none";
-   
-  }
-  pop() {
-    let modal = document.getElementById("myModal");
-    if(modal)
-      modal.style.display = "block";
-  }
+  
+  
   deletediv(productid:number|undefined){
   this.itemtodelete=productid
   this.show=true
+}
+delete(){
+  if(this.itemtodelete){
+    this.costumerpageservice.deletecostumerproduct(this.itemtodelete).subscribe(x=>{
+   if (x==true && this.products){
+ var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
+ this.products=productsafterdeletet
+ this.show=false
+this.closedialog()
+this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
+alert("yes")
+ }
+})
+  }
+ 
 }
 closedialog()
 {
   this.show=false
 }
+
 }
