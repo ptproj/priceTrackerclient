@@ -12,8 +12,7 @@ import {DialogModule} from 'primeng/dialog';
 import { InputTextModule } from "primeng/inputtext";
 import {ToastModule} from 'primeng/toast';
 import {RippleModule} from 'primeng/ripple';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+
 // import {OrderListModule} from 'primeng/orderlist';
 // import { AccordionModule } from 'primeng/accordion';
 
@@ -39,8 +38,6 @@ import { BrowserModule } from '@angular/platform-browser';
     ButtonModule,
     DialogModule,
     InputTextModule,
-    BrowserAnimationsModule,
-    BrowserModule,
     RippleModule,
     FormsModule
   

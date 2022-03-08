@@ -12,7 +12,7 @@ import { PrimeNGConfig } from "primeng/api";
 @Component({
   selector: 'app-companypage',
   templateUrl: './companypage.component.html',
-  styleUrls: ['./companypage.component.scss'],
+  styleUrls: ['./companypage.component.css'],
   styles: [`
   :host ::ng-deep .p-dialog .product-image {
       width: 150px;

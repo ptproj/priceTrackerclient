@@ -25,7 +25,7 @@ export class CostumerpageComponent implements OnInit {
 
  costumerproduct?:Costumerproduct
   ngOnInit(): void {
-    this.primengConfig.ripple = true;
+    //this.primengConfig.ripple = true;
    this.costumerpageservice.getcostumerproduct().subscribe(data=>
     {
       this.costumerpageservice.products=data
@@ -36,9 +36,7 @@ export class CostumerpageComponent implements OnInit {
    }
  
 
-   m(){
-    this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
-   }
+  
   add(){
     const id=Number(sessionStorage.getItem('costumerid'))
     const x=this.addproductForm.get("link")?.value
@@ -48,10 +46,11 @@ export class CostumerpageComponent implements OnInit {
      if(id){
       alert(x)
       this.costumerproduct=new Costumerproduct(id,this. addproductForm.get("link")?.value )
-    this.costumerpageservice.addcostumerproduct(this.costumerproduct).subscribe(x=>{alert(x.id)
+    this.costumerpageservice.addcostumerproduct(this.costumerproduct).subscribe(x=>{
       if(this.costumerproduct){this.products?.push(x)
       this.submitted=false
       this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was added succefuly'});} 
+      this.addproductForm.controls["link"].setValue("")
     })
   } } }
 
@@ -70,7 +69,6 @@ delete(){
  this.show=false
 this.closedialog()
 this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
-alert("yes")
  }
 })
   }
