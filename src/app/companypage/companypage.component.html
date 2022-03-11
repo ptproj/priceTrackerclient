@@ -65,7 +65,8 @@
                 <!-- <td>{{product.price}}</td> -->
                 <td>{{product.price | currency:'ILS'}}</td>
                 <td>{{product.description}}</td>
-                <td>{{product.active}}</td>
+                <td>{{getactive(product)}}</td>
+                <!-- <td>{{product.active}}</td> -->
                 <td>   <a class="mb-2" href="{{product.productlink}}">{{product.productlink}}</a></td>
                 <!-- <td><span [class]="'product-badge status-' + 'OUTOFSTOCK'.toLowerCase">{{product.inventoryStatus}}</span></td> -->
                 <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td> -->
