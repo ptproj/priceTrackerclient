@@ -1,10 +1,10 @@
 
 <p-toast></p-toast>
-
-<div class="card">
+<div *ngIf="packageid>0">
+<div  class="card">
     <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew(1)"></button>  
+            <button [disabled]="packageid==0" pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew(1)"></button>  
 
             <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
 
@@ -87,6 +87,7 @@
         </ng-template>
     </p-table>
 </div>
+</div>
 
 
 
@@ -149,10 +150,12 @@
         <button *ngIf="add_update" pButton pRipple label="update" icon="pi pi-check" class="p-button-text" (click)="update()" ></button>
     </ng-template>
 </p-dialog>
-<!-- 
-<p-dialog header="Product Details" [modal]="true" styleClass="p-fluid">
-    <h1>hhhhhhh</h1>
-</p-dialog> -->
+  
+<div *ngIf="packageid==0">
+    <img src="../../../assets/AUSTR026.JPG"  width="1100" class="shadow-4" />
+</div>
+
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 
-
+<button [disabled]="packageid>0" (click)="buypackage()">buy package</button>
+<app-companypackage [buypackage]="buypackagebool"></app-companypackage>

@@ -41,6 +41,7 @@ forgotpass:boolean=false
       alert("after get:)")
        sessionStorage.setItem('token', data.token|| '')
        sessionStorage.setItem('companyid', data.id?.toString()|| '')
+       sessionStorage.setItem('haspackage', data.packageid?.toString()|| "0")
        alert(data.id)
        this.submitted=false
        this._router.navigate(["/companypage"])
@@ -52,6 +53,7 @@ get getformgroup(){
 }
 
 signin_bool(){this.sub=true;}
+login_bool(){this.sub=false;}
   signin(){
     
     this.submitted=true

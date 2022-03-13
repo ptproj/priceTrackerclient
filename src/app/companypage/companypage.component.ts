@@ -28,12 +28,11 @@ export class CompanypageComponent implements OnInit {
   companyproduct?:Companyproduct
   add_update:boolean=false
   itemtodelete?:number
-  color:string="instock"
-
+  haspackage:boolean=false
   submitted:boolean=false
   productDialog:boolean=false
-
-
+  packageid:number=0
+  buypackagebool:boolean=false
 
   addproductForm:FormGroup=new FormGroup({
     "link":new FormControl("",[Validators.required]),
@@ -47,6 +46,8 @@ export class CompanypageComponent implements OnInit {
   constructor( private messageService: MessageService,private companypageservice:CompanypageService,private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
+   
+this.packageid=Number(sessionStorage.getItem('haspackage'))
 
 this.companypageservice.getcompanyproduct().subscribe(data=>{
 
@@ -126,12 +127,14 @@ this.companypageservice.products=data
         this.products?.push(data);
         this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was updated succefuly'});
       })
-  }this.hideDialog()  }
+  }this.hideDialog() 
+this.add_update=false }
 
  
   
   openNew(isnew:Number) {
     if (isnew){
+      this.add_update=false;
     this.addproductForm.controls["price"].setValue("")
       this.addproductForm.controls["name"].setValue("")
       this.addproductForm.controls["desc"].setValue("")
@@ -178,5 +181,7 @@ deleteSelectedProducts(productid:number|undefined) {
  
 // }
   
-
+buypackage(){
+this.buypackagebool=true
+}
 }

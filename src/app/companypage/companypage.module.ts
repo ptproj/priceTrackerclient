@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CompanypageComponent } from './companypage.component';
+import { CompanypackageComponent } from '..//companypackage/companypackage.component';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 //import { FileUploadModule } from 'primeng/fileupload';
@@ -17,12 +18,13 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 @NgModule({
-  declarations: [CompanypageComponent],
+  exports:[CompanypageComponent],
+  declarations: [CompanypageComponent,CompanypackageComponent],
   imports: [ReactiveFormsModule,InputTextModule, HttpClientModule,  CommonModule,ToastModule, 
     ToolbarModule ,TableModule,DialogModule,
     InputTextareaModule,ConfirmDialogModule,InputNumberModule
 ],
-  exports:[CompanypageComponent],
+
 
   
   // schemas: [CUSTOM_ELEMENTS_SCHEMA ]
