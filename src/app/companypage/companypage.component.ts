@@ -4,6 +4,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Companyproduct } from 'src/models/classcompanyproduct';
 import { CompanypageService } from './companypage.service';
 import { PrimeNGConfig } from "primeng/api";
+import { ActivationEnd } from '@angular/router';
 
  
 // import { ConfirmationService } from 'primeng/api';

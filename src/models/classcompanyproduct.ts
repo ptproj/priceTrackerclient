@@ -18,5 +18,6 @@ export class Companyproduct{
         this.productlink=productlink;
         this.image=image;
     }
+    
 
 }
