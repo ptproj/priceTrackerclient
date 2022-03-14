@@ -181,6 +181,12 @@ deleteSelectedProducts(productid:number|undefined) {
 //   }
  
 // }
+getactive(product:Companyproduct|undefined){
+if(product?.active)
+return "Active";
+else return "Not active"
+
+}
   
 buypackage(){
 this.buypackagebool=true
