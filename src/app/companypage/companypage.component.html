@@ -92,7 +92,7 @@
 
 
 
-<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true" styleClass="p-fluid"   >
+<p-dialog [(visible)]="productDialog" [style]="{width: '750px'}" header="Product Details" [modal]="true" styleClass="p-fluid"   >
     <ng-template pTemplate="content">
         <!-- <img src="../../../assets/AUSTR026.JPG" *ngIf="companyproduct" [alt]="companyproduct.image" class="product-image" *ngIf="companyproduct.image"> -->
         <form [formGroup]="addproductForm">
@@ -114,7 +114,18 @@
             <small  class="p-error" *ngIf="submitted && addproductForm.controls['img'].errors?.['required']">Image is required.</small>
         </div>
 
-
+        <div class="field">
+            <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
+            accept="image/*" >
+            <!-- maxFileSize="1000000" -->
+            <ng-template pTemplate="content">
+                <div *ngIf="uploadedFile">
+                    <li >{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li>
+                </div>
+                
+            </ng-template>
+    </p-fileUpload>
+        </div>
         <div class="field">
             <label for="description">Description</label>
             <textarea id="description" pInputTextarea formControlName="desc"  rows="3" cols="20"></textarea>
@@ -123,7 +134,7 @@
        
         
         
-
+<!-- <button (click)="func()">click</button> -->
    
   
       

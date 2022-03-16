@@ -9,7 +9,6 @@ import { RouterModule,Route } from '@angular/router';
 import { CostumerpageModule } from './costumerpage/costumerpage.module';
 import { CostumerpageComponent } from './costumerpage/costumerpage.component';
 import { BeginComponent } from './begin/begin.component';
-import { CompanyloginComponent } from './login/companylogin/companylogin.component';
 import { CompanypageComponent } from './companypage/companypage.component';
 import { CompanypageModule } from './companypage/companypage.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -22,7 +21,7 @@ import { ButtonModule } from "primeng/button";
  import {DialogModule} from 'primeng/dialog';
  import { ConfirmDialogModule } from 'primeng/confirmdialog';
  import { InputTextareaModule } from 'primeng/inputtextarea';
- 
+
  import {CheckboxModule} from 'primeng/checkbox';
 // import {CalendarModule} from 'primeng/calendar';
 // import {SliderModule} from 'primeng/slider';

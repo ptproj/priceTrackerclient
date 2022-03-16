@@ -12,7 +12,7 @@ import {DialogModule} from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputNumberModule} from 'primeng/inputnumber';
-
+import {FileUploadModule} from 'primeng/fileupload';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 //import { CheckboxModule } from 'primeng/checkbox';
 
@@ -21,7 +21,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
   exports:[CompanypageComponent],
   declarations: [CompanypageComponent,CompanypackageComponent],
   imports: [ReactiveFormsModule,InputTextModule, HttpClientModule,  CommonModule,ToastModule, 
-    ToolbarModule ,TableModule,DialogModule,
+    ToolbarModule ,TableModule,DialogModule,FileUploadModule,
     InputTextareaModule,ConfirmDialogModule,InputNumberModule
 ],
 

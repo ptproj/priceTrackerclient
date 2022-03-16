@@ -191,4 +191,36 @@ else return "Not active"
 buypackage(){
 this.buypackagebool=true
 }
+
+uploadedFile: any;
+
+onUpload(event: { files: any; }) {
+  for(let file of event.files) {
+      this.uploadedFile=file;
+  }
+
+  this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+}
+// private readBase64(file: any): Promise<any> {
+//   const reader = new FileReader();
+//   const future = new Promise((resolve, reject) => {
+//     reader.addEventListener('load', function () {
+//       resolve(reader.result);
+//     }, false);
+//     reader.addEventListener('error', function (event) {
+//       reject(event);
+//     }, false);
+  
+//     reader.readAsDataURL(file);
+//   });
+//   return future;}
+//   func(){
+//     const file =this.uploadedFile
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
+//     reader.onload = () => {
+//         alert(reader.result);
+//     };
+//     }
+ 
 }
