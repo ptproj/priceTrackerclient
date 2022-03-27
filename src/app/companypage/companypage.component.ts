@@ -41,7 +41,7 @@ export class CompanypageComponent implements OnInit {
     "name":new FormControl("",[Validators.required]),
     "price":new FormControl("",[Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
     "active":new FormControl("",[Validators.required]),
-    "img":new FormControl("",[Validators.required])
+    "img":new FormControl("")
 
   })
   constructor( private messageService: MessageService,private companypageservice:CompanypageService,private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig) { }
@@ -60,7 +60,12 @@ this.companypageservice.products=data
 //this.primengConfig.ripple = true;
 
   }
-
+  selectedFile:any;
+  onFileChanged(event:any) {
+    debugger;
+    this.selectedFile = event.target.files[0]
+    debugger;
+  }
 
 
   addproduct(){
@@ -73,17 +78,18 @@ this.companypageservice.products=data
   }
 
   add(){
+    debugger;
     this.submitted=true;
     const id=Number(sessionStorage.getItem('companyid'))
     const x=this.addproductForm.get("link")?.value
     if(!(this.addproductForm.invalid)){
-
+      this.addproductForm.controls["img"].setValue("hhhh")
     if(id){
       this.companyproduct=new Companyproduct(id,
         this.addproductForm.get("price")?.value,this.addproductForm.get("name")?.value,this.addproductForm.get("desc")?.value,
         this.addproductForm.get("active")?.value,this. addproductForm.get("link")?.value,this.addproductForm.get("img")?.value )
-       
-          this.companypageservice.addcompanyproduct(this.companyproduct).subscribe(
+        debugger;
+          this.companypageservice.addcompanyproduct(this.companyproduct, this.uploadedFile).subscribe(
             data=>{
               if(this.companyproduct){this.products?.push(data)
                
@@ -194,12 +200,13 @@ this.buypackagebool=true
 
 uploadedFile: any;
 
-onUpload(event: { files: any; }) {
+onUploadHandler(event: any) {
   for(let file of event.files) {
       this.uploadedFile=file;
   }
 
   this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+  
 }
 // private readBase64(file: any): Promise<any> {
 //   const reader = new FileReader();

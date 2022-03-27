@@ -22,10 +22,16 @@ export class CompanypageService {
 
 
   }
-  addcompanyproduct(companyproduct:Companyproduct):Observable<Companyproduct>{
-    return this.http.post<Companyproduct>("api/Companyproduct/",companyproduct)
+  addcompanyproduct(companyproduct:Companyproduct,file:any):Observable<Companyproduct>{
+    let formData = new FormData();
+ 
+   formData.append('file', file, file.name);
+   let obj={companyproduct:companyproduct,file:formData}
+    return this.http.post<Companyproduct>("api/Companyproduct/",formData)
   }
   updatecompanyproduct(companyproduct:Companyproduct):Observable<Companyproduct>{
    return this.http.put<Companyproduct>("api/Companyproduct/",companyproduct)
   }
+
+ 
 }

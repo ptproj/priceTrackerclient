@@ -60,19 +60,37 @@ export class CostumerpageComponent implements OnInit {
   this.itemtodelete=productid
   this.show=true
 }
-delete(){
-  if(this.itemtodelete){
-    this.costumerpageservice.deletecostumerproduct(this.itemtodelete).subscribe(x=>{
-   if (x==true && this.products){
- var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
- this.products=productsafterdeletet
- this.show=false
-this.closedialog()
-this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
- }
-})
-  }
+// delete(){
+//   if(this.itemtodelete){
+//     this.costumerpageservice.deletecostumerproduct(this.itemtodelete).subscribe(x=>{
+//    if (x==true && this.products){
+//  var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
+//  this.products=productsafterdeletet
+//  this.show=false
+// this.closedialog()
+// this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
+//  }
+// })
+//   }
  
+// }
+
+delete(productid:number|undefined) {
+  this.itemtodelete=productid
+  this.confirmationService.confirm({
+      message: 'Are you sure you want to delete the selected products?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        if(this.itemtodelete){
+        this.costumerpageservice.deletecostumerproduct(this.itemtodelete).subscribe(data=>{
+        if (data==true && this.products){
+        var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
+        this.products=productsafterdeletet}})
+        this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
+      }}
+   
+  });
 }
 closedialog()
 {

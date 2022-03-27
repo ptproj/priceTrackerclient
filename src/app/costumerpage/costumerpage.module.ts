@@ -12,6 +12,7 @@ import {DialogModule} from 'primeng/dialog';
 import { InputTextModule } from "primeng/inputtext";
 import {ToastModule} from 'primeng/toast';
 import {RippleModule} from 'primeng/ripple';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 // import {OrderListModule} from 'primeng/orderlist';
 // import { AccordionModule } from 'primeng/accordion';
@@ -39,8 +40,8 @@ import {RippleModule} from 'primeng/ripple';
     DialogModule,
     InputTextModule,
     RippleModule,
-    FormsModule
-  
+    FormsModule,
+    ConfirmDialogModule  
    
   ],
   exports:[CostumerpageComponent]

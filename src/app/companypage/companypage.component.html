@@ -110,24 +110,31 @@
             <input type="text" pInputText id="link" formControlName="link"  autofocus />
             <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">link is required.</small>
         </div>
-        <div class="field">
+        <!-- <div class="field">
             <label for="link">Image</label>
             <input type="text" pInputText id="image" formControlName="img"  autofocus />
             <small  class="p-error" *ngIf="submitted && addproductForm.controls['img'].errors?.['required']">Image is required.</small>
-        </div>
+        </div> -->
 
         <div class="field">
-            <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
-            accept="image/*" >
-            <!-- maxFileSize="1000000" -->
-            <ng-template pTemplate="content">
-                <div *ngIf="uploadedFile">
-                    <li >{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li>
+            <p-fileUpload name="demo[]"  [customUpload]="true"  (uploadHandler)="onUploadHandler($event)"
+            accept="image/*"    >
+           
+             <ng-template pTemplate="content">
+                <div *ngIf="uploadedFile" formControlName="img">
+                    <li  >{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li> 
+                  
                 </div>
-                
-            </ng-template>
+                  <!-- <small  class="p-error" *ngIf="submitted && addproductForm.controls['img'].errors?.['required']">Image is required.</small> -->
+            </ng-template> 
     </p-fileUpload>
-        </div>
+</div>
+    <!-- <input formControlName="img"
+  style="display:grid"
+  type="file" (change)="onFileChanged($event)"
+  #fileInput>
+<button (click)="fileInput.click()">Select File</button> -->
+        
         <div class="field">
             <label for="description">Description</label>
             <textarea id="description" pInputTextarea formControlName="desc"  rows="3" cols="20"></textarea>
