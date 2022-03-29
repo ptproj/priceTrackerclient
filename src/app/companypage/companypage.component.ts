@@ -50,13 +50,13 @@ export class CompanypageComponent implements OnInit {
    
 this.packageid=Number(sessionStorage.getItem('haspackage'))
 
-this.companypageservice.getcompanyproduct().subscribe(data=>{
+//this.companypageservice.getcompanyproduct().subscribe(data=>{
 
-this.products=data
-this.companypageservice.products=data
+//this.products=data
+//this.companypageservice.products=data
 
 
-})
+//})
 //this.primengConfig.ripple = true;
 
   }

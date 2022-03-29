@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Package } from 'src/models/classpackage';
+import { CompanypageService } from '../companypage/companypage.service';
 
 @Component({
   selector: 'app-companypackage',
@@ -9,10 +11,22 @@ export class CompanypackageComponent implements OnInit {
   @Input()
   buypackage?:boolean
   paymentHandler: any = null;
-  constructor() {}
+  packages:Package[] | undefined
+  constructor(private companypageservice:CompanypageService) {}
   ngOnInit() {
     this.invokeStripe();
+    
+    this.companypageservice.getpackage().subscribe((data: Package[] | undefined)=>{this.packages=data})
+
+
   }
+  func(){
+    this.companypageservice.getpackage().subscribe((data: Package[] | undefined)=>{this.packages=data
+      if(this.packages){alert(this.packages[0].productsamount)}
+    })
+    }
+  
+    
   makePayment(amount: any) {
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51H7bbSE2RcKvfXD4DZhu',
@@ -29,6 +43,7 @@ export class CompanypackageComponent implements OnInit {
     });
   }
   invokeStripe() {
+    
     if (!window.document.getElementById('stripe-script')) {
       const script = window.document.createElement('script');
       script.id = 'stripe-script';

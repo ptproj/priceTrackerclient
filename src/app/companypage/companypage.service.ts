@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Companyproduct } from 'src/models/classcompanyproduct';
 import { Costumerproduct } from 'src/models/classcostumerproduct';
+import { Package } from 'src/models/classpackage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,12 @@ export class CompanypageService {
   updatecompanyproduct(companyproduct:Companyproduct):Observable<Companyproduct>{
    return this.http.put<Companyproduct>("api/Companyproduct/",companyproduct)
   }
+  getpackage():Observable<Package[]>{
+    const companyid=sessionStorage.getItem('companyid');
+    const c=Number(companyid);
+    return this.http.get<Package[]>("/api/Package/"+c)
 
+
+  }
  
 }
