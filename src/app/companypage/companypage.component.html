@@ -7,7 +7,7 @@
     <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
             <button [disabled]="packageid==0" pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew(1)"></button>  
-
+            <button class="pricingTable-firstTable_table__getstart" (click)="openNew(1)"  icon="pi pi-plus" >+  Add New Product</button>
             <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button> -->
 
 
@@ -184,5 +184,4 @@
 </table> -->
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 
-<button  [disabled]="packageid>0" (click)="buypackage()">buy package</button>
-
+<button [disabled]="packageid>0" pButton pRipple label="buy package" class="p-button-success mr-2" (click)="buypackage()"></button> 

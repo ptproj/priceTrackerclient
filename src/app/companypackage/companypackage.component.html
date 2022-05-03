@@ -1,13 +1,13 @@
 <div *ngIf="buypackage">
 
-  <table>
+  <!-- <table>
     <tr *ngFor="let package of packages">
       <td> {{package.productsamount}} </td>
       <td> {{package.price}} </td>
       <td> {{package.duration}} </td>
       <button (click)="makePayment(package.id)">buy me </button>
     </tr>
-  </table>
+  </table> -->
 
   <div class="pricingTable">
     <h2 class="pricingTable-title">Find a plan that's right for you.</h2>
@@ -16,9 +16,9 @@
     <ul class="pricingTable-firstTable">
       <li class="pricingTable-firstTable_table" *ngFor="let package of packages">
         <h1 class="pricingTable-firstTable_table__header">Bronze Packege</h1>
-        <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>{{package.price}}</span><span>{{package.duration}} days</span></p>
+        <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>{{package.price}}</span><span></span></p>
         <ul class="pricingTable-firstTable_table__options">
-          <li>Unlimited Listing</li>
+          <li>{{package.duration}} days</li>
           <li>Edit Your Listing</li>
           <li>Approve Reviews</li>
         </ul>
