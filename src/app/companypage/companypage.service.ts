@@ -35,11 +35,14 @@ export class CompanypageService {
    return this.http.put<Companyproduct>("api/Companyproduct/",companyproduct)
   }
   getpackage():Observable<Package[]>{
+ 
+    return this.http.get<Package[]>("/api/Package/")
+
+
+  }
+  buyPackage(packageid:number):Observable<boolean>{
     const companyid=sessionStorage.getItem('companyid');
-    const c=Number(companyid);
-    return this.http.get<Package[]>("/api/Package/"+c)
-
-
+   return this.http.put<boolean>("/api/Company/"+packageid+"/"+companyid,null)
   }
  
 }

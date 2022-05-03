@@ -1,177 +1,83 @@
 <div *ngIf="buypackage">
-<p>companypackage works!</p>
 
-<div>
-    <h2>Angular Stripe Checkout Page</h2>
-  
-    <div class="container">
+  <table>
+    <tr *ngFor="let package of packages">
+      <td> {{package.productsamount}} </td>
+      <td> {{package.price}} </td>
+      <button (click)="makePayment(package.id)">buy me </button>
+    </tr>
+  </table>
 
-        <h2 class="mt-5 mb-4">Angular Stripe Checkout Example</h2>
-        <style>
-          .left{float:left; width:33%;}
-        </style>
-        <div class="left">
-        <div class="col-md-5 mb-2">
-          <button (click)="makePayment(15)" class="btn btn-danger btn-block">Pay $15</button>
-        </div>
-      </div>
-      <div class="left">
-         <div class="col-md-5 mb-2">
-          <button (click)="makePayment(25)" class="btn btn-primary btn-block">Pay $25</button>
-        </div>
 
-        </div>
-
-        <div class="left">
-        <div class="col-md-5">
-          <button (click)="makePayment(35)" class="btn btn-success btn-block">Pay $35</button>
-        </div>
-         details...................................................................</div>
-
-    </div>
-       
-    <button (click)="func()">func</button>
-    <!-- </div>
-    <div class="container">
-      <div class="row">
-          <div class="col-lg-4 mb-lg-0 mb-3">
-              <div class="card p-3">
-                  <div class="img-box"> <img src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png" alt=""> </div>
-                  <div class="number"> <label class="fw-bold" for="">**** **** **** 1060</label> </div>
-                  <div class="d-flex align-items-center justify-content-between"> <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small> <small><span class="fw-bold">Name:</span><span>Kumar</span></small> </div>
-              </div>
-          </div>
-          <div class="col-lg-4 mb-lg-0 mb-3">
-              <div class="card p-3">
-                  <div class="img-box"> <img src="https://www.freepnglogos.com/uploads/mastercard-png/file-mastercard-logo-svg-wikimedia-commons-4.png" alt=""> </div>
-                  <div class="number"> <label class="fw-bold">**** **** **** 1060</label> </div>
-                  <div class="d-flex align-items-center justify-content-between"> <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small> <small><span class="fw-bold">Name:</span><span>Kumar</span></small> </div>
-              </div>
-          </div>
-          <div class="col-lg-4 mb-lg-0 mb-3">
-              <div class="card p-3">
-                  <div class="img-box"> <img src="https://www.freepnglogos.com/uploads/discover-png-logo/credit-cards-discover-png-logo-4.png" alt=""> </div>
-                  <div class="number"> <label class="fw-bold">**** **** **** 1060</label> </div>
-                  <div class="d-flex align-items-center justify-content-between"> <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small> <small><span class="fw-bold">Name:</span><span>Kumar</span></small> </div>
-              </div>
-          </div>
-          <div class="col-12 mt-4">
-              <div class="card p-3">
-                  <p class="mb-0 fw-bold h4">Payment Methods</p>
-              </div>
-          </div>
-          <div class="col-12">
-              <div class="card p-3">
-                  <div class="card-body border p-0">
-                      <p> <a class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-between" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample"> <span class="fw-bold">PayPal</span> <span class="fab fa-cc-paypal"> </span> </a> </p>
-                      <div class="collapse p-3 pt-0" id="collapseExample">
-                          <div class="row">
-                              <div class="col-8">
-                                  <p class="h4 mb-0">Summary</p>
-                                  <p class="mb-0"><span class="fw-bold">Product:</span><span class="c-green">: Name of product</span></p>
-                                  <p class="mb-0"><span class="fw-bold">Price:</span><span class="c-green">:$452.90</span></p>
-                                  <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque nihil neque quisquam aut repellendus, dicta vero? Animi dicta cupiditate, facilis provident quibusdam ab quis, iste harum ipsum hic, nemo qui!</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card-body border p-0">
-                      <p> <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample"> <span class="fw-bold">Credit Card</span> <span class=""> <span class="fab fa-cc-amex"></span> <span class="fab fa-cc-mastercard"></span> <span class="fab fa-cc-discover"></span> </span> </a> </p>
-                      <div class="collapse show p-3 pt-0" id="collapseExample">
-                          <div class="row">
-                              <div class="col-lg-5 mb-lg-0 mb-3">
-                                  <p class="h4 mb-0">Summary</p>
-                                  <p class="mb-0"><span class="fw-bold">Product:</span><span class="c-green">: Name of product</span> </p>
-                                  <p class="mb-0"> <span class="fw-bold">Price:</span> <span class="c-green">:$452.90</span> </p>
-                                  <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque nihil neque quisquam aut repellendus, dicta vero? Animi dicta cupiditate, facilis provident quibusdam ab quis, iste harum ipsum hic, nemo qui!</p>
-                              </div>
-                              <div class="col-lg-7">
-                                  <form action="" class="form">
-                                      <div class="row">
-                                          <div class="col-12">
-                                              <div class="form__div"> <input type="text" class="form-control" placeholder=" "> <label for="" class="form__label">Card Number</label> </div>
-                                          </div>
-                                          <div class="col-6">
-                                              <div class="form__div"> <input type="text" class="form-control" placeholder=" "> <label for="" class="form__label">MM / yy</label> </div>
-                                          </div>
-                                          <div class="col-6">
-                                              <div class="form__div"> <input type="password" class="form-control" placeholder=" "> <label for="" class="form__label">cvv code</label> </div>
-                                          </div>
-                                          <div class="col-12">
-                                              <div class="form__div"> <input type="text" class="form-control" placeholder=" "> <label for="" class="form__label">name on the card</label> </div>
-                                          </div>
-                                          <div class="col-12">
-                                              <div class="btn btn-primary w-100">Sumbit</div>
-                                          </div>
-                                      </div>
-                                  </form>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-12">
-              <div class="btn btn-primary payment"> Make Payment </div>
-          </div>
-      </div>
-  </div> -->
-
-  <div id="wrapper">
+  <div id="wrapper" *ngIf="payment">
     <div class="row">
       <div class="col-xs-5">
         <div id="cards">
           <img src="http://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Visa-icon.png">
           <img src="http://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Master-Card-icon.png">
-        </div><!--#cards end-->
+        </div>
+        <!--#cards end-->
         <div class="form-check">
-    <label class="form-check-label" for='card'>
-      <input id="card" class="form-check-input" type="checkbox" value="">
-      Pay $150.00 with credit card
-    </label>
-  </div>
-      </div><!--col-xs-5 end-->
+          <label class="form-check-label" for='card'>
+            <input id="card" class="form-check-input" type="checkbox" value="">
+            Pay $150.00 with credit card
+          </label>
+        </div>
+      </div>
+      <!--col-xs-5 end-->
       <div class="col-xs-5">
         <div id="cards">
           <img src="http://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Paypal-icon.png">
-        </div><!--#cards end-->
+        </div>
+        <!--#cards end-->
         <div class="form-check">
-    <label class="form-check-label" for='paypal'>
-      <input id="paypal" class="form-check-input" type="checkbox" value="">
-      Pay $150.00 with PayPal
-    </label>
-  </div>
-      </div><!--col-xs-5 end-->
-    </div><!--row end-->
+          <label class="form-check-label" for='paypal'>
+            <input id="paypal" class="form-check-input" type="checkbox" value="">
+            Pay $150.00 with PayPal
+          </label>
+        </div>
+      </div>
+      <!--col-xs-5 end-->
+    </div>
+    <!--row end-->
     <div class="row">
       <div class="col-xs-5">
         <i class="fa fa fa-user"></i>
         <label for="cardholder">Cardholder's Name</label>
         <input type="text" id="cardholder">
-      </div><!--col-xs-5-->
+      </div>
+      <!--col-xs-5-->
       <div class="col-xs-5">
         <i class="fa fa-credit-card-alt"></i>
         <label for="cardnumber">Card Number</label>
         <input type="text" id="cardnumber">
-      </div><!--col-xs-5-->
-    </div><!--row end-->
+      </div>
+      <!--col-xs-5-->
+    </div>
+    <!--row end-->
     <div class="row row-three">
       <div class="col-xs-2">
         <i class="fa fa-calendar"></i>
         <label for="date">Valid thru</label>
         <input type="text" placeholder="MM/YY" id="date">
-      </div><!--col-xs-3-->
+      </div>
+      <!--col-xs-3-->
       <div class="col-xs-2">
         <i class="fa fa-lock"></i>
         <label for="date">CVV / CVC *</label>
         <input type="text">
-      </div><!--col-xs-3-->
+      </div>
+      <!--col-xs-3-->
       <div class="col-xs-5">
-        <span class="small">* CVV or CVC is the card security code, unique three digits number on the back of your card seperate from its number.</span>
-      </div><!--col-xs-6 end-->
-    </div><!--row end-->
+        <span class="small">* CVV or CVC is the card security code, unique three digits number on the back of your card
+          seperate from its number.</span>
+      </div>
+      <!--col-xs-6 end-->
+    </div>
+    <!--row end-->
     <footer>
-      <button class="btn">Cancle</button>
-      <button class="btn">Buy Package</button>
+      <button class="btn" (click)="canclePayment()">Cancle</button>
+      <button class="btn" (click)="buyPackage()">Buy Package</button>
     </footer>
-  </div><!--wrapper end-->
+  </div>
+  <!--wrapper end-->

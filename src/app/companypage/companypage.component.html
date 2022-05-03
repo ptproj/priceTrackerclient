@@ -175,7 +175,7 @@
 
 <!-- </td>
 <td> -->
-    <app-companypackage [buypackage]="buypackagebool"></app-companypackage>
+    <app-companypackage (onPaymentEvent)="payment($event)" [buypackage]="buypackagebool"></app-companypackage>
     <!-- <div *ngIf="packageid==0">
         <img src="../../../assets/AUSTR026.JPG"  width="1100" class="shadow-4" />
     </div> -->
@@ -184,5 +184,5 @@
 </table> -->
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 
-<button [disabled]="packageid>0" (click)="buypackage()">buy package</button>
+<button  [disabled]="packageid>0" (click)="buypackage()">buy package</button>
 

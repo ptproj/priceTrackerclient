@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Package } from 'src/models/classpackage';
 import { CompanypageService } from '../companypage/companypage.service';
 
@@ -8,66 +8,41 @@ import { CompanypageService } from '../companypage/companypage.service';
   styleUrls: ['./companypackage.component.css']
 })
 export class CompanypackageComponent implements OnInit {
+  @Output()
+  onPaymentEvent = new EventEmitter<number>();
   @Input()
-  buypackage?:boolean
+  buypackage?: boolean
+  packageid?: number
   paymentHandler: any = null;
-  packages:Package[] | undefined
-  constructor(private companypageservice:CompanypageService) {}
+  packages: Package[] | undefined
+  payment: boolean = false
+  constructor(private companypageservice: CompanypageService) { }
   ngOnInit() {
-    this.invokeStripe();
-    
-    this.companypageservice.getpackage().subscribe((data: Package[] | undefined)=>{this.packages=data})
-
-
-  }
-  func(){
-    this.companypageservice.getpackage().subscribe((data: Package[] | undefined)=>{this.packages=data
-      if(this.packages){alert(this.packages[0].productsamount)}
-    })
-    }
-  
-    
-  makePayment(amount: any) {
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51H7bbSE2RcKvfXD4DZhu',
-      locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(stripeToken);
-        alert('Stripe token generated!');
-      },
-    });
-    paymentHandler.open({
-      name: 'Positronx',
-      description: '3 widgets',
-      amount: amount * 100,
-    });
-  }
-  invokeStripe() {
-    
-    if (!window.document.getElementById('stripe-script')) {
-      const script = window.document.createElement('script');
-      script.id = 'stripe-script';
-      script.type = 'text/javascript';
-      script.src = 'https://checkout.stripe.com/checkout.js';
-      script.onload = () => {
-        this.paymentHandler = (<any>window).StripeCheckout.configure({
-          key: 'pk_test_51H7bbSE2RcKvfXD4DZhu',
-          locale: 'auto',
-          token: function (stripeToken: any) {
-            console.log(stripeToken);
-            alert('Payment has been successfull!');
-          },
-        });
-      };
-      window.document.body.appendChild(script);
-    }
+    this.companypageservice.getpackage().subscribe((data: Package[] | undefined) => { this.packages = data })
   }
 
+
+
+  makePayment(packageid: any) {
+    this.payment = true
+    this.packageid = packageid
+  }
+  canclePayment() {
+    this.payment = false
+  }
+  buyPackage() {
+    if (this.packageid)
+      this.companypageservice.buyPackage(this.packageid).subscribe(data => {
+        if (data) {
+          this.onPaymentEvent.emit(this.packageid)
+        }
+      })
+  }
 }
 
- 
 
-  
 
-  
+
+
+
 
