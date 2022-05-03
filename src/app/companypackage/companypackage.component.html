@@ -22,7 +22,7 @@
           <li>Edit Your Listing</li>
           <li>Approve Reviews</li>
         </ul>
-        <button class="pricingTable-firstTable_table__getstart">Get Started Now</button>
+        <button class="pricingTable-firstTable_table__getstart" (click)="makePayment(package.id)" >Buy Package</button>
       </li>
       <!-- <li class="pricingTable-firstTable_table">
         <h1 class="pricingTable-firstTable_table__header">Gold Packege</h1>
@@ -117,8 +117,10 @@
     </div>
     <!--row end-->
     <footer>
-      <button class="btn" (click)="canclePayment()">Cancle</button>
-      <button class="btn" (click)="buyPackage()">Buy Package</button>
+    <!-- //  <button class="pricingTable-firstTable_table__getstart" (click)="">Cancle</button> -->
+     <button class="pricingTable-firstTable_table__getstart" (click)="canclePayment()" >cancle</button>
+      <button  class="pricingTable-firstTable_table__getstart" (click)="buyPackage()">Buy Package</button>
+     
     </footer>
   </div>
   <!--wrapper end-->
