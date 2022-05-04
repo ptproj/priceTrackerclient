@@ -504,4 +504,8 @@
     margin: 0;
     box-sizing: border-box;
  }
-  
+ .floatAboveEverything {
+	z-index: 1000; 
+  /* // or any value higher than your other elements */
+	position: absolute;
+}
