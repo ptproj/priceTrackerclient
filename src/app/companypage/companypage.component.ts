@@ -34,7 +34,8 @@ export class CompanypageComponent implements OnInit {
   productDialog:boolean=false
   packageid:number=0
   buypackagebool:boolean=false
-
+  uploadedFile: any;
+  selectedFile:any;
 
   addproductForm:FormGroup=new FormGroup({
     "link":new FormControl("",[Validators.required]),
@@ -61,12 +62,7 @@ this.packageid=Number(sessionStorage.getItem('haspackage'))
 //this.primengConfig.ripple = true;
 
   }
-  selectedFile:any;
-  onFileChanged(event:any) {
-    debugger;
-    this.selectedFile = event.target.files[0]
-    debugger;
-  }
+
 
 
   addproduct(){
@@ -199,13 +195,19 @@ buypackage(){
 this.buypackagebool=true
 }
 
-uploadedFile: any;
+// onFileChanged(event:any) {
+//   debugger;
+//   this.selectedFile = event.target.files[0]
+//   debugger;
+// }
 
 onUploadHandler(event: any) {
+  debugger;
   for(let file of event.files) {
+    debugger;
       this.uploadedFile=file;
   }
-
+  debugger
   this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   
 }

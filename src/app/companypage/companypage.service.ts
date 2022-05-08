@@ -29,6 +29,7 @@ export class CompanypageService {
  
    formData.append('file', file, file.name);
    let obj={companyproduct:companyproduct,file:formData}
+   debugger;
     return this.http.post<Companyproduct>("api/Companyproduct/",formData)
   }
   updatecompanyproduct(companyproduct:Companyproduct):Observable<Companyproduct>{
