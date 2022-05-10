@@ -65,6 +65,8 @@ this.company=new Company(this.sighinForm.get("name")?.value,this.sighinForm.get(
        alert("after post:)")
         sessionStorage.setItem('token', data.token|| '')
         sessionStorage.setItem('companyid', data.id?.toString()|| '')
+        sessionStorage.setItem('haspackage', data.packageid?.toString()|| "0")
+
         alert(data.id)
         this.submitted=false
        this._router.navigate(["/companypage"])

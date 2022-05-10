@@ -24,14 +24,22 @@ export class CompanypageService {
 
 
   }
-  addcompanyproduct(companyproduct:Companyproduct,file:any):Observable<Companyproduct>{
+  addcompanyproduct(companyproduct:Companyproduct):Observable<Companyproduct>{
+   
+ 
+   debugger;
+    return this.http.post<Companyproduct>("api/Companyproduct/",companyproduct)
+  }
+
+  savecompanyimage(file:any):Observable<any>{
     let formData = new FormData();
  
    formData.append('file', file, file.name);
-   let obj={companyproduct:companyproduct,file:formData}
+  
    debugger;
-    return this.http.post<Companyproduct>("api/Companyproduct/",formData)
+    return this.http.post<any>("api/Companyproduct/image",formData)
   }
+
   updatecompanyproduct(companyproduct:Companyproduct):Observable<Companyproduct>{
    return this.http.put<Companyproduct>("api/Companyproduct/",companyproduct)
   }

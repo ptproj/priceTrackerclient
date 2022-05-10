@@ -8,7 +8,7 @@ export class Companyproduct{
     active?:boolean;
     productlink?:string;
     constructor(companyid:number,price:number,name:string
-        ,description:string,active:boolean,productlink:string,image:string)
+        ,description:string,active:boolean,productlink:string)
     {
         this.companyid=companyid;
         this.price=price;
@@ -16,7 +16,6 @@ export class Companyproduct{
         this.description=description;
         this.active=active;
         this.productlink=productlink;
-        this.image=image;
     }
     
 

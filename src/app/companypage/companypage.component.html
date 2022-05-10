@@ -146,7 +146,7 @@
             accept="image/*"    >
            
              <ng-template pTemplate="content">
-                <div *ngIf="uploadedFile" formControlName="img">
+                <div *ngIf="uploadedFile" >
                     <li  >{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li> 
                   
                 </div>
