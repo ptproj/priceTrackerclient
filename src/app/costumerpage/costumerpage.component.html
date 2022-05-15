@@ -1,56 +1,112 @@
+<main class="main">
+    <aside class="sidebar">
+        <nav class="nav">
+            <ul>
+                <li class="active"><a href="#">Welcome</a></li>
+                <li><a>youre package is updated till:</a></li>
+                <li><a>What We Do</a></li>
+                <li><a>Get In Touch</a></li>
+                
 
-<div>
+            </ul>
+        </nav>
+    </aside>
 
-          <form [formGroup]="addproductForm">
-      insert link<input type="text" pInputText id="link" formControlName="link"  autofocus />
-       <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-success mr-2" (click)="add()"></button>
-       <small  class="p-error" *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">link is required.</small>
-     </form>
+    <section class="twitter">
+        <div>
 
-</div>
-<br>
+          
+            <div>
+                <div>
 
+                    <form [formGroup]="addproductForm">
+                        insert link<input type="text" pInputText id="link" formControlName="link" autofocus />
+                        <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-success mr-2"
+                            (click)="add()"></button>
+                        <small class="p-error"
+                            *ngIf="submitted && addproductForm.controls['link'].errors?.['required']">link is
+                            required.</small>
+                    </form>
+
+                </div>
+                <br>
+
+                <p-toast></p-toast>
+
+                <p-orderList *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}"
+                    header="your Products" filterBy="baseprice" filterPlaceholder="Filter by price" [dragdrop]="true">
+
+                    <ng-template let-product pTemplate="item">
+                        <div class="product-item">
+                            <div class="image-container">
+                                <img src="../../../assets/AUSTR026.JPG" [alt]="product.name" class="product-image" />
+                            </div>
+                            <div class="product-list-detail">
+                                <!-- <h5 class="mb-2">{{product.productlink}}</h5> -->
+                                <a class="mb-2" href="{{product.productlink}}">{{product.description}}</a>
+
+                                <!-- <i class="pi pi-tag product-category-icon"></i> -->
+                                <!-- <span class="product-category">{{product.baseprice}}</span> -->
+                            </div>
+                            <div>
+
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                                    (click)="delete(product.id)"></button>
+                            </div>
+                            <div class="product-list-action">
+
+
+                                <!-- <p-button label="Click" icon="pi pi-check" iconPos="left"></p-button> -->
+                                <!-- <button (click)="deletediv(product.id)">delete this product</button> -->
+                                <h6 class="mb-2">₪{{product.baseprice}}</h6>
+                                <!-- <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.baseprice}}</span> -->
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-orderList>
+
+
+                <!-- <p-dialog header="delete product" [(visible)]="show" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+           [draggable]="false" [resizable]="false">
+          
+          <p>are you sure you want to delete this product?</p>
+               <ng-template pTemplate="footer">
+               <p-button (click)=delete() label="yes" styleClass="p-button-text"></p-button>
+               <p-button (click)=closedialog() label="no" styleClass="p-button-text"></p-button>
+               </ng-template>
+       </p-dialog> -->
+
+                <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+            </div>
+        </div>
+    </section>
+</main>
 <p-toast></p-toast>
 
-<p-orderList  *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}" header="your Products" filterBy="baseprice" filterPlaceholder="Filter by price" [dragdrop]="true">
-
-    <ng-template let-product pTemplate="item">
-        <div class="product-item">
-            <div class="image-container">
-                    <img src="../../../assets/AUSTR026.JPG" [alt]="product.name" class="product-image" />
-            </div>
-            <div class="product-list-detail">
-                <!-- <h5 class="mb-2">{{product.productlink}}</h5> -->
-                <a class="mb-2" href="{{product.productlink}}">{{product.description}}</a>
-              
-                <!-- <i class="pi pi-tag product-category-icon"></i> -->
-                <!-- <span class="product-category">{{product.baseprice}}</span> -->
-            </div> 
-            <div>
-             
-            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="delete(product.id)"></button>
-        </div>
-            <div class="product-list-action">
-              
-        
-                <!-- <p-button label="Click" icon="pi pi-check" iconPos="left"></p-button> -->
-                <!-- <button (click)="deletediv(product.id)">delete this product</button> -->
-                <h6 class="mb-2">₪{{product.baseprice}}</h6>
-                <!-- <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.baseprice}}</span> -->
-            </div>
-        </div>
-    </ng-template>
-</p-orderList>
 
 
-  <!-- <p-dialog header="delete product" [(visible)]="show" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
-     [draggable]="false" [resizable]="false">
-    
-    <p>are you sure you want to delete this product?</p>
-         <ng-template pTemplate="footer">
-         <p-button (click)=delete() label="yes" styleClass="p-button-text"></p-button>
-         <p-button (click)=closedialog() label="no" styleClass="p-button-text"></p-button>
-         </ng-template>
- </p-dialog> -->
 
- <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+
+
+<!-- </td>
+<td> -->
+<!-- <div *ngIf="packageid==0">
+        <img src="../../../assets/AUSTR026.JPG"  width="1100" class="shadow-4" />
+    </div> -->
+<!-- </td>
+</tr>
+</table> -->
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+
+
+
+
+
+
+
+
+
+
+עכייייייייייייייייייייי
