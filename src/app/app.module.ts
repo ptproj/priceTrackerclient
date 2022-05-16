@@ -35,7 +35,8 @@ import { ButtonModule } from "primeng/button";
 // import {RatingModule} from 'primeng/rating';
 // import {RadioButtonModule} from 'primeng/radiobutton';
  import {InputNumberModule} from 'primeng/inputnumber';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './TokenInterceptor.service';
 // import { ConfirmationService } from 'primeng/api';
 // import { MessageService } from 'primeng/api';
 
@@ -70,6 +71,7 @@ const APP_ROUTES:Route[]=[
   declarations: [
     AppComponent,
     BeginComponent,
+    
     
   ],
   imports: [
@@ -111,7 +113,11 @@ const APP_ROUTES:Route[]=[
     
   ],
   exports:[RouterModule,ToastModule],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 
 

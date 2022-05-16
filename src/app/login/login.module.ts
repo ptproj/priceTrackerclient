@@ -12,6 +12,7 @@ import {DialogModule} from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { RippleModule } from 'primeng/ripple';
+import { AuthGuardService } from '../auth-guard-service.service';
 // const ROUTES1:Routes=[
 //   { path: "", pathMatch: "full", redirectTo: "costumerlogin" },
 //   { path:"costumerlogin",component:CostumerloginComponent },
@@ -22,15 +23,15 @@ import { RippleModule } from 'primeng/ripple';
 //   }    
 // ]
 const LOGIN_ROUTE:Route[]=[
-  {path:"costumerlogin",component:CostumerloginComponent},
+  {path:"costumerlogin",component:CostumerloginComponent  },
   {path:"companylogin",component:CompanyloginComponent},
-  {path:"costumerpage",component:CostumerpageComponent}
+  {path:"costumerpage",component:CostumerpageComponent,canActivate:[AuthGuardService]}
 ]
 
 
 @NgModule({
   declarations: [CostumerloginComponent,CompanyloginComponent],
-  providers: [LoginService], 
+  providers: [LoginService,AuthGuardService], 
   imports: [  CommonModule,ReactiveFormsModule,HttpClientModule,FormsModule  , InputTextModule,DialogModule,ButtonModule,
     TableModule,RippleModule,
     RouterModule.forChild(LOGIN_ROUTE)

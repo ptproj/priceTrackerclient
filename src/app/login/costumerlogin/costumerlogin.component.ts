@@ -50,7 +50,7 @@ export class CostumerloginComponent implements OnInit {
 ); }; }
  
 
-  login()
+  async login()
   {
     this.submitted=true;
     if(!(this.loginForm.invalid)){
@@ -59,6 +59,7 @@ alert(this.loginForm.get("email")?.value)
     this.loginservice.getcostumer(this.costumer).subscribe(data=>{
       sessionStorage.setItem('token', data.token|| '')
       sessionStorage.setItem('costumerid', data.id?.toString()|| '')
+      debugger
       this._router.navigate(["/costumerpage"])
      // alert(sessionStorage.getItem('token'))
       

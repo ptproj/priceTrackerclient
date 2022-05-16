@@ -34,7 +34,7 @@
                 <p-toast></p-toast>
 
                 <p-orderList *ngIf="products" [value]="products" [listStyle]="{'max-height':'30rem'}"
-                    header="your Products" filterBy="baseprice" filterPlaceholder="Filter by price" [dragdrop]="true">
+                    header="your Products" filterBy="baseprice" filterPlaceholder="Filter by price" [dragdrop]="true" >
 
                     <ng-template let-product pTemplate="item">
                         <div class="product-item">

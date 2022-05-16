@@ -28,6 +28,7 @@ export class CostumerpageComponent implements OnInit {
     //this.primengConfig.ripple = true;
    this.costumerpageservice.getcostumerproduct().subscribe(data=>
     {
+      data=data.reverse()
       this.costumerpageservice.products=data
       this.products=data
     });
@@ -47,7 +48,10 @@ export class CostumerpageComponent implements OnInit {
       alert(x)
       this.costumerproduct=new Costumerproduct(id,this. addproductForm.get("link")?.value )
     this.costumerpageservice.addcostumerproduct(this.costumerproduct).subscribe(x=>{
-      if(this.costumerproduct){this.products?.push(x)
+      if(this.costumerproduct){
+      this.products?.push(x)
+      this.products?.reverse();
+
       this.submitted=false
       this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was added succefuly'});} 
       this.addproductForm.controls["link"].setValue("")
