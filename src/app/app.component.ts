@@ -9,9 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'PriceTracker';
   constructor(
-  //  private _route:Router
     ){
-   // debugger;
-//this._route.navigate(["/start"])
+
   }
 }

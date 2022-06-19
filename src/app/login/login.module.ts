@@ -13,15 +13,7 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { RippleModule } from 'primeng/ripple';
 import { AuthGuardService } from '../auth-guard-service.service';
-// const ROUTES1:Routes=[
-//   { path: "", pathMatch: "full", redirectTo: "costumerlogin" },
-//   { path:"costumerlogin",component:CostumerloginComponent },
-// { path:'costumerpage',component:CostumerpageComponent },
-//   {
-//     path: '**',
-//     redirectTo: 'costumerlogin'
-//   }    
-// ]
+
 const LOGIN_ROUTE:Route[]=[
   {path:"costumerlogin",component:CostumerloginComponent  },
   {path:"companylogin",component:CompanyloginComponent},

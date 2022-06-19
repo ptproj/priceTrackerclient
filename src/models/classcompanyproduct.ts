@@ -7,6 +7,7 @@ export class Companyproduct{
     description?:string;
     active?:boolean;
     productlink?:string;
+    imageContent?:string;
     constructor(companyid:number,price:number,name:string
         ,description:string,active:boolean,productlink:string)
     {

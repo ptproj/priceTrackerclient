@@ -4,7 +4,6 @@ import {Costumer} from '../../../models/classcostumer'
 import { LoginService } from '../login.service';
 import { DTOLoginCostumer } from 'src/models/classdtologincostumer';
 import { Router } from '@angular/router';
-//import { Router } from '@angular/router';
 
 
 @Component({
@@ -61,7 +60,6 @@ alert(this.loginForm.get("email")?.value)
       sessionStorage.setItem('costumerid', data.id?.toString()|| '')
       debugger
       this._router.navigate(["/costumerpage"])
-     // alert(sessionStorage.getItem('token'))
       
   },err=>{alert("password is incorrect")});
   }}
@@ -75,7 +73,6 @@ alert(this.loginForm.get("email")?.value)
   
    this.loginservice.getnewcostumerpassword(this.newpassForm.get("email")?.value).subscribe(data=>{alert(data)
    this.submitted2=false 
-  //  this.forgotpass=false
   }) 
 }
   }

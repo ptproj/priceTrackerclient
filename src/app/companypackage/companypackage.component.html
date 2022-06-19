@@ -1,13 +1,6 @@
 <div *ngIf="buypackage">
 
-  <!-- <table>
-    <tr *ngFor="let package of packages">
-      <td> {{package.productsamount}} </td>
-      <td> {{package.price}} </td>
-      <td> {{package.duration}} </td>
-      <button (click)="makePayment(package.id)">buy me </button>
-    </tr>
-  </table> -->
+
   
   <div id="wrapper" *ngIf="payment" class="floatAboveEverything">
     <div class="row">
@@ -16,7 +9,6 @@
           <img src="http://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Visa-icon.png">
           <img src="http://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Master-Card-icon.png">
         </div>
-        <!--#cards end-->
         <div class="form-check">
           <label class="form-check-label" for='card'>
             <input id="card" class="form-check-input" type="checkbox" value="">

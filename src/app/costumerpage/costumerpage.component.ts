@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 import { Costumerproduct } from 'src/models/classcostumerproduct';
@@ -19,13 +19,12 @@ export class CostumerpageComponent implements OnInit {
    itemtodelete?:number
    show:boolean=false
    submitted:boolean=false
-  constructor(private costumerpageservice:CostumerpageService,private primengConfig: PrimeNGConfig, private messageService: MessageService,private confirmationService: ConfirmationService) {
+  constructor(private costumerpageservice:CostumerpageService,private cd:ChangeDetectorRef,private primengConfig: PrimeNGConfig, private messageService: MessageService,private confirmationService: ConfirmationService) {
    
    }
 
  costumerproduct?:Costumerproduct
   ngOnInit(): void {
-    //this.primengConfig.ripple = true;
    this.costumerpageservice.getcostumerproduct().subscribe(data=>
     {
       data=data.reverse()
@@ -64,20 +63,7 @@ export class CostumerpageComponent implements OnInit {
   this.itemtodelete=productid
   this.show=true
 }
-// delete(){
-//   if(this.itemtodelete){
-//     this.costumerpageservice.deletecostumerproduct(this.itemtodelete).subscribe(x=>{
-//    if (x==true && this.products){
-//  var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
-//  this.products=productsafterdeletet
-//  this.show=false
-// this.closedialog()
-// this.messageService.add({severity:'success', summary: 'Success', detail: 'youre prudoct was deleted succefuly'});
-//  }
-// })
-//   }
- 
-// }
+
 
 delete(productid:number|undefined) {
   this.itemtodelete=productid
@@ -90,7 +76,10 @@ delete(productid:number|undefined) {
         this.costumerpageservice.deletecostumerproduct(this.itemtodelete).subscribe(data=>{
         if (data==true && this.products){
         var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
-        this.products=productsafterdeletet}})
+        this.products=
+        productsafterdeletet;
+        this.cd.detectChanges();
+      }})
         this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
       }}
    

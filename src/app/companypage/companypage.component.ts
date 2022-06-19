@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Companyproduct } from 'src/models/classcompanyproduct';
 import { CompanypageService } from './companypage.service';
 import { PrimeNGConfig } from "primeng/api";
 import { ActivationEnd } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
-// import { ConfirmationService } from 'primeng/api';
-// import { MessageService } from 'primeng/api';
-// import { Table, TableModule } from 'primeng/table';
 @Component({
   selector: 'app-companypage',
   templateUrl: './companypage.component.html',
@@ -43,23 +41,24 @@ export class CompanypageComponent implements OnInit {
     "name": new FormControl("", [Validators.required]),
     "price": new FormControl("", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
     "active": new FormControl("", [Validators.required]),
-  
+
 
   })
-  constructor(private messageService: MessageService, private companypageservice: CompanypageService, private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig) { }
+  imagePath: any;
+  constructor(private messageService: MessageService,private cd:ChangeDetectorRef,private sanitizer: DomSanitizer, private companypageservice: CompanypageService, private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
 
     this.packageid = Number(sessionStorage.getItem('haspackage'))
 
-    //this.companypageservice.getcompanyproduct().subscribe(data=>{
+    this.companypageservice.getcompanyproduct().subscribe(data=>{
 
-    //this.products=data
-    //this.companypageservice.products=data
+    this.products=data;
+    this.companypageservice.products=data;
 
 
-    //})
-    //this.primengConfig.ripple = true;
+    })
+    this.primengConfig.ripple = true;
 
   }
 
@@ -85,26 +84,24 @@ export class CompanypageComponent implements OnInit {
           this.addproductForm.get("active")?.value, this.addproductForm.get("link")?.value)
         debugger;
         this.companypageservice.savecompanyimage(this.uploadedFile).subscribe(data => {
-          // if (this.companyproduct) {
-          //   debugger
-          //   this.companyproduct.image = data
-          //   this.companypageservice.addcompanyproduct(this.companyproduct).subscribe(data => {
-          //     if (this.companyproduct) {
-          //       this.products?.push(data)
+          if (data)
+            if (this.companyproduct) {
+              debugger
+              this.companyproduct.image = this.uploadedFile.name;
+              this.companypageservice.addcompanyproduct(this.companyproduct).subscribe(data => {
+                if (this.companyproduct) {
+                  this.products?.push(data)
 
-          //       this.hideDialog()
-          //       this.addproduct()
-          //       this.add_update = false;
-          //       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'youre prudoct was added succefuly' });
-          //     }
-          //   }
-
-          //   )
-          // }
-          alert(data)
-          console.log(data)
+                  this.hideDialog()
+                  this.addproduct()
+                  this.add_update = false;
+                  this.cd.detectChanges();
+                  this.messageService.add({ severity: 'success', summary: 'Success', detail: 'youre prudoct was added succefuly' });
+                }
+              }
+              )
+            }
         }
-
         )
       }
     }
@@ -140,6 +137,8 @@ export class CompanypageComponent implements OnInit {
           this.products = productsafterdeletet
         }
         this.products?.push(data);
+        this.cd.detectChanges();
+
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'youre prudoct was updated succefuly' });
       })
     } this.hideDialog()
@@ -177,6 +176,8 @@ export class CompanypageComponent implements OnInit {
             if (data == true && this.products) {
               var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
               this.products = productsafterdeletet
+              this.cd.detectChanges();
+
             }
           })
           this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
@@ -186,18 +187,7 @@ export class CompanypageComponent implements OnInit {
     });
   }
 
-  //  delete(){
-  //   alert("delete")
-  //   if(this.itemtodelete){
-  //     this.companypageservice.deletecompanyproduct(this.itemtodelete).subscribe(data=>{
-  //    if (data==true && this.products){
-  //  var productsafterdeletet = this.products.filter(x => x.id != this.itemtodelete);
-  //  this.products=productsafterdeletet}
-
-  // })
-  //   }
-
-  // }
+ 
   getactive(product: Companyproduct | undefined) {
     if (product?.active)
       return "Active";
@@ -209,12 +199,7 @@ export class CompanypageComponent implements OnInit {
     this.buypackagebool = true
   }
 
-  // onFileChanged(event:any) {
-  //   debugger;
-  //   this.selectedFile = event.target.files[0]
-  //   debugger;
-  // }
-
+ 
   onUploadHandler(event: any) {
     debugger;
     for (let file of event.files) {

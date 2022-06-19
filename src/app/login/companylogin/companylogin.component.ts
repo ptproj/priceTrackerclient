@@ -59,8 +59,7 @@ login_bool(){this.sub=false;}
     this.submitted=true
     if(!(this.sighinForm.invalid)){
 this.company=new Company(this.sighinForm.get("name")?.value,this.sighinForm.get("companylink")?.value,this.sighinForm.get("password")?.value);
-//alert(this.loginForm.get("name")?.value)
-//alert(this.loginForm.get("password")?.value)
+
      this.loginservice.postcompany(this.company).subscribe(data=>{
        alert("after post:)")
         sessionStorage.setItem('token', data.token|| '')
@@ -86,7 +85,6 @@ getnewpassword(){
  
   this.loginservice.getnewcompanypassword(this.newpassForm.get("email")?.value).subscribe(data=>{alert(data)
   this.submitted2=false 
- //  this.forgotpass=false
  }) 
 }
  }

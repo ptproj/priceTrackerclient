@@ -30,13 +30,7 @@ deletecostumerproduct(productid:number):Observable<boolean>{
    return this.http.delete<boolean>("api/Costumerproduct/"+productid)
 }
 addcostumerproduct(costumerproduct:Costumerproduct):Observable<Costumerproduct>{
-  //const token:any=sessionStorage.getItem('token');
-    // const httpOptions={
   
-    //      headers:new HttpHeaders({
-    //          'Authorization':token.tostring()
-    //      })
-    //  }
     return  this.http.post<Costumerproduct>("api/Costumerproduct/",costumerproduct);
 }
 
